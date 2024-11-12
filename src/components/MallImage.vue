@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, onMounted, defineProps,created } from "vue";
+import { reactive, ref, onMounted, defineProps, created } from "vue";
 import { uploadMallImg } from "@/api/api";
 import { Delete, Download, Plus, ZoomIn } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
@@ -74,8 +74,6 @@ const props = defineProps({
   commodityId: String,
 });
 
-
-
 onMounted(() => {
   // getTag();
   // uploadMallImg()
@@ -84,10 +82,6 @@ onMounted(() => {
   console.log(props.commodityId);
   console.log(commodityId.value);
 });
-
-
-
-
 
 // 表单提交
 

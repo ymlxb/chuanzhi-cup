@@ -13,4 +13,10 @@ export default defineConfig({
       },
     ],
   },
+  server: {
+    open: true, // 自动启动浏览器
+    host: "0.0.0.0", // localhost
+    port: 8001, // 端口号
+    hmr: { overlay: false }
+  }
 });

@@ -114,4 +114,7 @@
     color:#D3D3D3;
     margin: 1.5rem;
   }
+  .title-nav:hover {
+    color: #98fb98;
+  }
 </style>

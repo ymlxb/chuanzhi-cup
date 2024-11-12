@@ -105,10 +105,10 @@
         <!-- <el-input v-model="user.email" placeholder="请输入邮箱"></el-input> -->
         {{ userData.email }}
       </el-form-item>
-      <el-form-item label="地址：">
-        <!-- <el-input v-model="user.address" placeholder="请输入地址"></el-input> -->
+      <!-- <el-form-item label="地址：">
+        <el-input v-model="user.address" placeholder="请输入地址"></el-input>
         {{ userData.address }}
-      </el-form-item>
+      </el-form-item> -->
     </div>
   </el-form>
 </template>

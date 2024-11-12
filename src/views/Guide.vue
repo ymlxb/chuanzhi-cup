@@ -1,6 +1,6 @@
 <template>
   <div class="contain">
-    <<!-- 头部开始 -->
+    <!-- 头部开始 -->
     <div class="header wrap">
         <h1>绿映未来：诗意栖居，共绘可持续发展蓝图</h1>
         <!-- <div class="nav1">
@@ -42,6 +42,7 @@
                  
             </div> -->
             <div class="content1">
+                
                 <div class="big"><img src="../assets/images/烹饪节能.jfif" alt="" width="100%" height="50%">
                     <h4 class="font2a">家庭烹饪节能
                     </h4>
@@ -73,10 +74,148 @@
 
                 </div>
                 </div>
+            </div>
 
+            <div class="content1">
                 
+                <div class="big"><img src="../assets/images/烹饪节能.jfif" alt="" width="100%" height="50%">
+                    <h4 class="font2a">公共交通型
+                    </h4>
+                    <div class="font3">充分利用城市公共交通系统，包括公交、地铁、轻轨（若有）和市郊铁路（若适用）。了解线路、时刻表、站点分布、运营信息和优惠政策，文明乘车，注意换乘规划和与其他交通方式的衔接。
+
+                    </div>
+                    <!-- <div class="font3">提前将食材切好、解冻等，这样可以减少烹饪时间，降低能源消耗。
+
+                    </div> -->
+                </div>
+                <div class="big"><img src="../assets/images/办公场所节能.jfif" alt="" width="100%" height="50%">
+                    <h4 class="font2b">共享交通型
+                    </h4>
+                    <div class="font3">合理使用共享单车、共享电动车和共享汽车等共享交通工具。熟悉相应的 APP 使用、车辆检查、停车规范、使用范围、速度限制、计费方式以及证件要求和车辆归还检查等内容。
+                    </div>
+                    <!-- <div class="font3">打印机、复印机等设备在不使用时及时关闭电源。提倡双面打印，减少纸张浪费的同时也能降低设备能耗。
+                    </div> -->
+                </div>
+                <div class="big"><img src="../assets/images/社区节能.jfif" alt="" width="100%" height="50%">
+                    <h4 class="font2c">步行型
+                    </h4>
+                    <div class="font3">无论是日常短距离还是作为健身方式的步行出行，都要规划好路线，注意安全，包括选择合适的鞋子、走人行道、遵守信号灯、在特殊时段增加安全措施，也可参加步行团体或活动来增加乐趣。
+                    </div>
+                    <!-- <div class="font3">在社区内举办节能宣传活动，提高居民的节能意识，鼓励居民共同参与节能行动。</div> -->
+                </div>
+                <div class="big1"><img src="../assets/images/高效用水.jfif" alt="" width="100%" height="50%">
+                <h4 class="font2d">.骑行（自行车）型
+                </h4>
+                <div class="font3">通勤骑行要选好适合的自行车类型，规划车流量少、路况佳且有自行车道的路线，并考虑天气因素做好防护；休闲骑行则选择风景优美路线，携带饮用水、维修工具和应急食品等必要装备。
+
+                </div>
+                <!-- <div class="font3">缩短淋浴时间，避免长时间泡澡。检查和修复漏水的水龙头和管道，防止水资源浪费。
+
+                </div> -->
+                </div>
+            </div>
+
+            <div class="content1">
                 
-                  <!-- <p>可以写光污染</p> -->
+                <div class="big"><img src="../assets/images/烹饪节能.jfif" alt="" width="100%" height="50%">
+                    <h4 class="font2a">选择环保产品
+                    </h4>
+                    <div class="font3">购买带有环保标志的产品，如能源之星认证的电器、可回收材料制成的日用品等。
+                    </div>
+                    <div class="font3">选择有机食品和农产品，减少农药和化肥的使用。拒绝过度包装的商品，选择简单包装或无包装的产品。
+                    </div>
+                </div>
+                <div class="big"><img src="../assets/images/办公场所节能.jfif" alt="" width="100%" height="50%">
+                    <h4 class="font2b">二手和租赁消费类
+                    </h4>
+                    <div class="font3">选购二手家具。二手家具市场有各种各样的产品，从古典风格的实木桌椅到现代简约的沙发等。购买二手家具不仅可以节省开支，还能赋予旧家具新的生命。</div>
+                    <div class="font3">购买二手书籍。二手书籍价格通常比新书便宜很多，而且可以找到一些已经绝版的书籍。在二手书店或者一些线上二手书交易平台，你可以淘到各种类型的书籍。
+                    </div>
+                </div>
+                <div class="big"><img src="../assets/images/社区节能.jfif" alt="" width="100%" height="50%">
+                    <h4 class="font2c">家居用品选择
+                    </h4>
+                    <div class="font3">选用绿色建材。在装修房屋时，选择具有环保标识的建筑材料，如低挥发性有机化合物（VOC）的涂料、可持续采伐的木材等。</div>
+                    <div class="font3">购买环保型清洁用品,环保清洁用品通常采用天然成分。</div>
+                </div>
+                <div class="big1"><img src="../assets/images/高效用水.jfif" alt="" width="100%" height="50%">
+                <h4 class="font2d">减少包装和一次性用品类
+                </h4>
+                <div class="font3">购买包装简单的产品。尽量避免过度包装的商品，特别是那些有多层塑料、纸盒、泡沫等包装的产品。
+                </div>
+                <div class="font3">减少一次性塑料制品的使用。携带可重复使用的购物袋、水杯、餐具等。
+                </div>
+                </div>
+            </div>
+
+            <div class="content1">
+                
+                <div class="big"><img src="../assets/images/烹饪节能.jfif" alt="" width="100%" height="50%">
+                    <h4 class="font2a">家庭烹饪节能
+                    </h4>
+                    <div class="font3">电磁炉的热效率也比较高，相比传统的燃气灶能更有效地利用能源。在烹饪过程中，根据不同的菜品和烹饪阶段调整火候大小。
+                    </div>
+                    <div class="font3">提前将食材切好、解冻等，这样可以减少烹饪时间，降低能源消耗。
+
+                    </div>
+                </div>
+                <div class="big"><img src="../assets/images/办公场所节能.jfif" alt="" width="100%" height="50%">
+                    <h4 class="font2b">办公场所节能
+                    </h4>
+                    <div class="font3">将电脑的电源管理设置为节能模式，在一段时间不使用时自动进入休眠状态。合理安排办公区域的照明，充分利用自然光，减少人工照明的使用。</div>
+                    <div class="font3">打印机、复印机等设备在不使用时及时关闭电源。提倡双面打印，减少纸张浪费的同时也能降低设备能耗。
+                    </div>
+                </div>
+                <div class="big"><img src="../assets/images/社区节能.jfif" alt="" width="100%" height="50%">
+                    <h4 class="font2c">社区节能
+                    </h4>
+                    <div class="font3">鼓励居民使用新能源汽车，建设公共充电桩，方便居民充电，减少传统燃油汽车的使用。</div>
+                    <div class="font3">在社区内举办节能宣传活动，提高居民的节能意识，鼓励居民共同参与节能行动。</div>
+                </div>
+                <div class="big1"><img src="../assets/images/高效用水.jfif" alt="" width="100%" height="50%">
+                <h4 class="font2d">高效用水
+                </h4>
+                <div class="font3">安装节水龙头和淋浴喷头，减少水的流量。收集废水用于浇花、冲洗厕所等非饮用水用途。
+                </div>
+                <div class="font3">缩短淋浴时间，避免长时间泡澡。检查和修复漏水的水龙头和管道，防止水资源浪费。
+
+                </div>
+                </div>
+            </div>
+
+            <div class="content1">
+                
+                <div class="big"><img src="../assets/images/烹饪节能.jfif" alt="" width="100%" height="50%">
+                    <h4 class="font2a">家庭烹饪节能
+                    </h4>
+                    <div class="font3">电磁炉的热效率也比较高，相比传统的燃气灶能更有效地利用能源。在烹饪过程中，根据不同的菜品和烹饪阶段调整火候大小。
+                    </div>
+                    <div class="font3">提前将食材切好、解冻等，这样可以减少烹饪时间，降低能源消耗。
+
+                    </div>
+                </div>
+                <div class="big"><img src="../assets/images/办公场所节能.jfif" alt="" width="100%" height="50%">
+                    <h4 class="font2b">办公场所节能
+                    </h4>
+                    <div class="font3">将电脑的电源管理设置为节能模式，在一段时间不使用时自动进入休眠状态。合理安排办公区域的照明，充分利用自然光，减少人工照明的使用。</div>
+                    <div class="font3">打印机、复印机等设备在不使用时及时关闭电源。提倡双面打印，减少纸张浪费的同时也能降低设备能耗。
+                    </div>
+                </div>
+                <div class="big"><img src="../assets/images/社区节能.jfif" alt="" width="100%" height="50%">
+                    <h4 class="font2c">社区节能
+                    </h4>
+                    <div class="font3">鼓励居民使用新能源汽车，建设公共充电桩，方便居民充电，减少传统燃油汽车的使用。</div>
+                    <div class="font3">在社区内举办节能宣传活动，提高居民的节能意识，鼓励居民共同参与节能行动。</div>
+                </div>
+                <div class="big1"><img src="../assets/images/高效用水.jfif" alt="" width="100%" height="50%">
+                <h4 class="font2d">高效用水
+                </h4>
+                <div class="font3">安装节水龙头和淋浴喷头，减少水的流量。收集废水用于浇花、冲洗厕所等非饮用水用途。
+                </div>
+                <div class="font3">缩短淋浴时间，避免长时间泡澡。检查和修复漏水的水龙头和管道，防止水资源浪费。
+
+                </div>
+                </div>
             </div>
             
         </div>
@@ -95,6 +234,7 @@
 <style scoped lang="less">
       
       .contain {
+            margin-top: 20px;
             height: 3000px;
         }
         li {
@@ -122,6 +262,7 @@
             color: #fff;
             padding-top: 10px;
             margin: 0 auto;
+            font-size: 25px;
         }
         .nav1 ul li{
             float: left;
