@@ -59,11 +59,25 @@ const list =ref([
           url: 'Home'
       	},
         {
+            path: '/guide',
+            name: 'guide',
+            label: '绿色生活指南',
+            icon: 'house',
+            url: 'Guide'
+        },
+        {
             path: '/brand',
             name: 'brand',
             label: '可持续品牌',
             icon: 'video-play',
             url: 'Brand'
+        },
+        {
+            path: '/trade',
+            name: 'trade',
+            label: '二手交易',
+            icon: 'house',
+            url: 'Trade'
         },
         {
             path: '/Community',
@@ -79,41 +93,28 @@ const list =ref([
             icon: 'house',
             url: 'About'
         },
-        {
-            path: '/trade',
-            name: 'trade',
-            label: '二手交易',
-            icon: 'house',
-            url: 'Trade'
-        },
-        {
-            path: '/guide',
-            name: 'guide',
-            label: '绿色生活指南',
-            icon: 'house',
-            url: 'Guide'
-        },
-        {
-            path: 'other',
-            label: '其他',
-            icon: 'location',
-            children: [
-                {
-                    path: '/page1',
-                    name: 'page1',
-                    label: '页面1',
-                    icon: 'setting',
-                    url: 'Page1'
-                },
-                {
-                    path: '/page2',
-                    name: 'page2',
-                    label: '页面2',
-                    icon: 'setting',
-                    url: 'Page2'
-                }
-            ]
-        }
+        
+        // {
+        //     path: 'other',
+        //     label: '其他',
+        //     icon: 'location',
+        //     children: [
+        //         {
+        //             path: '/page1',
+        //             name: 'page1',
+        //             label: '页面1',
+        //             icon: 'setting',
+        //             url: 'Page1'
+        //         },
+        //         {
+        //             path: '/page2',
+        //             name: 'page2',
+        //             label: '页面2',
+        //             icon: 'setting',
+        //             url: 'Page2'
+        //         }
+        //     ]
+        // }
 ])
 
 const noChildren = computed(()=>list.value.filter(item=>!item.children))

@@ -8,9 +8,9 @@
     <el-form-item label="物品照片:">
       <el-upload
         class="avatar-uploader"
-        :action="`http://10.102.56.50:8081/mall/Commodity/insertCommodityImage/${commodityId}`"
-        :show-file-list="false"
+        :action="`http://10.102.114.166:8081/mall/Commodity/insertCommodityImage/${commodityId}`"
         :headers="{ Authorization: token }"
+        :show-file-list="false"
         :on-success="handleAvatarSuccess"
         :before-upload="beforeAvatarUpload"
       >
@@ -44,22 +44,22 @@
 
 <script setup lang="ts">
 import { reactive, ref, onMounted, defineProps, created } from "vue";
-import { uploadMallImg } from "@/api/api";
+// import { uploadMallImg } from "@/api/api";
 import { Delete, Download, Plus, ZoomIn } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
 import type { UploadFile } from "element-plus";
 import { addMallInfo, getAllTag } from "@/api/api";
 import { useUserStore } from "@/stores/user";
 
-// import { Plus } from '@element-plus/icons-vue'
 import { useRouter } from "vue-router";
 const userStore = useUserStore();
 const token = userStore.userInfo.access_token;
 
 import type { UploadProps } from "element-plus";
-const pictureUrl = defineModel({ type: String, default: "" });
+
 const imageUrl = ref(""); //图片临时地址
 const name = ref("");
+const form = reactive({ image: "" });
 // watchEffect(()=>{
 //     imageUrl.value=pictureUrl.value;
 // })
@@ -75,9 +75,9 @@ const props = defineProps({
 });
 
 onMounted(() => {
+  
   // getTag();
   // uploadMallImg()
-  imageUrl.value = pictureUrl.value;
   commodityId.value = props.commodityId;
   console.log(props.commodityId);
   console.log(commodityId.value);
@@ -90,11 +90,36 @@ const cancel = () => {
 };
 
 // 上传图片
-// const uploadMallImg = () => {
-//   uploadMallImg(commodityId.value, form.image).then((res) => {
-//     console.log(res);
-//   });
-// };
+const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
+  // if (rawFile.type !== 'image/jpeg') {
+  //   ElMessage.error('Avatar picture must be JPG format!')
+  //   return false
+  // } else if (rawFile.size / 1024 / 1024 > 2) {
+  //   ElMessage.error('Avatar picture size can not exceed 2MB!')
+  //   return false
+  // }
+  console.log('111');
+  // console.log(rawFile);
+  
+  return true
+  console.log('222');
+  
+}
+console.log('333');
+
+const handleAvatarSuccess: UploadProps['onSuccess'] = (
+  response,
+  uploadFile
+) => {
+  console.log('333444');
+  
+  imageUrl.value = URL.createObjectURL(uploadFile.raw!)
+  imageUrl.value = response.data
+  console.log("图片地址", imageUrl.value);
+  
+}
+
+
 </script>
 
 <style lang="less" scoped>

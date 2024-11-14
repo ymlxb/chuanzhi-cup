@@ -7,7 +7,7 @@
         <div class="detail">
           <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
             <el-tab-pane label="商品信息" name="info"><MallInfo @activeNameChange="updateActiveName" @publishSuccess="updateCommodityId"/></el-tab-pane>
-            <el-tab-pane label="商品图片" name="image"><MallImage :commodityId="currentCommodityId"/></el-tab-pane>
+            <el-tab-pane v-if="state" label="商品图片" name="image"><MallImage :commodityId="currentCommodityId"/></el-tab-pane>
           </el-tabs>
           
         </div>
@@ -27,7 +27,7 @@ import type { TabsPaneContext } from 'element-plus'
 import MallInfo from "../components/MallInfo.vue";
 import MallImage from "../components/MallImage.vue";
 const activeName = ref('info')
-
+const state =ref(false)
 const handleClick = (tab: TabsPaneContext, event: Event) => {
   console.log(tab, event)
   activeName.value = 'info'
@@ -36,12 +36,18 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 
 const updateActiveName = (value: string) => {
   activeName.value = value;
+  state.value = true;
 }
 
 const currentCommodityId = ref('');
 
 const updateCommodityId = (id: string) => {
   currentCommodityId.value = id;
+  console.log('当前商品id', id);
+  console.log(currentCommodityId.value);
+  console.log('当前商品id', currentCommodityId);
+  
+  
 };
 
 </script>

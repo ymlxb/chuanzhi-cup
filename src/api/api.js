@@ -149,7 +149,7 @@ export const upUserPwd = (password) => {
   return request({
     url: '/sys/user/password',
     method: 'put',
-    data: password
+    params: password
   })
 }
 

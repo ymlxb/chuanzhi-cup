@@ -184,12 +184,13 @@
     import FurnitureAppliancesComponent from '../components/FurnitureAppliancesComponent.vue';
     import IdleComponent from '../components/IdleComponent.vue';
     import { reactive, shallowRef,ref, markRaw, onMounted } from 'vue';
-    import { useRoute } from 'vue-router';
+    import { useRoute,useRouter } from 'vue-router';
 
     import request from '@/utils/request';
     import axios from 'axios';
     import {getAllMallInfo,searchMallInfoByName,searchMallInfoByTag} from '@/api/api'
     const route = useRoute();
+    const router = useRouter();
     
     
     
@@ -235,12 +236,17 @@
 
     // 搜索查询
     const search = () => {
+      
       let name = document.querySelector('.search_input').value;
       console.log(name);
       if (name) {
         searchMallInfoByName({name}).then((res)=>{
           console.log(res.data.list);
-          
+          router.push({
+            path:`/Search?name=${name}`,
+            query:{name}
+
+          })
         })
       } else {
         getNewList();
