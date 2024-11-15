@@ -19,15 +19,15 @@
       </el-upload>
     </el-form-item>
     <div class="detail-footer" style="display: flex; justify-content: end">
-      <el-steps
+      <!-- <el-steps
         style="min-width: 20rem"
         :active="active"
         finish-status="success"
       >
         <el-step title="Step 1" />
         <el-step title="Step 2" />
-        <!-- <el-step title="Step 3" /> -->
-      </el-steps>
+        <el-step title="Step 3" />
+      </el-steps> -->
       <el-button type="primary" round @click="cancel" style="margin-left: 3rem"
         >取消</el-button
       >

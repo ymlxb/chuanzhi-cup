@@ -1,28 +1,26 @@
 <template>
   <div class="contain">
-    <header class="header">
-      <div class="navigation">
-        <a href="##" class="link">
-          <span class="text">手机</span>
-        </a>
-        <a href="##" class="link">
-          <span class="text">平板 | 笔记本</span>
-        </a>
-        <a href="##" class="link">
-          <span class="text">交通工具</span>
-        </a>
-        <a href="##" class="link">
-          <span class="text">家电</span>
-        </a>
-        <a href="##" class="link">
-          <span class="text">图书</span>
-        </a>
+    <header class="header" >
+      <div class="navigation" >
+        <div class="navigation-box" v-for="(item,index) in topList" :key="index" @mouseover="showMessageBox = true">
+          <a href="##" class="link" >
+            <span class="text">{{ item }}</span>
+          </a>
+        </div>
+
         <div class="search">
           <input type="text" class="search_input"  placeholder="笔记本电脑"></input>
           <button class="search_btn" @click="search">搜索</button>
         </div>
       </div>
     </header>
+    <div class="messageBox" :style="{display:showMessageBox ? 'block' : 'none'}" @mouseleave="showMessageBox = false">
+      <div class="messageBox-box">
+        <div class="messageBox-box-item">
+          <img src="../assets/images/allbirds.jpg" alt="">
+        </div>
+      </div>
+    </div>
     <aside class="toolbar">
       <div class="toolbar-item">
         <a href="/#/mall">
@@ -37,83 +35,18 @@
       <section class="contents">
         <el-card style="width: 100%;border-radius: 1rem;">
           <div class="contents-item">
-            <div class="contents-item-box">
+            <div class="contents-item-box" v-for="(item,index) in list" :key="index">
               <div class="contents-item--icon margin-left-1" >
-                <el-icon><Iphone /></el-icon>
+                <component class="icons" :is="item.icon"></component>
               </div>
               <div class="contents-item--text margin-left-1">
-                <a href="">
-                  <span class="contents-item--text-title margin-left-1">手机</span>
-                </a>
+                <router-link :to="`/search?name=${item.name}`">
+                  <span class="contents-item--text-title margin-left-1">{{ item.name }}</span>
+                </router-link>
               </div>
               <el-icon class="icon-right"><ArrowRight /></el-icon>
             </div>
-            <div class="contents-item-box">
-              <div class="contents-item--icon margin-left-1" >
-                <el-icon><Monitor /></el-icon>
-              </div>
-              <div class="contents-item--text margin-left-1">
-                <a href="">
-                  <span class="contents-item--text-title margin-left-1">笔记本 | 平板</span>
-                </a>
-              </div>
-              <el-icon class="icon-right"><ArrowRight /></el-icon>
-            </div>
-            <div class="contents-item-box">
-              <div class="contents-item--icon margin-left-1" >
-                <el-icon><Bicycle /></el-icon>
-              </div>
-              <div class="contents-item--text margin-left-1">
-                <a href="">
-                  <span class="contents-item--text-title margin-left-1">交通工具</span>
-                </a>
-              </div>
-              <el-icon class="icon-right"><ArrowRight /></el-icon>
-            </div>
-            <div class="contents-item-box">
-              <div class="contents-item--icon margin-left-1" >
-                <el-icon><Printer /></el-icon>
-              </div>
-              <div class="contents-item--text margin-left-1">
-                <a href="">
-                  <span class="contents-item--text-title margin-left-1">办公用品</span>
-                </a>
-              </div>
-              <el-icon class="icon-right"><ArrowRight /></el-icon>
-            </div>
-            <div class="contents-item-box">
-              <div class="contents-item--icon margin-left-1" >
-                <el-icon><Collection /></el-icon>
-              </div>
-              <div class="contents-item--text margin-left-1">
-                <a href="">
-                  <span class="contents-item--text-title margin-left-1">图书</span>
-                </a>
-              </div>
-              <el-icon class="icon-right"><ArrowRight /></el-icon>
-            </div>
-            <div class="contents-item-box">
-              <div class="contents-item--icon margin-left-1" >
-                <el-icon><Baseball /></el-icon>
-              </div>
-              <div class="contents-item--text margin-left-1">
-                <a href="">
-                  <span class="contents-item--text-title margin-left-1">运动健身</span>
-                </a>
-              </div>
-              <el-icon class="icon-right"><ArrowRight /></el-icon>
-            </div>
-            <div class="contents-item-box">
-              <div class="contents-item--icon margin-left-1" >
-                <el-icon><Goods /></el-icon>
-              </div>
-              <div class="contents-item--text margin-left-1">
-                <a href="">
-                  <span class="contents-item--text-title margin-left-1">家具家居</span>
-                </a>
-              </div>
-              <el-icon class="icon-right"><ArrowRight /></el-icon>
-            </div>
+            
           </div>
           
         </el-card>
@@ -155,7 +88,10 @@
               <component :is="currentComponent" >
                 <div class="show-item-box" v-for="item in newList" :key="item.id"  >
                   <router-link :to="`/Detail/${item.id}`">
-                    <img :src="item.image" alt="" class="show-item-box-image">
+                    <!-- <div v-for="url in item.imageUrls">
+                     
+                    </div> -->
+                    <img :src="item.imageUrls?.[0]" alt="" class="show-item-box-image">
                     <span class="show-item-box-introduction">{{item.description}}</span>
                     <span class="show-item-box-price">¥{{ item.price }}</span>
                   </router-link>
@@ -189,10 +125,23 @@
     import request from '@/utils/request';
     import axios from 'axios';
     import {getAllMallInfo,searchMallInfoByName,searchMallInfoByTag} from '@/api/api'
+    import { ElMessage } from 'element-plus';
     const route = useRoute();
     const router = useRouter();
-    
-    
+    const number = ref(0);
+    const showMessageBox = ref(false);
+    const topList = reactive(['手机','平板 | 笔记本','交通工具','办公用品','图书',])
+
+
+    const list = reactive([
+      {name:'数码',icon:'Monitor'},
+      {name:'服饰鞋帽',icon:'Paperclip'},
+      {name:'交通工具',icon:'Bicycle'},
+      {name:'办公用品',icon:'Printer'},
+      {name:'图书',icon:'Collection'},
+      {name:'运动健身',icon:'Baseball'},
+      {name:'家具家居',icon:'Goods'},
+    ])
     
     let items = reactive([
       {name:'闲置好物',components:markRaw(IdleComponent)},
@@ -224,7 +173,10 @@
       const res = await getAllMallInfo();
       console.log(res.data.list);
       newList.value = res.data.list;
-      
+      // newList.value.forEach(item =>{
+      //   console.log('1111',item.imageUrls[0]);
+        
+      // })
     }
 
     onMounted(() => {
@@ -241,12 +193,18 @@
       console.log(name);
       if (name) {
         searchMallInfoByName({name}).then((res)=>{
-          console.log(res.data.list);
-          router.push({
+          console.log(res);
+          if(res.code === 0){
+            router.push({
             path:`/Search?name=${name}`,
             query:{name}
 
           })
+          } else{
+            console.log('error未查询到该商品');
+            
+            ElMessage({message:res.msg,type:'error'})
+          }
         })
       } else {
         getNewList();
@@ -258,7 +216,7 @@
       // console.log('Searching by tag:', tag);
       console.log('Searching by tag:', tag);
       
-      searchMallInfoByTag({tag:tag}).then((res) => {
+      searchMallInfoByTag({tag:tag,number:number.value}).then((res) => {
           console.log(res.data);
           newList.value = res.data.list;
         });
@@ -309,15 +267,27 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    height: 4rem;
+  }
+
+  .navigation-box {
+    height: 8rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .navigation-box:hover .text {
+    color: #98fb98;
+  }
+  .link {
+    display: block;
+    // height: 100%;
   }
 
   .text {
     color:#333;
     cursor: pointer;
     font-size: 1.8rem;
-  }
-  .text:hover {
-    color: #98fb98;
   }
 
   .search_input {
@@ -374,6 +344,11 @@
  .icon-right {
     right: 1rem;
  }
+ .icons {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
 
  .toolbar {
   position: fixed;
@@ -475,4 +450,18 @@
     text-align: center;
     margin-bottom: 1.5rem;
  }
+
+ .messageBox {
+    position: absolute;
+    width: 100vw;
+    height: 220px;
+    background-color: #fff;
+    z-index: 1;
+    display: none;
+ }
+ .messageBox-box {
+  max-width: 1200px;
+  margin: auto;
+ }
+
 </style>

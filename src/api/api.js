@@ -102,11 +102,11 @@ export const searchMallInfoByName = (name) => {
 };
 
 // 根据商品标签获取指定商品
-export const searchMallInfoByTag = (tag) => {
+export const searchMallInfoByTag = ({tag,number}) => {
   return request({
     url: "/mall/Commodity/listCommodityByTag",
     method: "get",
-    params:tag
+    params:{tag,number}
   });
 };
 

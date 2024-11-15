@@ -23,6 +23,7 @@
         </div>
       </div>
     </header>
+    
     <section class="show">
         <el-card style="width: 100%;border-radius: 1rem;">
           <div class="show-item">
@@ -33,21 +34,21 @@
                 </div>
                 <template #dropdown>
                   <el-dropdown-menu>
-                    <el-dropdown-item>1天内</el-dropdown-item>
-                    <el-dropdown-item>3天内</el-dropdown-item>
-                    <el-dropdown-item>7天内</el-dropdown-item>
-                    <el-dropdown-item>14天内</el-dropdown-item>
+                    <el-dropdown-item @click="setDay(1)">1天内</el-dropdown-item>
+                    <el-dropdown-item @click="setDay(3)">3天内</el-dropdown-item>
+                    <el-dropdown-item @click="setDay(7)">7天内</el-dropdown-item>
+                    <el-dropdown-item @click="setDay(14)">14天内</el-dropdown-item>
                   </el-dropdown-menu>
                 </template>
               </el-dropdown>
               <el-dropdown>
-                <div class="show-item-select-price" @mouseover="changeIcon('price',true)" @mouseleave="changeIcon('time',false)">
+                <div class="show-item-select-price" @mouseover="changeIcon('price',true)" @mouseleave="changeIcon('price',false)">
                   价格<el-icon><component :is="priceIcon"/></el-icon>
                 </div>
                 <template #dropdown>
                   <el-dropdown-menu>
-                    <el-dropdown-item>价格从低到高</el-dropdown-item>
-                    <el-dropdown-item>价格从高到低</el-dropdown-item>
+                    <el-dropdown-item @click="setOrder('asc')">价格从低到高</el-dropdown-item>
+                    <el-dropdown-item @click="setOrder('desc')">价格从高到低</el-dropdown-item>
                   </el-dropdown-menu>
                 </template>
               </el-dropdown>
@@ -77,18 +78,36 @@ import { ElMessage } from "element-plus";
 const route = useRoute();
 const newList = ref(null);
 const name = ref(route.query.name || "");
+const day = ref('')
+const order = ref('')
 const timeIcon=ref('ArrowDown')
 const priceIcon=ref('ArrowDown')
+const setDay = (value) => {
+        day.value = value;
+        // console.log('day',day);
+        searchData()
+       }
 
+       const setOrder = (value) => {
+        // console.log('order',value);
+        
+        order.value = value;
+        // console.log('order',order.value);
+        searchData()
+       }
     const searchData = () => {
-      if (name.value.trim()) { // 确保有搜索关键词,并去除前后空格
-        searchMallInfoByName({name:name.value}).then((res) => {
+      if (name.value.trim()) { // 去除前后空格
+        searchMallInfoByName({
+          name:name.value,
+          day: day.value,
+          order: order.value,
+        }).then((res) => {
           if(res.code === 0){
             console.log(res);
             newList.value = res.data.list;
           } else {
             ElMessage({message:res.msg,type:"error"});
-          } // 更新响应式数据
+          } 
         }).catch((error) => {
           console.error('搜索失败:', error);
         });
@@ -97,7 +116,10 @@ const priceIcon=ref('ArrowDown')
     const search = () => {
       let name = document.querySelector('.search_input').value;
       if (name.trim()) { // 去除前后空格
-        searchMallInfoByName({name:name}).then((res) => {
+        searchMallInfoByName({
+          name:name,
+          day: day.value,
+          order: order.value,}).then((res) => {
           if(res.code === 0){
             console.log(res);
             newList.value = res.data.list;
@@ -131,12 +153,16 @@ const routeWatcher = watchEffect(() => {
     const changeIcon = (type,isHovering) => {
       if(type === 'time'){
         timeIcon.value = isHovering ? 'ArrowUp' : 'ArrowDown';
-        console.log('time',timeIcon.value);
+        // console.log('time',timeIcon.value);
         
        } else if (type === 'price') {
         priceIcon.value = isHovering ? 'ArrowUp' : 'ArrowDown';
+        // console.log('price',priceIcon.value);
+        
        }
       }
+
+      
 </script>
 
 <style lang="less" scoped>
