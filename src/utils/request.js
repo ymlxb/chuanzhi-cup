@@ -3,7 +3,7 @@ import axios from "axios";
 import { useUserStore } from "@/stores/user";
 
 const instance = axios.create({
-  baseURL: "http://192.168.144.243:8081",
+  baseURL: "http://10.102.73.64:8081",
   timeout: 30 * 1000,
 });
 

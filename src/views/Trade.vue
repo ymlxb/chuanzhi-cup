@@ -1,8 +1,8 @@
 <template>
   <div class="contain">
-    <header class="header" >
+    <header class="header">
       <div class="navigation" >
-        <div class="navigation-box" v-for="(item,index) in topList" :key="index" @mouseover="showMessageBox = true">
+        <div class="navigation-box" v-for="(item,index) in topList" :key="index" @mouseover="handleMouseOver">
           <a href="##" class="link" >
             <span class="text">{{ item }}</span>
           </a>
@@ -16,9 +16,12 @@
     </header>
     <div class="messageBox" :style="{display:showMessageBox ? 'block' : 'none'}" @mouseleave="showMessageBox = false">
       <div class="messageBox-box">
-        <div class="messageBox-box-item">
-          <img src="../assets/images/allbirds.jpg" alt="">
+        <div class="messageBox-box-item" v-for="(item,index) in MessageNewList" :key="index">
+          <img :src=item.imageUrls?.[0] alt="" style="width: 150px;height: 150px;">
+          <p style="text-align: center;">{{ item.name }}</p>
+          <p style="text-align: center;">¥{{ item.price }}</p>
         </div>
+        
       </div>
     </div>
     <aside class="toolbar">
@@ -119,9 +122,10 @@
     import OtherCategoryComponent from '../components/OtherCategoryComponent.vue';
     import FurnitureAppliancesComponent from '../components/FurnitureAppliancesComponent.vue';
     import IdleComponent from '../components/IdleComponent.vue';
+    import SportComponent from '../components/SportComponent.vue';
     import { reactive, shallowRef,ref, markRaw, onMounted } from 'vue';
     import { useRoute,useRouter } from 'vue-router';
-
+    import { throttle } from 'lodash';
     import request from '@/utils/request';
     import axios from 'axios';
     import {getAllMallInfo,searchMallInfoByName,searchMallInfoByTag} from '@/api/api'
@@ -130,17 +134,18 @@
     const router = useRouter();
     const number = ref(0);
     const showMessageBox = ref(false);
-    const topList = reactive(['手机','平板 | 笔记本','交通工具','办公用品','图书',])
+    const topList = reactive(['数码','图书音像','宠物花卉','美容彩妆','运动健身',])
+    const hoveredText = ref('');
 
 
     const list = reactive([
       {name:'数码',icon:'Monitor'},
       {name:'服饰鞋帽',icon:'Paperclip'},
-      {name:'交通工具',icon:'Bicycle'},
-      {name:'办公用品',icon:'Printer'},
-      {name:'图书',icon:'Collection'},
+      {name:'汽摩生活',icon:'Bicycle'},
+      {name:'家居生活',icon:'Printer'},
+      {name:'图书音像',icon:'Collection'},
       {name:'运动健身',icon:'Baseball'},
-      {name:'家具家居',icon:'Goods'},
+      {name:'家具电器',icon:'Goods'},
     ])
     
     let items = reactive([
@@ -153,6 +158,7 @@
       {name:'宠物花卉',components:markRaw(PetsPlantsComponent)},
       {name:'文玩玉翠',components:markRaw(AntiqueJadeComponent)},
       {name:'汽摩生活',components:markRaw(TrafficComponent)},
+      {name:'运动健身',components:markRaw(SportComponent)},
       {name:'美容彩妆',components:markRaw(BeautyMakeupComponent)},
       {name:'模玩动漫 ',components:markRaw(ModelToysAnimationComponent)},
       {name:'其他',components:markRaw(OtherCategoryComponent)},
@@ -168,7 +174,7 @@
 
     // 获取数据
     const newList = ref([]);
-    
+    const MessageNewList = ref([]);
     const getNewList = async () =>{
       const res = await getAllMallInfo();
       console.log(res.data.list);
@@ -184,6 +190,7 @@
       // getCommodity();
       const commodityId = route.query.id;
       console.log(commodityId);
+      
     })
 
     // 搜索查询
@@ -216,12 +223,40 @@
       // console.log('Searching by tag:', tag);
       console.log('Searching by tag:', tag);
       
-      searchMallInfoByTag({tag:tag,number:number.value}).then((res) => {
-          console.log(res.data);
-          newList.value = res.data.list;
+      searchMallInfoByTag({tag:tag,number:0}).then((res) => {
+          if(res.data === null){
+            console.log('error未查询到该商品');
+            ElMessage({message:res.msg,type:'error'})
+          }
+          if(res.code === 0){
+            console.log(res.data);
+            newList.value = res.data.list;
+          }
         });
-      } 
-    // 根据商品id获取商品信息
+      }
+ 
+    const messageList = (tag) => {
+      searchMallInfoByTag({tag, number: 6}).then((res) => {
+        if(res.data === null){
+            console.log('error未查询到该商品');
+            ElMessage({message:res.msg,type:'error'})
+          }
+          if(res.code === 0){
+            console.log(res.data);
+            MessageNewList.value = res.data.list;
+          }
+    });
+  }
+  // 节流
+  const throttleMessage = throttle(messageList,500)
+  const handleMouseOver = (event) => {
+    hoveredText.value = event.target.innerText;
+    console.log(hoveredText.value);
+    showMessageBox.value = true
+    throttleMessage(hoveredText.value)
+  }
+
+      
     
 
     // onMounted(() => {
@@ -458,10 +493,16 @@
     background-color: #fff;
     z-index: 1;
     display: none;
+    
  }
  .messageBox-box {
-  max-width: 1200px;
-  margin: auto;
+  display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1200px;
+    margin:0 15rem;
+    // background-color: pink;
+    margin-top: 2rem;
  }
 
 </style>

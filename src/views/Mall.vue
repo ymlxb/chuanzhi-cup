@@ -10,14 +10,16 @@
             :model="form"
             label-width="auto"
             style="max-width: 600px;margin: auto;"
+            :rules="rules"
+            ref="formRef"
           >
-            <el-form-item label="物品名称:">
-              <el-input v-model="form.name" placeholder="请输入物品名称" />
+            <el-form-item label="物品名称:" prop="name">
+              <el-input v-model="form.name" placeholder="请输入物品名称(长度在 3 到 20 个字符)" />
             </el-form-item>
-            <el-form-item label="出售价格:">
-              <el-input v-model="form.price" placeholder="请输入出售价格" />
+            <el-form-item label="出售价格:" prop="price">
+              <el-input v-model.number="form.price" placeholder="请输入出售价格" />
             </el-form-item>
-            <el-form-item label="物品类型:">
+            <el-form-item label="物品类型:" prop="tag">
               <el-select v-model="form.tag" placeholder="请输入商品类型">
                 <!-- <el-option v-for="(tagName,index) in tagDataList" :key="index" label="tagName" :value="tagName"></el-option> -->
                 <el-option
@@ -33,34 +35,37 @@
                 <el-option label="运动" value="sport" /> -->
               </el-select>
             </el-form-item>
-            <el-form-item label="物品描述:">
+            <el-form-item label="物品描述:" prop="description">
               <el-input
                 v-model="form.description"
                 type="textarea"
-                placeholder="请输入物品描述"
+                placeholder="请输入物品描述(长度在 20 到 60 个字符)"
               />
             </el-form-item>
-            <el-form-item label="联系电话:">
+            <el-form-item label="联系电话:" prop="mobile">
               <el-input
                 v-model="form.mobile"
                 placeholder="请输入联系电话"
               />
             </el-form-item>
-            <el-form-item label="邮箱地址:">
+            <el-form-item label="邮箱地址:" prop="email">
               <el-input
                 v-model="form.email"
                 placeholder="请输入邮箱地址"
               />
             </el-form-item>
-            <el-form-item label="物品照片:">
+            <el-form-item label="物品照片:" prop="images">
               <el-upload
                 class="avatar-uploader"
-                action="http://10.102.114.166:8081/mall/Commodity/insertImage"
+                action="http://10.102.73.64:8081/mall/Commodity/insertImage"
                 :headers="{ Authorization: token }"
                 :show-file-list="false"
                 :on-success="handleAvatarSuccess"
                 :before-upload="beforeAvatarUpload"
               >
+              <div v-if="isAvatarLoading" class="custom-loading-overlay">
+                <el-icon type="loading" class="custom-loading-icon"></el-icon>
+              </div>
                 <img v-if="imageUrl" :src="imageUrl" class="avatar" />
                 <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
               </el-upload>
@@ -99,7 +104,8 @@ import type { UploadProps } from 'element-plus'
 const userStore = useUserStore();
 const token = userStore.userInfo.access_token;
 const imageUrl = ref(""); //图片临时地址
-
+const formRef = ref(null);
+const isAvatarLoading = ref(true);
 const form = reactive({
   name: "",
   price: "",
@@ -109,6 +115,55 @@ const form = reactive({
   mobile: "",
   email: "",
 });
+let validateMobile = (rule, value, callback) => {
+      const reg = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
+      if (value === '') {
+        callback(new Error('请输入联系电话'));
+      } else if (!reg.test(value)) {
+        callback(new Error('请输入正确的联系电话'));
+      } else {
+        callback();
+      }
+    };
+
+    let validateEmail = (rule, value, callback) => {
+      const reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+      if (value === '') {
+        callback(new Error('请输入邮箱地址'));
+      } else if (!reg.test(value)) {
+        callback(new Error('请输入正确的邮箱地址'));
+      } else {
+        callback();
+      }
+    };
+
+const rules = {
+  name:[
+    {required:true,message:"请输入物品名称",trigger:'blur'},
+    {min:3,max:20,message:"长度在 3 到 20 个字符",trigger:'blur'}
+],
+  price: [
+          { required: true, message: '请输入出售价格', trigger: 'blur' },
+          { type: 'number', message: '价格必须是数字', trigger: 'blur' },
+        ],
+  tag: [
+    {required:true,message:"请输入物品名称",trigger:'blur'},
+    ],
+  description:[
+    {required:true,message:"请输入物品名称",trigger:'blur'},
+    {min:20,max:60,message:"长度在 20 到 60 个字符",trigger:'blur'}
+],
+  mobile: [
+          {required:true, validator: validateMobile, trigger: 'blur' }
+        ],
+  email: [
+          {required:true, validator: validateEmail, trigger: 'blur' }
+        ],
+        // 注意：物品照片的校验规则可能需要根据实际需求进行调整
+  images: [
+          { required:true, message: '请上传物品照片', trigger: 'blur' }
+        ]
+}
 
 // const active = ref(0);
 const commodityId = ref('');
@@ -123,33 +178,47 @@ onMounted(() => {
 
 // 表单提交
 const handleSubmit = async () => {
-  const res = await addMallInfo(form);
-  console.log(res);
-  if (res.code === 0) {
-    ElMessage.success("发布成功");
-    commodityId.value = res.data.id;
-    // uploadMallImg();
-    // emitActiveNameChange();
-    // emit('publishSuccess', commodityId.value);
-    router.push("/trade");
-  } else {
-    ElMessage.error("发布失败");
-  }
-};
+  formRef.value.validate(async(valid) => {
+        if (valid) {
+          const res = await addMallInfo(form);
+          console.log(res);
+          if (res.code === 0) {
+            ElMessage.success("发布成功");
+            commodityId.value = res.data.id;
+            // uploadMallImg();
+            // emitActiveNameChange();
+            // emit('publishSuccess', commodityId.value);
+            router.push("/trade");
+          } else {
+            ElMessage.error("发布失败");
+          }
+         
+        } else {
+          console.log('表单验证失败!');
+          return false;
+        }
+      });
+    
+  
+ 
+}
 
 const cancel = () => {
   router.push("/trade");
 };
 
 const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
-  // if (rawFile.type !== 'image/jpeg') {
-  //   ElMessage.error('Avatar picture must be JPG format!')
-  //   return false
-  // } else if (rawFile.size / 1024 / 1024 > 2) {
-  //   ElMessage.error('Avatar picture size can not exceed 2MB!')
-  //   return false
-  // }
- 
+      console.log('1111');
+      isAvatarLoading.value = true
+      if (rawFile.type !== 'image/jpeg'&& rawFile.type !== 'image/png' && rawFile.type !== 'image/jfif') {
+        ElMessage.error('图片必须是jpg,png或jfif格式')
+        return false
+      } else if (rawFile.size / 1024 / 1024 > 2) {
+        ElMessage.error('图片大小不能超过2MB')
+        return false
+      }
+      console.log('444');
+      
   return true
 }
 const handleAvatarSuccess: UploadProps['onSuccess'] = (
@@ -157,7 +226,7 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
   uploadFile
 ) => {
   console.log('333444');
-  
+  isAvatarLoading.value = false
   imageUrl.value = URL.createObjectURL(uploadFile.raw!)
   imageUrl.value = response.data
   form.images.push(imageUrl.value)
@@ -294,5 +363,22 @@ main {
   width: 178px;
   height: 178px;
   text-align: center;
+}
+
+.custom-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-loading-icon {
+  font-size: 30px; /* 或者根据需要设置其他大小 */
+  color: #333; /* 或者根据需要设置其他颜色 */
 }
 </style>
