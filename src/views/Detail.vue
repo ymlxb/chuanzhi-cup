@@ -14,9 +14,9 @@
             <div class="product-item">
                 <!-- 商品图片区域 -->
                 <div class="product-images">
-                    <el-carousel indicator-position="none">
-                        <el-carousel-item>
-                            <img :src="mallData.image" width="100%" class="head-img">
+                    <el-carousel indicator-position="none" style="width: 100%;height: 40rem;">
+                        <el-carousel-item style="width: 100%;height: 40rem;">
+                            <img :src="mallData.imageUrls?.[0]" width="100%" class="head-img">
                         </el-carousel-item>
                     </el-carousel>
                 </div>
@@ -95,7 +95,7 @@ onMounted(() => {
     })
 
 
-const mallData = ref({name: '', description: '', createDate: '', sellerName: '',image:"",price:''});
+const mallData = ref({name: '', description: '', createDate: '', sellerName: '',imageUrls:"",price:''});
 const getIdMallInfo = async ()=>{
       const res = await getMallInfoById(commodityId);
       console.log(res.data);
@@ -138,15 +138,15 @@ const getIdMallInfo = async ()=>{
  }
  
  .product-images {
-    width: 50rem;
+    width: 40rem;
     height: 40rem;
     background-color: rgb(221.7, 222.6, 224.4);
  }
 
  .product-images img {
-    width: 100%; /* 设置图片的宽度为100% */
-    height: 100%; /* 设置图片的高度为100% */
-    object-fit: cover; 
+    width: 100%; 
+    height: 100%;
+    // object-fit: cover; 
 }
 
 .el-carousel__item:nth-child(2n) {

@@ -12,6 +12,16 @@
           <input type="text" class="search_input"  placeholder="笔记本电脑"></input>
           <button class="search_btn" @click="search">搜索</button>
         </div>
+        <div class="toolbar">
+          <div class="toolbar-item">
+            <a href="/#/mall">
+              <div>
+                <el-icon class="toolbar-item--icon" size="2.5rem"><CirclePlus /></el-icon>
+              </div>
+              <span class="toolbar-content">发闲置</span>
+            </a>
+          </div>
+        </div>
       </div>
     </header>
     <div class="messageBox" :style="{display:showMessageBox ? 'block' : 'none'}" @mouseleave="showMessageBox = false">
@@ -24,16 +34,7 @@
         
       </div>
     </div>
-    <aside class="toolbar">
-      <div class="toolbar-item">
-        <a href="/#/mall">
-          <div>
-            <el-icon class="toolbar-item--icon" size="2.5rem"><CirclePlus /></el-icon>
-          </div>
-          <span class="toolbar-content">发闲置</span>
-        </a>
-      </div>
-    </aside>
+    
     <main>
       <section class="contents">
         <el-card style="width: 100%;border-radius: 1rem;">
@@ -291,11 +292,11 @@
   }
 
   .header {
-    width:100rem;
+    width:110rem;
     height: 8rem;
     margin: auto;
     padding:2rem 10rem;
-
+    // position: fixed;
   }
 
   .navigation {
@@ -385,16 +386,19 @@
   margin-right: 5px;
 }
 
- .toolbar {
-  position: fixed;
-  top: 30rem;
-  right: 5rem;
-  width: 5rem;
-  height: 5rem;
-  background-color: #FFFFFF;
-  z-index: 999;
-  border-radius: 1rem;
- }
+//  .toolbar {
+//   position: fixed;
+//   top: 30rem;
+//   right: 5rem;
+//   width: 5rem;
+//   height: 5rem;
+//   background-color: #FFFFFF;
+//   z-index: 999;
+//   border-radius: 1rem;
+//  }
+.toolbar {
+  margin-left: 2rem;
+}
 
  .toolbar-item--icon {
     width: 5rem;

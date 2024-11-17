@@ -165,7 +165,7 @@ export const upUserAddress = (address) => {
 // 修改头像
 export const upUserAvatar = (image) => {
   return request({
-    url: '/sys/user/avatar',
+    url: '/sys/user/password',
     method: 'put',
     data: image
   })
