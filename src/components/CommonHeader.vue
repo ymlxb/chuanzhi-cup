@@ -5,7 +5,7 @@
         <component class="icons" is="menu"></component>
       </el-button>
       <el-breadcrumb separator="/" class="bread">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
         <!-- <el-breadcrumb-item>区域管理</el-breadcrumb-item> -->
         <!-- <el-breadcrumb-item>街道管理</el-breadcrumb-item> -->
       </el-breadcrumb>
@@ -13,7 +13,7 @@
     <div class="r-content">
       <el-dropdown >
         <span class="el-dropdown-link">
-          <img :src="getImageUrl('user')" class="user">
+          <img :src="avatar" class="user">
         </span>
         <template #dropdown>
           <el-dropdown-menu>
@@ -33,6 +33,10 @@ import { useUserStore } from '@/stores/user';
 import {useRouter} from 'vue-router'
 const router = useRouter()
 const userStore = useUserStore()
+const avatar = ref('')
+avatar.value = userStore.userAvatarUrl
+console.log(avatar.value);
+
 import {logoutApi}  from '@/api/api'
 const exit = ()=>{
   ElMessageBox.confirm(
@@ -67,9 +71,9 @@ const exit = ()=>{
       })
     })
 }
-const getImageUrl = (user)=>{
-  return new URL(`../assets/images/${user}.png`,import.meta.url)
-}
+// const getImageUrl = (user)=>{
+//   return new URL(`../assets/images/${user}.png`,import.meta.url)
+// }
 </script>
 
 <style lang="less" scoped>
@@ -97,6 +101,7 @@ const getImageUrl = (user)=>{
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    background-color: #fff;
   }
 }
 :deep(.bread span){

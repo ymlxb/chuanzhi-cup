@@ -56,42 +56,42 @@ const list =ref([
           name: 'home',
           label: '首页',
           icon: 'house',
-          url: 'Home'
+          url: '/home'
       	},
         {
             path: '/guide',
             name: 'guide',
             label: '绿色生活指南',
-            icon: 'house',
-            url: 'Guide'
+            icon: 'help',
+            url: '/guide'
         },
         {
             path: '/brand',
             name: 'brand',
             label: '可持续品牌',
-            icon: 'video-play',
-            url: 'Brand'
+            icon: 'refresh',
+            url: '/brand'
         },
         {
             path: '/trade',
             name: 'trade',
             label: '二手交易',
-            icon: 'house',
-            url: 'Trade'
+            icon: 'money',                                                              
+            url: '/trade'
         },
-        {
-            path: '/Community',
-            name: 'Community',
-            label: '社区论坛',
-            icon: 'user',
-            url: 'Community'
-        },
+        // {
+        //     path: '/Community',
+        //     name: 'Community',
+        //     label: '社区论坛',
+        //     icon: 'user',
+        //     url: '/community'
+        // },
         {
             path: '/about',
             name: 'about',
             label: '关于我们',
             icon: 'house',
-            url: 'About'
+            url: '/about'
         },
         
         // {
@@ -146,6 +146,7 @@ const handleMenu = (item) => {
     line-height: 48px;
     color: #fff;
     text-align: center;
+    font-size: 20px;
   }
 }
 .el-aside {

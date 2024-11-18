@@ -117,6 +117,8 @@
 import { onMounted, reactive, ref } from "vue";
 import { getUserInfo } from "@/api/api";
 import { useRouter } from "vue-router";
+import { useUserStore } from "../../stores/user";
+const userStore = useUserStore();
 const router = useRouter();
 const userData = reactive({
   // username: "",
@@ -154,6 +156,10 @@ const userInfo = async () => {
   const res = await getUserInfo();
   console.log(res.data);
   Object.assign(userData, res.data);
+  // userStore.setUserAvatar(res.data.headUrl)
+  userStore.userAvatarUrl = res.data.headUrl
+  console.log(userStore.userAvatarUrl);
+  
   // console.log(userData);
 };
 
@@ -170,6 +176,11 @@ const editInfo = () =>{
   });
 }
 
+const clock = () => {
+  router.push({
+    path: "/home",
+  });
+}
 </script>
 
 <style scoped lang="less">

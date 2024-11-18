@@ -1,8 +1,8 @@
 <template>
   <div class="contain">
     <header class="header">
+      <div class="slogan">探索可持续品牌，开启绿色生活新旅程</div>
       <el-carousel class="carousel-container" :interval="4000" type="card">
-        <div class="slogan">探索可持续品牌，开启绿色生活新旅程</div>
         <el-carousel-item v-for="item in headerImage" :key="item">
           <img :src="item.url" width="100%" class="head-img" />
         </el-carousel-item>
@@ -70,7 +70,10 @@
                     秋冬系列中采用 100%
                     经过认证的有机、可循环或低影响材料制作成衣系列，减少了对环境的影响。
                   </p>
-                  <a href="https://www.ganni.com/en/home" target="blank" class="btn-text"
+                  <a
+                    href="https://www.ganni.com/en/home"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -105,7 +108,10 @@
                   <p class="paragraph">
                     鞋面材料常采用天然羊毛、桉树纤维等可再生资源，这些材料具有良好的透气性和舒适性，同时也减少了对传统石油基材料的依赖。
                   </p>
-                  <a href="https://www.allbirds.cn/pc.html" target="blank" class="btn-text"
+                  <a
+                    href="https://www.allbirds.cn/pc.html"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -131,7 +137,10 @@
                     从品牌创立之初便坚持使用环保材料,还加入 “1% for the
                     Planet（“1% 地球税”）” 全球组织，积极履行环保社会责任。
                   </p>
-                  <a href="https://untitlab.com/zh" target="blank"  class="btn-text"
+                  <a
+                    href="https://untitlab.com/zh"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -167,7 +176,10 @@
                   <p class="paragraph">
                     推出大量使用回收塑料、再生木材等环保材料的家居产品。例如，用回收塑料瓶制成的地毯，不仅减少了塑料废弃物的污染，还为家居产品提供了新的材料来源。
                   </p>
-                  <a href="https://www.ikea.cn/cn/zh/cat/jia-ju-fu001/" target="blank" class="btn-text"
+                  <a
+                    href="https://www.ikea.cn/cn/zh/cat/jia-ju-fu001/"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -186,13 +198,18 @@
                 <div class="show-box-item-details">
                   <h3 class="title-second u-margin-button-2">介绍:</h3>
                   <p class="paragraph">
-                    HOLA 是一家致力于提供家居用品和家居装饰的品牌，起源于中国，近年来在全球市场上逐渐扩展。
+                    HOLA
+                    是一家致力于提供家居用品和家居装饰的品牌，起源于中国，近年来在全球市场上逐渐扩展。
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
-                    HOLA 倡导使用可再生、可回收的原料,采取节能环保的生产工艺,减少对环境的影响。他们致力于打造更加环保的家居产品。
+                    HOLA
+                    倡导使用可再生、可回收的原料,采取节能环保的生产工艺,减少对环境的影响。他们致力于打造更加环保的家居产品。
                   </p>
-                  <a href="https://www.hola.com.tw/" target="blank" class="btn-text"
+                  <a
+                    href="https://www.hola.com.tw/"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -229,7 +246,10 @@
                     简约包装,成分选取和包装材料不仅符合当下消费者对于简约美学的追求，更重要的是，与品牌所倡导的天然、质朴的理念相契合。
                     成分选取
                   </p>
-                  <a href="https://www.aesop.com.cn/" target="blank" class="btn-text"
+                  <a
+                    href="https://www.aesop.com.cn/"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -257,7 +277,10 @@
                     的成分，这是其品牌理念的核心所在。Drunk Elephant
                     在包装上也下了很大功夫，致力于采用可回收材料并不断优化包装设计以减少垃圾产生。
                   </p>
-                  <a href="https://www.drunkelephant.com/" target="blank" class="btn-text"
+                  <a
+                    href="https://www.drunkelephant.com/"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -294,7 +317,10 @@
                   <p class="paragraph">
                     在原料采购环节秉持公平贸易的理念，这是其品牌的一大特色。品牌不仅仅满足于使用现有的可回收材料，还不断探索新的包装形式以提高可回收性。
                   </p>
-                  <a href="https://www.benjerry.com/" target="blank" class="btn-text"
+                  <a
+                    href="https://www.benjerry.com/"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -319,7 +345,10 @@
                   <p class="paragraph">
                     向全球的咖啡农推广可持续的种植方法，从源头上保障了产品的可持续性，星巴克还在整体运营环节进行了节能优化，在店内广泛采用节能设备。
                   </p>
-                  <a href="https://www.starbucks.com.cn/" target="blank" class="btn-text"
+                  <a
+                    href="https://www.starbucks.com.cn/"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -373,16 +402,18 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
   height: 30rem;
   margin: auto;
 }
-.carousel-container {
-  position: relative;
-}
+// .carousel-container {
+//   position: relative;
+// }
 .slogan {
   font-size: 3rem;
   color: green;
-  position: absolute;
-  z-index: 999;
-  top: 0;
-  left: 20rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  // position: absolute;
+  // z-index: 999;
+  // top: 0;
+  // left: 40rem;
 }
 .show {
   background-color: #f7f7f7;

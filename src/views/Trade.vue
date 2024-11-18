@@ -3,7 +3,7 @@
     <header class="header">
       <div class="navigation" >
         <div class="navigation-box" v-for="(item,index) in topList" :key="index" @mouseover="handleMouseOver">
-          <a href="##" class="link" >
+          <a href="" class="link" @click="link">
             <span class="text">{{ item }}</span>
           </a>
         </div>
@@ -193,6 +193,11 @@
       console.log(commodityId);
       
     })
+
+    // 阻止默认跳转
+    const link = (event) =>{
+      event.preventDefault();
+    }
 
     // 搜索查询
     const search = () => {

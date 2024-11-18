@@ -38,7 +38,7 @@ const routes = [
         component: () => import("@/views/About.vue"),
       },
       {
-        path: "/Trade",
+        path: "/trade",
         name: "trade",
         component: () => import("@/views/Trade.vue"),
       },
@@ -46,6 +46,10 @@ const routes = [
         path: "/Guide",
         name: "guide",
         component: () => import("@/views/Guide.vue"),
+      },
+      {
+        path: "/Trade",
+        redirect: "/trade",
       },
       {
         path: "/Mall",

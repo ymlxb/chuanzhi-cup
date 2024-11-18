@@ -6,6 +6,7 @@ import { loginApi } from "@/api/api";
 export const useUserStore = defineStore("user", () => {
   // 定义管理用户数据的state
   const userInfo = ref({})
+  const userAvatarUrl = ref("")
  const code = ref('')
   // 定义获取接口数据的action函数
   const getUserInfo = async (login) =>{
@@ -15,8 +16,14 @@ export const useUserStore = defineStore("user", () => {
     userInfo.value = res.data;
     code.value = res.code;
     console.log(code.value);
+    console.log(userAvatarUrl.value);
     
   }
+  // const setUserAvatar = async (userAvatar) =>{
+  //   userAvatarUrl.value = userAvatar;
+  //   console.log(userAvatar.value);
+    
+  // }
 
   // 退出时清除用户信息
   const clearUserInfo = () => {
@@ -29,6 +36,8 @@ export const useUserStore = defineStore("user", () => {
     getUserInfo,
     clearUserInfo,
     code,
+    // setUserAvatar,
+    userAvatarUrl,
   }
   
 },{

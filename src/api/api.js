@@ -163,10 +163,12 @@ export const upUserAddress = (address) => {
 }
 
 // 修改头像
-export const upUserAvatar = (image) => {
+export const upUserAvatar = (imageFile) => {
+  const formData = new FormData();
+  formData.append('image',imageFile)
   return request({
-    url: '/sys/user/password',
+    url: '/sys/user/updateImage',
     method: 'put',
-    data: image
+    data: imageFile
   })
 }
