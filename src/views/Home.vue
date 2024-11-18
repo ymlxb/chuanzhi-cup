@@ -1,9 +1,9 @@
 <template>
   <div class="contain">
     <header class="header">
-      <div class="header__logo-box">
+      <!-- <div class="header__logo-box">
         <img src="../assets/images/image1.png" class="header__logo" >
-      </div>
+      </div> -->
       <div class="header__text-box">
         <h1 class="heading-primary">
           <span class="heading-primary--main">持续生活</span>

@@ -1,4 +1,105 @@
-<template>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style lang="less">
+    .contain {
+            margin-top: 20px;
+            height: 3000px;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .wrap {
+            width:1300px;
+            margin: 0 auto;
+        }
+        .header {
+            background-color:  #333;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header h1 {
+            display: block;
+            width: 610px;
+            height: 50px;
+            color: #fff;
+            /* // padding-top: 10px; */
+            /* // margin: 0 auto; */
+            font-size: 25px;
+
+        }
+        .nav1 ul li{
+            float: left;
+            padding-left: 39px;
+            margin: 5px auto;
+        }
+        .nav1 ul li a {
+            color: #fff;
+        }
+        .nav1 ul li a:hover {
+            color:#ff6900;
+        }
+        .nav1 ul .font1{
+            margin: 5px auto; 
+        }
+        .content {
+            height: 510px;
+            margin: 10px auto;
+            margin-top: 20px;
+        }
+        
+        .content .content-box {
+            float: left;
+            width: 300px;
+            height: 500px;
+            background-color: white;
+            margin-right: 33px;
+        }
+        
+        .content .content-box:hover {
+            box-shadow: 7px 7px 7px grey;
+        }
+        .content .content-box1 {
+            float: right;
+            background-color: white;
+            width: 300px;
+            height: 500px;
+            margin-right: 0;
+        }
+        .content .content-box1:hover {
+            box-shadow: 7px 7px 7px grey;
+        }
+        
+        .content-box-title {
+            padding: 0 50px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        .content-box-item {
+            color:grey;
+            text-indent: 2em;
+            font-size: 18px;
+            line-height: 22px;
+            font-family: 'Microsoft yahei';
+        }
+       
+  </style>
+  
+</head>
+<body>
   <div class="contain">
     <!-- 头部开始 -->
     <div class="header wrap">
@@ -262,103 +363,5 @@
      
      <!-- 内容 -->
   </div>
-</template>
-
-<script setup>
-
-</script>
-
-<style scoped lang="less">
-      
-      .contain {
-            margin-top: 20px;
-            height: 3000px;
-        }
-        li {
-            list-style: none;
-        }
-        a {
-            text-decoration: none;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        .wrap {
-            width:1300px;
-            margin: 0 auto;
-        }
-        .header {
-            background-color:  #333;
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .header h1 {
-            display: block;
-            width: 610px;
-            height: 50px;
-            color: #fff;
-            // padding-top: 10px;
-            // margin: 0 auto;
-            font-size: 25px;
-
-        }
-        .nav1 ul li{
-            float: left;
-            padding-left: 39px;
-            margin: 5px auto;
-        }
-        .nav1 ul li a {
-            color: #fff;
-        }
-        .nav1 ul li a:hover {
-            color:#ff6900;
-        }
-        .nav1 ul .font1{
-            margin: 5px auto; 
-        }
-        .content {
-            height: 510px;
-            margin: 10px auto;
-            margin-top: 20px;
-        }
-        
-        .content .content-box {
-            float: left;
-            width: 300px;
-            height: 500px;
-            background-color: white;
-            margin-right: 33px;
-        }
-        
-        .content .content-box:hover {
-            box-shadow: 7px 7px 7px grey;
-        }
-        .content .content-box1 {
-            float: right;
-            background-color: white;
-            width: 300px;
-            height: 500px;
-            margin-right: 0;
-        }
-        .content .content-box1:hover {
-            box-shadow: 7px 7px 7px grey;
-        }
-        
-        .content-box-title {
-            padding: 0 50px;
-            margin-top: 10px;
-            margin-bottom: 5px;
-            font-size: 16px;
-        }
-        .content-box-item {
-            color:grey;
-            text-indent: 2em;
-            font-size: 18px;
-            line-height: 22px;
-            font-family: 'Microsoft yahei';
-        }
-       
-</style>
+</body>
+</html>
