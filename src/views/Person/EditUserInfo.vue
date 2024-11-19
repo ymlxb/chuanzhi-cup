@@ -2,7 +2,7 @@
   <div class="contain">
     
     <el-form :model="user" label-width="8rem" style="padding: 2.5rem">
-      <el-form-item label="头像：">
+      <!-- <el-form-item label="头像：">
         <el-upload
           class="avatar-uploader"
           action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
@@ -13,7 +13,7 @@
           <img v-if="imageUrl" :src="imageUrl" class="avatar" />
           <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
         </el-upload>
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item label="用户名：">
         <el-input v-model="user.username" ></el-input>
       </el-form-item>

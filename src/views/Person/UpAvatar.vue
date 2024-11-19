@@ -1,5 +1,5 @@
 <template>
-  <h3 class="show-box-title">基本信息</h3>
+  <h3 class="show-box-title">修改头像</h3>
   <el-divider content-position="left"></el-divider>
   <el-form>
       

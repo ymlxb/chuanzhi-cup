@@ -172,3 +172,38 @@ export const upUserAvatar = (imageFile) => {
     data: imageFile
   })
 }
+
+// 添加新的收获地址
+export const addUserAddress = (address) => {
+  return request({
+    url: '/sys/address',
+    method: 'post',
+    data: address
+  })
+}
+
+// 获取所有收获地址
+export const getAllUserAddress = () => {
+  return request({
+    url: '/sys/address',
+    method: 'get'
+  })
+}
+
+// 修改收获地址
+export const upUserAddressById = (address) => {
+  return request({
+    url: '/sys/address',
+    method: 'put',
+    data: address
+  })
+}
+
+// 删除收获地址
+export const deleteUserAddressById = (ids) => {
+  return request({
+    url: '/sys/address',
+    method: 'delete',
+    params: ids
+  })
+}
