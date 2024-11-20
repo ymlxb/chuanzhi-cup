@@ -26,7 +26,7 @@
             <p class="paragraph">开启您的可持续生活之旅，与我们一起发现那些致力于环保、社会责任和可持续发展的品牌。可持续品牌的理念犹如灯塔指引方向，然而，将这一理念落地为具体可操作的行动才是实现品牌可持续发展的关键所在，接下来我们就来看看……</p>
             <h3 class="heading-third u-margin-button-2">加入我们，共创绿色未来</h3>
             <p class="paragraph">在这里，您不仅能找到心仪的可持续产品，还能结识一群志同道合的伙伴，共同为地球的绿色未来贡献力量。在对可持续品牌的一般性概念和特征有了全面的认识之后，让我们深入剖析一些成功的可持续品牌案例，以更好地理解这些概念在现实中的具体呈现。</p>
-            <a href="http://localhost:8001/#/Brand" class="btn-text">了解更多 &rarr;</a>
+            <a href="/Brand" class="btn-text">了解更多 &rarr;</a>
           </div>
           <div class="col-1-of-2">
             <div class="photo-composition">

@@ -67,10 +67,7 @@
 <template>
   
   <el-form :model="userData" label-width="8rem" style="padding: 2.5rem;margin: 0 20px;width: 70%;">
-    <div class="button-group">
-      <el-button type="warning" class="button-group-item" @click="editInfo">修改</el-button>
-      <el-button  @click="clock" class="button-group-item">关闭</el-button>
-    </div>
+    
     <div class="UserInfo" >
       <el-form-item label="头像：">
         <div style="text-align: center">
@@ -80,6 +77,9 @@
       </el-form-item>
       <el-form-item label="用户名：">
         {{ userData.username }}
+      </el-form-item>
+      <el-form-item label="昵称：">
+        {{ userData.nickname }}
       </el-form-item>
       <el-form-item label="性别：">
         <!-- <el-select
@@ -110,6 +110,10 @@
         <el-input v-model="user.address" placeholder="请输入地址"></el-input>
         {{ userData.address }}
       </el-form-item> -->
+    </div>
+    <div class="button-group">
+      <el-button type="warning" class="button-group-item" @click="editInfo">修改</el-button>
+      <el-button  @click="clock" class="button-group-item">关闭</el-button>
     </div>
   </el-form>
 </template>
@@ -172,6 +176,7 @@ const editInfo = () =>{
       mobile:userData.mobile,
       address:userData.address,
       gender:userData.gender,
+      nickname:userData.nickname,
     },
   });
 }

@@ -4,7 +4,7 @@
   <el-form
     :model="form"
     label-width="10rem"
-    style="margin-top: 3rem; width: 300px; position: relative; padding: 2rem"
+    style="margin-top: 3rem; width: 600px; position: relative; padding: 2rem"
     :rules="rules"
   >
     <el-form-item label="旧密码：" prop="password">
@@ -31,7 +31,7 @@
         placeholder="请确认新密码"
       ></el-input>
     </el-form-item>
-    <div style="position: relative; margin: 2rem">
+    <div style="display: flex;justify-content: center; margin: 2rem">
       <el-button type="primary" class="btn-submit" @click="changePassword"
         >提交</el-button
       >
@@ -98,10 +98,10 @@ const changePassword = async () => {
   font-size: 3rem;
   margin: 2rem;
 }
-.btn-submit {
-  position: absolute;
-  right: 0px;
-}
+// .btn-submit {
+//   position: absolute;
+//   right: 250px;
+// }
 .error {
   color: red;
 }

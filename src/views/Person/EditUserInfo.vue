@@ -17,7 +17,9 @@
       <el-form-item label="用户名：">
         <el-input v-model="user.username" ></el-input>
       </el-form-item>
-      
+      <el-form-item label="昵称：">
+        <el-input v-model="user.nickname" ></el-input>
+      </el-form-item>
       <el-form-item label="性别：">
         <el-select
           v-model="user.gender"
@@ -68,7 +70,7 @@ onMounted(()=>{
   user.mobile = route.query.mobile;
   user.email = route.query.email;
   user.address = route.query.address;
-
+  user.nickname = route.query.nickname;
 })
 
 const user = reactive({

@@ -32,11 +32,11 @@
                   <h3 class="title-second u-margin-button-2">介绍:</h3>
                   <p class="paragraph">
                     icicle 之禾创立于 1997 年，以 “遵循自然原则和规律”
-                    为理念。选用高品质天然原料，反对过剩设计。立足长三角，深入本土制造产业升级，为高端时装业柔性制造提供可能。
+                    为理念。选用高品质天然原料，反对过剩设计。深入本土制造产业升级，为高端时装业柔性制造提供可能。
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
-                    坚持使用天然材质，注重产品质量与设计感的完美结合。在制造过程中，严格控制瑕疵数量，为消费者带来高品质的时尚选择。
+                    始终坚持使用天然材质，将产品质量与设计感完美融合。在制造环节，以高标准严控瑕疵数量，致力于为消费者打造高品质时尚之选。
                   </p>
                   <a
                     href="https://www.icicle.com.cn/"
@@ -70,10 +70,7 @@
                     秋冬系列中采用 100%
                     经过认证的有机、可循环或低影响材料制作成衣系列，减少了对环境的影响。
                   </p>
-                  <a
-                    href="https://www.ganni.com/en/home"
-                    target="blank"
-                    class="btn-text"
+                  <a href="https://www.ganni.com/en/home" target="blank" class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -108,10 +105,7 @@
                   <p class="paragraph">
                     鞋面材料常采用天然羊毛、桉树纤维等可再生资源，这些材料具有良好的透气性和舒适性，同时也减少了对传统石油基材料的依赖。
                   </p>
-                  <a
-                    href="https://www.allbirds.cn/pc.html"
-                    target="blank"
-                    class="btn-text"
+                  <a href="https://www.allbirds.cn/pc.html" target="blank" class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -130,17 +124,13 @@
                 <div class="show-box-item-details">
                   <h3 class="title-second u-margin-button-2">介绍:</h3>
                   <p class="paragraph">
-                    untitlab是中国新锐设计师鞋履品牌，从品牌创立之初便坚持使用环保材料，从第一季起便在全部系列使用环保超纤面料
+                    untitlab 是中国新锐设计师鞋履品牌，从品牌创立之初便坚持使用环保材料，从第一季起，全部系列都使用环保超纤面料，践行环保理念
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
-                    从品牌创立之初便坚持使用环保材料,还加入 “1% for the
-                    Planet（“1% 地球税”）” 全球组织，积极履行环保社会责任。
+                    从品牌创立伊始就始终坚持使用环保材料，并且加入 “1% for the Planet” 全球组织，积极履行环保社会责任，为地球可持续发展贡献力量。
                   </p>
-                  <a
-                    href="https://untitlab.com/zh"
-                    target="blank"
-                    class="btn-text"
+                  <a href="https://untitlab.com/zh" target="blank"  class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -176,10 +166,7 @@
                   <p class="paragraph">
                     推出大量使用回收塑料、再生木材等环保材料的家居产品。例如，用回收塑料瓶制成的地毯，不仅减少了塑料废弃物的污染，还为家居产品提供了新的材料来源。
                   </p>
-                  <a
-                    href="https://www.ikea.cn/cn/zh/cat/jia-ju-fu001/"
-                    target="blank"
-                    class="btn-text"
+                  <a href="https://www.ikea.cn/cn/zh/cat/jia-ju-fu001/" target="blank" class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -198,18 +185,13 @@
                 <div class="show-box-item-details">
                   <h3 class="title-second u-margin-button-2">介绍:</h3>
                   <p class="paragraph">
-                    HOLA
-                    是一家致力于提供家居用品和家居装饰的品牌，起源于中国，近年来在全球市场上逐渐扩展。
+                    HOLA 是一家致力于提供家居用品和家居装饰的品牌，起源于中国，近年来在全球市场上逐渐扩展。
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
-                    HOLA
-                    倡导使用可再生、可回收的原料,采取节能环保的生产工艺,减少对环境的影响。他们致力于打造更加环保的家居产品。
+                    HOLA 积极倡导使用可再生、可回收的原料，并且采取节能环保的生产工艺，以此减少对环境的影响，全力打造更环保的家居产品。
                   </p>
-                  <a
-                    href="https://www.hola.com.tw/"
-                    target="blank"
-                    class="btn-text"
+                  <a href="https://www.hola.com.tw/" target="blank" class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -239,17 +221,13 @@
                   <h3 class="title-second u-margin-button-2">介绍:</h3>
                   <p class="paragraph">
                     Aesop（伊索）
-                    是一个在美妆护肤界颇具知名度且深受消费者喜爱的品牌，以其独特的品牌理念和产品特色在市场中占据一席之地。
+                    是在美妆护肤界颇具知名度且深受消费者喜爱的品牌，以其独特的品牌理念和产品特色在市场中占据一席之地。
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
-                    简约包装,成分选取和包装材料不仅符合当下消费者对于简约美学的追求，更重要的是，与品牌所倡导的天然、质朴的理念相契合。
-                    成分选取
+                    简约包装，精心选取天然、纯净的成分，包装材料也精挑细选，它们不仅契合简约美学追求，更与品牌天然、质朴理念相呼应。
                   </p>
-                  <a
-                    href="https://www.aesop.com.cn/"
-                    target="blank"
-                    class="btn-text"
+                  <a href="https://www.aesop.com.cn/" target="blank" class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -273,14 +251,9 @@
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
-                    Drunk Elephant 强调使用 “干净”
-                    的成分，这是其品牌理念的核心所在。Drunk Elephant
-                    在包装上也下了很大功夫，致力于采用可回收材料并不断优化包装设计以减少垃圾产生。
+                    Drunk Elephant 强调用 “干净” 成分，这是品牌理念核心，其在包装上也努力减少垃圾产生。
                   </p>
-                  <a
-                    href="https://www.drunkelephant.com/"
-                    target="blank"
-                    class="btn-text"
+                  <a href="https://www.drunkelephant.com/" target="blank" class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -309,18 +282,13 @@
                 <div class="show-box-item-details">
                   <h3 class="title-second u-margin-button-2">介绍:</h3>
                   <p class="paragraph">
-                    Ben & Jerry’s
-                    是在全球范围内享有盛誉的冰淇淋品牌，以其丰富多样的口味、独特的品牌理念以及对社会责任和环保的积极践行而备受消费者喜爱。
-                    品牌特色
+                    Ben & Jerry’s 是全球知名冰淇淋品牌，口味多样、理念独特，积极践行社会责任和环保，受消费者喜爱。
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
                     在原料采购环节秉持公平贸易的理念，这是其品牌的一大特色。品牌不仅仅满足于使用现有的可回收材料，还不断探索新的包装形式以提高可回收性。
                   </p>
-                  <a
-                    href="https://www.benjerry.com/"
-                    target="blank"
-                    class="btn-text"
+                  <a href="https://www.benjerry.com/" target="blank" class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -339,16 +307,13 @@
                 <div class="show-box-item-details">
                   <h3 class="title-second u-margin-button-2">介绍:</h3>
                   <p class="paragraph">
-                    星巴克作为全球知名的咖啡连锁品牌，在可持续发展方面也做出了诸多努力，涵盖从原料采购到门店运营的各个环节。
+                    星巴克作为全球知名的咖啡连锁品牌，在从原料采购到门店运营的各个环节的可持续发展方面做出了诸多努力。
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
                     向全球的咖啡农推广可持续的种植方法，从源头上保障了产品的可持续性，星巴克还在整体运营环节进行了节能优化，在店内广泛采用节能设备。
                   </p>
-                  <a
-                    href="https://www.starbucks.com.cn/"
-                    target="blank"
-                    class="btn-text"
+                  <a href="https://www.starbucks.com.cn/" target="blank" class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -435,7 +400,7 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
 .show-box-item {
   // max-width: 114rem;
   margin: 0 auto;
-  margin-bottom: 15rem;
+  margin-bottom: 10rem;
 }
 .show-box-item::after {
   content: "";

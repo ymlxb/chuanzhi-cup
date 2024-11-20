@@ -82,7 +82,21 @@ const router = useRouter();
   
   
   const rules = ref({
-  username: [{ required: true, message: ('请输入用户名'), trigger: "blur" }],
+  username: [{ required: true, message: ('请输入用户名'), trigger: "blur" },
+  {
+          validator: (rule, value, callback) => {
+            const regex = /^[a-zA-Z0-9]+$/;
+            if (!value) {
+              callback(new Error('用户名不能为空'));
+            } else if (!regex.test(value)) {
+              callback(new Error('用户名只能是英文和数字'));
+            } else {
+              callback();
+            }
+          },
+          trigger: 'blur'
+        }
+  ],
   password: [{ required: true, message: ('请输入密码'), trigger: "blur" },
     {min:6,max:15,message:('长度在 6 到 15 个字符'), trigger: "blur"},
   ],
