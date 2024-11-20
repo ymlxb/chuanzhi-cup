@@ -29,7 +29,7 @@
       <div class="account" style="margin-bottom: 2rem;">
         <h2 class="title">我的账户</h2>
         <p class="title-nav"><router-link to="/person/userInfo">个人中心</router-link></p>
-        <p class="title-nav"><router-link to="/person/upAddress">收货地址</router-link></p>
+        <!-- <p class="title-nav"><router-link to="/person/upAddress">收货地址</router-link></p>  -->
         <p class="title-nav"><router-link to="/person/upAvatar">修改头像</router-link></p>
         <p class="title-nav"><router-link to="/person/upPassWord">修改密码</router-link></p>
       </div>
