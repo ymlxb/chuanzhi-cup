@@ -56,7 +56,7 @@
             <div class="show-item-contain">
               <div class="show-item-box" v-for="item in newList" :key="item.id"  >
                   <router-link :to="`/Detail/${item.id}`">
-                    <img :src="item.image" alt="" class="show-item-box-image">
+                    <img :src="item.imageUrls?.[0]" alt="" class="show-item-box-image">
                     <span class="show-item-box-introduction">{{item.description}}</span>
                     <span class="show-item-box-price">¥{{ item.price }}</span>
                   </router-link>
@@ -84,7 +84,7 @@ const timeIcon=ref('ArrowDown')
 const priceIcon=ref('ArrowDown')
 const setDay = (value) => {
         day.value = value;
-        // console.log('day',day);
+        console.log('day',day.value);
         searchData()
        }
 

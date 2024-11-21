@@ -39,7 +39,7 @@
               <el-input
                 v-model="form.description"
                 type="textarea"
-                placeholder="请输入物品描述(长度在 20 到 60 个字符)"
+                placeholder="请输入物品描述(长度在 20 到 100 个字符)"
               />
             </el-form-item>
             <el-form-item label="联系电话:" prop="mobile">
@@ -151,7 +151,7 @@ const rules = {
     ],
   description:[
     {required:true,message:"请输入物品名称",trigger:'blur'},
-    {min:20,max:60,message:"长度在 20 到 60 个字符",trigger:'blur'}
+    {min:20,max:100,message:"长度在 20 到 10X0 个字符",trigger:'blur'}
 ],
   mobile: [
           {required:true, validator: validateMobile, trigger: 'blur' }

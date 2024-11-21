@@ -14,7 +14,7 @@
         </div>
         <div class="toolbar">
           <div class="toolbar-item">
-            <a href="/#/mall">
+            <a href="/mall">
               <div>
                 <el-icon class="toolbar-item--icon" size="2.5rem"><CirclePlus /></el-icon>
               </div>

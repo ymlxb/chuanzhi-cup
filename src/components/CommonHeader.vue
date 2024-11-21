@@ -13,7 +13,8 @@
     <div class="r-content">
       <el-dropdown >
         <span class="el-dropdown-link">
-          <img :src="avatar" class="user">
+          <img v-if="avatar" :src="avatar" class="user">
+          <img v-else src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" class="user">
         </span>
         <template #dropdown>
           <el-dropdown-menu>

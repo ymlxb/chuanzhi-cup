@@ -9,8 +9,10 @@
     <main>
         <el-card class="detail-item">
             <!-- 商品标题区域 -->
-            <h1 class="title">{{mallData.name}}</h1>
-            <el-button type="primary" class="btn-back" @click="back">返回</el-button>
+            <!-- <h1 class="title">{{mallData.name}}</h1> -->
+             <div style="display: flex;justify-content: flex-end;">
+                <el-button type="primary" size="large" class="btn-back" @click="back">返回</el-button>
+             </div>
             <div class="product-item">
                 <!-- 商品图片区域 -->
                 <div class="product-images">
@@ -23,7 +25,7 @@
                 <!-- 商品介绍区域 -->
                 <div class="product-introduction">
                     <div class="product-title">
-                        {{mallData.description}}
+                        {{mallData.name}}
                     </div>
                     <span class="product-price">￥{{mallData.price}}</span>
                     <span class="product-condition">发布时间:{{mallData.createDate}}</span>
@@ -55,7 +57,7 @@
                 <div class="des-title">商品描述</div>
                 <el-divider border-style="dashed" />
                 <div class="des-content">
-                    描述:
+                    描述:{{mallData.description}}
                 </div>
             </el-card>
         </section>
@@ -201,5 +203,11 @@ const getIdMallInfo = async ()=>{
 .btn-back {
     right: 2rem;
     margin: 1rem;
+
+}
+.des-content {
+    font-size: 2rem;
+    margin: 2rem auto;
+    line-height: 1.5;
 }
 </style>

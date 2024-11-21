@@ -22,7 +22,7 @@ import CommonHeader from '@/components/CommonHeader.vue';
 
 <style scoped lang="less">
   .common_layout,.lay-container {
-    height: 100%;
+    height: 100vh;
   }
   .el-header {
     background-color: #333;
@@ -33,6 +33,6 @@ import CommonHeader from '@/components/CommonHeader.vue';
   html,
   body
   #app {
-    height: 100%;
+    height: 100vh;
   }
 </style>

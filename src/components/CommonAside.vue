@@ -1,7 +1,7 @@
 <template>
   <el-aside width="180px">
     <el-menu
-        background-color="#545c64"
+        background-color="#36454F"
         text-color="#fff"
         :collapse="false"
       >
@@ -150,7 +150,7 @@ const handleMenu = (item) => {
   }
 }
 .el-aside {
-  height: 100%;
-  background-color: #545c64;
+  height: 100vh;
+  background-color: #36454F;
 }
 </style>
