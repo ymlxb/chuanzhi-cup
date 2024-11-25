@@ -38,20 +38,31 @@
     <main>
       <section class="contents">
         <el-card style="width: 100%;border-radius: 1rem;">
-          <div class="contents-item">
-            <div class="contents-item-box" v-for="(item,index) in list" :key="index">
-              <div class="contents-item--icon margin-left-1" >
-                <component class="icons" :is="item.icon"></component>
+          <div style="display: flex;justify-content: space-around;">
+            <div class="contents-item">
+              <div class="contents-item-box" v-for="(item,index) in list" :key="index">
+                <div class="contents-item--icon margin-left-1" >
+                  <component class="icons" :is="item.icon"></component>
+                </div>
+                <div class="contents-item--text margin-left-1">
+                  <router-link :to="`/search?name=${item.name}`">
+                    <span class="contents-item--text-title margin-left-1">{{ item.name }}</span>
+                  </router-link>
+                </div>
+                <el-icon class="icon-right"><ArrowRight /></el-icon>
               </div>
-              <div class="contents-item--text margin-left-1">
-                <router-link :to="`/search?name=${item.name}`">
-                  <span class="contents-item--text-title margin-left-1">{{ item.name }}</span>
-                </router-link>
-              </div>
-              <el-icon class="icon-right"><ArrowRight /></el-icon>
             </div>
-            
+            <div class="contents-images">
+              <el-carousel class="contents-images-box" >
+                <el-carousel-item v-for="item in headerImage" :key="item" >
+                  <img :src="item.url" width="100%" class="contents-images-box" />
+                </el-carousel-item>
+              </el-carousel>
+              
+            </div>
           </div>
+          
+          
           
         </el-card>
       </section>
@@ -124,6 +135,9 @@
     import FurnitureAppliancesComponent from '../components/FurnitureAppliancesComponent.vue';
     import IdleComponent from '../components/IdleComponent.vue';
     import SportComponent from '../components/SportComponent.vue';
+    import home1 from '../assets/images/home1.png';
+    import home2 from '../assets/images/home2.png';
+    import home3 from '../assets/images/home3.jpg';
     import { reactive, shallowRef,ref, markRaw, onMounted } from 'vue';
     import { useRoute,useRouter } from 'vue-router';
     import { throttle } from 'lodash';
@@ -138,6 +152,7 @@
     const topList = reactive(['数码','图书音像','宠物花卉','美容彩妆','运动健身',])
     const hoveredText = ref('');
 
+    const headerImage = [{ url: home1 }, { url: home2 }, { url: home3 }];
 
     const list = reactive([
       {name:'数码',icon:'Monitor'},
@@ -357,7 +372,7 @@
  }
 
  .contents-item {
-    width: 21rem;
+    width: 18%;
     height: 30rem;
     background-color: #d3d3d3;
     border-radius: 1rem;
@@ -391,6 +406,17 @@
   margin-right: 5px;
 }
 
+.contents-images {
+  width: 76%;
+  height: 30rem;
+  border-radius: 1rem;
+
+}
+.contents-images-box {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
 //  .toolbar {
 //   position: fixed;
 //   top: 30rem;

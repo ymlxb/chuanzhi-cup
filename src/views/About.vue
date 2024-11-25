@@ -94,9 +94,9 @@
     </div>
   </div>
 
-  <footer>
+  <!-- <footer>
     <p>© 2024 可持续生活. 保留所有权利.</p>
-  </footer>
+  </footer> -->
 </template>
 
 <script setup></script>
@@ -114,6 +114,8 @@ body {
           color: #ffffff;
           padding: 30px 0;
           text-align: center;
+          // position: fixed;
+          width: 100%;
       };
       .header-container {
           display: flex;
@@ -158,6 +160,7 @@ body {
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
           border-radius: 10px;
           line-height: 1.8;
+          // margin-top: 85px
       };
       h1 {
           margin-bottom: 30px;

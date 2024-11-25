@@ -380,6 +380,10 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
   // top: 0;
   // left: 40rem;
 }
+.head-img {
+  width: 100%;
+  height: 100%;
+}
 .show {
   background-color: #f7f7f7;
   padding: 5rem 0;
