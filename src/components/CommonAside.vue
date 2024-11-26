@@ -135,18 +135,18 @@ const handleMenu = (item) => {
 
 <style lang="less" scoped>
 .icons {
-  width: 18px;
-  height: 18px;
-  margin-right: 5px;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: .5rem;
 }
 
 .el-menu {
   border-right: none;
   h3 {
-    line-height: 48px;
+    line-height: 4.8rem;
     color: #fff;
     text-align: center;
-    font-size: 20px;
+    font-size: 2rem;
   }
 }
 .el-aside {

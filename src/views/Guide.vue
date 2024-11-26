@@ -422,8 +422,8 @@
 
 <style scoped lang="less">
 .contain {
-  margin-top: 20px;
-  height: 3000px;
+  margin-top: 2rem;
+  height: 300rem;
 }
 li {
   list-style: none;
@@ -436,28 +436,28 @@ a {
   padding: 0;
 }
 .wrap {
-  width: 1300px;
+  width: 130rem;
   margin: 0 auto;
 }
 .header {
   background-color: #333;
-  height: 80px;
+  height: 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .header h1 {
   display: block;
-  width: 610px;
-  // height: 50px;
+  width: 61rem;
+  // height: 5rem;
   color: #fff;
-  // padding-top: 10px;
+  // padding-top: 1rem;
   // margin: 0 auto;
-  font-size: 25px;
+  font-size: 2.5rem;
 }
 .nav1 ul li {
   float: left;
-  padding-left: 39px;
+  padding-left: 3.9rem;
   margin: 5px auto;
 }
 .nav1 ul li a {
@@ -470,44 +470,44 @@ a {
   margin: 5px auto;
 }
 .content {
-  height: 510px;
-  margin: 10px auto;
-  margin-top: 20px;
+  height: 51rem;
+  margin: 1rem auto;
+  margin-top: 2rem;
 }
 
 .content .content-box {
   float: left;
-  width: 300px;
-  height: 500px;
+  width: 30rem;
+  height: 50rem;
   background-color: white;
-  margin-right: 33px;
+  margin-right: 3.3rem;
 }
 
 .content .content-box:hover {
-  box-shadow: 7px 7px 7px grey;
+  box-shadow: .7rem .7rem .7rem grey;
 }
 .content .content-box1 {
   float: right;
   background-color: white;
-  width: 300px;
-  height: 500px;
+  width: 30rem;
+  height: 50rem;
   margin-right: 0;
 }
 .content .content-box1:hover {
-  box-shadow: 7px 7px 7px grey;
+  box-shadow: .7rem .7rem .7rem grey;
 }
 
 .content-box-title {
-  padding: 0 40px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 20px;
+  padding: 0 4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
 }
 .content-box-item {
   color: grey;
   text-indent: 2em;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
   font-family: "Microsoft yahei";
   line-height: 1.5;
 

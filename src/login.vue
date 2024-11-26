@@ -15,7 +15,7 @@
           <div class="item-login-right-main-title" v-if="state.isLogin">登录</div>
           <div class="item-login-right-main-title" v-else>注册</div>
           <!-- 登录表单 -->
-          <el-form  v-if="state.isLogin" label-width="80px" :model="login" :rules="rules" ref="formRef">
+          <el-form  v-if="state.isLogin" label-width="8rem" :model="login" :rules="rules" ref="formRef">
             <el-form-item label="用户名" prop="username">
               <el-input v-model="login.username" placeholder="请输入用户名"></el-input>
             </el-form-item>
@@ -25,7 +25,7 @@
             <!-- <el-form-item label="验证码" prop="captcha">
               <el-space class="item-login-right-main-code">
                 <el-input v-model="login.captcha" placeholder="请输入验证码"></el-input>
-                <img style="vertical-align: middle; height: 40px; cursor: pointer" :src="state.captchaUrl" @click="onRefreshCode" alt="" />
+                <img style="vertical-align: middle; height: 4rem; cursor: pointer" :src="state.captchaUrl" @click="onRefreshCode" alt="" />
               </el-space>
             </el-form-item> -->
             <el-form-item label-width="0">
@@ -34,7 +34,7 @@
           </el-form>
 
           <!-- 注册表单 -->
-        <el-form v-else label-width="80px" :model="register" :rules="rules" ref="formRef">
+        <el-form v-else label-width="8rem" :model="register" :rules="rules" ref="formRef">
           <el-form-item label="用户名" prop="username">
             <el-input v-model="register.username" placeholder="请输入用户名"></el-input>
           </el-form-item>
@@ -191,8 +191,8 @@ const showRegisterButton = ref(true);
 
     .item-login-wrap {
       margin: 0 auto;
-      width: 1000px;
-      box-shadow: -4px 5px 10px rgba(0, 0, 0, 0.4);
+      width: 100rem;
+      box-shadow: -4px 5px 1rem rgba(0, 0, 0, 0.4);
       border-radius: 5px;
       overflow: hidden;
       position: relative;
@@ -201,7 +201,7 @@ const showRegisterButton = ref(true);
         width: 50%;
       .item-login-left-image {
         width: 100%;
-        height: 500px;
+        height: 50rem;
       }
     }
 
@@ -214,21 +214,21 @@ const showRegisterButton = ref(true);
 
       .hanging-circle {
           position: absolute;
-          width: 20px; /* 你可以根据需要调整这个宽度 */
-          height: 130px; /* 高度包括线和圆，也可以调整 */
-          // margin: 50px auto; /* 居中显示 */
+          width: 2rem; 
+          height: 13rem; 
+          // margin: 5rem auto; 
           top: 0;
-          right: 60px;
+          right: 6rem;
         }
 
         .hanging-circle .wire {
           position: absolute;
           top: 0;
-          right: 5px;
+          right: .5rem;
           transform: translateX(-50%);
-          width: 4px; /* 线的宽度 */
-          height: 80px; /* 线的高度，可以根据需要调整 */
-          background-color: #666 /* 线的颜色 */
+          width: .4rem; 
+          height: 8rem; 
+          background-color: #666
         }
 
         .hanging-circle .circle {
@@ -236,15 +236,15 @@ const showRegisterButton = ref(true);
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-          width: 50px; /* 圆的宽度 */
-          height: 50px; /* 圆的高度，保持和宽度一致以形成正圆 */
+          width: 5rem; /* 圆的宽度 */
+          height: 5rem; /* 圆的高度，保持和宽度一致以形成正圆 */
           border-radius: 50%; /* 设置为50%以形成圆形 */
           background-color: #fff; /* 圆的颜色，可以根据需要调整 */
           border: 2px solid #f5f5dc;
           color: #333;
-          font-size: 16px;
+          font-size: 1.6rem;
           text-align: center;
-          line-height: 50px;
+          line-height: 5rem;
           font-weight: bold;
           cursor: pointer;
           display: block;
@@ -279,11 +279,11 @@ const showRegisterButton = ref(true);
 
         .item-login-right-main-title {
           color: #333;
-          margin-bottom: 40px;
+          margin-bottom: 4rem;
           font-weight: 500;
-          font-size: 24px;
+          font-size: 2.4rem;
           text-align: center;
-          letter-spacing: 4px;
+          letter-spacing: .4rem;
          }
          .el-input__inner {
             border-width: 0;
@@ -298,12 +298,12 @@ const showRegisterButton = ref(true);
           }
           .item-login-right-main-btn {
             width: 100%;
-            height: 45px;
-            font-size: 18px !important;
-            letter-spacing: 2px;
+            height: 4.5rem;
+            font-size: 1.8rem !important;
+            letter-spacing: .2rem;
             font-weight: 300 !important;
             cursor: pointer;
-            margin-top: 30px;
+            margin-top: 3rem;
             font-family: neo, sans-serif;
             transition: 0.25s;
           }
@@ -312,7 +312,7 @@ const showRegisterButton = ref(true);
     .item-login-left,
     .item-login-right {
       position: relative;
-      min-height: 500px;
+      min-height: 50rem;
       align-items: center;
       display: flex;
     }

@@ -87,20 +87,20 @@ const exit = ()=>{
   background-color: #333;
 }
 .icons {
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
 }
 .l-content {
   display: flex;
   align-items: center;
   .el-button {
-    margin-right: 20px;
+    margin-right: 2rem;
   }
 }
 .r-content {
   .user {
-    width: 40px;
-    height: 40px;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     background-color: #fff;
   }

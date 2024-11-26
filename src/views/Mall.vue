@@ -9,7 +9,7 @@
           <el-form
             :model="form"
             label-width="auto"
-            style="max-width: 600px;margin: auto;"
+            style="max-width: 60rem;margin: auto;"
             :rules="rules"
             ref="formRef"
           >
@@ -284,38 +284,29 @@ const getTag = async () => {
 </script>
 
 <style lang="less" scoped>
-/* 基础样式 */
 
-/* 整体布局样式 */
 .contain {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* 视口高度 */
-  background-color: #f5f5f5; /* 背景颜色 */
+  height: 100vh;
+  background-color: #f5f5f5;
 }
 
-/* 侧边栏样式 */
-// aside {
-//   width: 20%; /* 宽度 */
-//   background-color: #ffffff; /* 背景颜色 */
-//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 阴影效果 */
-//   padding: 20px; /* 内边距 */
-// }
 
 /* 主内容区域样式 */
 main {
-  width: 60%; /* 宽度 */
-  background-color: #ffffff; /* 背景颜色 */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 阴影效果 */
-  padding: 40px; /* 内边距 */
+  width: 60%; 
+  background-color: #ffffff;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  padding: 4rem;
 }
 .el-form {
-  max-width: 600px;
+  max-width: 60rem;
 }
 
 .el-form-item {
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 
 .el-input,
@@ -323,7 +314,7 @@ main {
   width: 100%;
   border-radius: 4px;
   border: 1px solid #cccccc;
-  padding: 10px; 
+  padding: 1rem; 
 }
 
 .title {
@@ -336,8 +327,8 @@ main {
 
 /* 上传照片样式 */
 .avatar-uploader .avatar {
-  width: 178px;
-  height: 178px;
+  width: 17.8rem;
+  height: 17.8rem;
   display: block;
 }
 
@@ -358,10 +349,10 @@ main {
 }
 
 .el-icon.avatar-uploader-icon {
-  font-size: 28px;
+  font-size: 2.8rem;
   color: #8c939d;
-  width: 178px;
-  height: 178px;
+  width: 17.8rem;
+  height: 17.8rem;
   text-align: center;
 }
 
@@ -378,7 +369,7 @@ main {
 }
 
 .custom-loading-icon {
-  font-size: 30px; /* 或者根据需要设置其他大小 */
+  font-size: 3rem; /* 或者根据需要设置其他大小 */
   color: #333; /* 或者根据需要设置其他颜色 */
 }
 </style>

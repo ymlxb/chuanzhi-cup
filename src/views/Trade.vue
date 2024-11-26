@@ -507,7 +507,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 100%; /* 或者设置一个具体的宽度，如200px */
+    width: 100%;
     max-height: 3em;
     margin-bottom: 2rem;
  }
@@ -524,7 +524,7 @@
  .messageBox {
     position: absolute;
     width: 100vw;
-    height: 220px;
+    height: 22rem;
     background-color: #fff;
     z-index: 1;
     display: none;
@@ -534,7 +534,7 @@
   display: flex;
     justify-content: space-around;
     align-items: center;
-    max-width: 1200px;
+    max-width: 120rem;
     margin:0 15rem;
     // background-color: pink;
     margin-top: 2rem;

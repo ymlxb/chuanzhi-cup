@@ -349,7 +349,7 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
 .el-carousel__item h3 {
   color: #475669;
   opacity: 0.75;
-  line-height: 200px;
+  line-height: 20rem;
   margin: 0;
   text-align: center;
 }

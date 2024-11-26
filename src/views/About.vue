@@ -112,7 +112,7 @@ body {
       header {
           background: #35424a;
           color: #ffffff;
-          padding: 30px 0;
+          padding: 3rem 0;
           text-align: center;
           // position: fixed;
           width: 100%;
@@ -121,9 +121,9 @@ body {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          max-width: 1200px;
+          max-width: 120rem;
           margin: auto;
-          padding: 0 40px;
+          padding: 0 4rem;
       };
       .logo {
           font-size: 2.5em;
@@ -135,7 +135,7 @@ body {
       nav a {
           color: #ffffff;
           text-decoration: none;
-          margin: 0 20px; 
+          margin: 0 2rem; 
           font-weight: bold;
           font-size: 1.6em; 
       };
@@ -147,73 +147,73 @@ body {
           align-items: center;
       };
       .social-icons img {
-          width: 30px;
-          height: 30px;
+          width: 3rem;
+          height: 3rem;
           margin-left: 15px;
       };
       .container {
           width: 85%;
-          max-width: 1000px;
+          max-width: 100rem;
           margin: auto;
-          padding: 30px;
+          padding: 3rem;
           background: #ffffff;
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-          border-radius: 10px;
+          box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+          border-radius: 1rem;
           line-height: 1.8;
           // margin-top: 85px
       };
       h1 {
-          margin-bottom: 30px;
+          margin-bottom: 3rem;
           font-size: 3em; 
       };
       h2 {
           color: #35424a;
           margin-top: 25px;
           border-bottom: 2px solid #35424a;
-          padding-bottom: 10px;
+          padding-bottom: 1rem;
           font-size: 2em; 
       };
       p {
-          margin: 20px 0;
+          margin: 2rem 0;
           font-size: 1.6em;
       };
       footer {
           text-align: center;
-          padding: 20px 0;
+          padding: 2rem 0;
           background: #35424a;
           color: #ffffff;
           position: relative;
           bottom: 0;
           width: 100%;
-          margin-top: 30px;
+          margin-top: 3rem;
       };
       .mission, .vision, .values, .join-us, .activities, .team, .contact {
-          margin: 30px 0; 
-          padding: 20px;
-          border-radius: 5px;
+          margin: 3rem 0; 
+          padding: 2rem;
+          border-radius: .5rem;
       };
       .mission {
           background: #e9f7ef;
-          border-left: 5px solid #28a745;
+          border-left: .5rem solid #28a745;
       };
       .vision {
           background: #f9ebea;
-          border-left: 5px solid #e74c3c;
+          border-left: .5rem solid #e74c3c;
       };
       .values {
           background: #d9edf7;
-          border-left: 5px solid #3498db;
+          border-left: .5rem solid #3498db;
       };
       .activities {
           background: #fff3cd;
-          border-left: 5px solid #ffc107;
+          border-left: .5rem solid #ffc107;
       };
       .team {
           background: #e2e3e5;
-          border-left: 5px solid #6c757d;
+          border-left: .5rem solid #6c757d;
       };
       .contact {
           background: #d4edda;
-          border-left: 5px solid #28a745;
+          border-left: .5rem solid #28a745;
       };
 </style>
