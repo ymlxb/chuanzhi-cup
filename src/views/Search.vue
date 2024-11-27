@@ -2,25 +2,16 @@
   <div class="contain">
     <header class="header">
       <div class="navigation">
-        <a href="##" class="link">
-          <span class="text">手机</span>
-        </a>
-        <a href="##" class="link">
-          <span class="text">平板 | 笔记本</span>
-        </a>
-        <a href="##" class="link">
-          <span class="text">交通工具</span>
-        </a>
-        <a href="##" class="link">
-          <span class="text">家电</span>
-        </a>
-        <a href="##" class="link">
-          <span class="text">图书</span>
-        </a>
+        <div class="navigation-box" v-for="(item,index) in topList" :key="index" @mouseover="handleMouseOver">
+          <router-link :to="`/search?name=${item}`" class="link" @click="link">
+            <span class="text">{{ item }}</span>
+          </router-link>
+        </div>
         <div class="search">
           <input type="text" class="search_input"  placeholder="笔记本电脑"></input>
           <button class="search_btn" @click="search">搜索</button>
         </div>
+        <el-button type="warning" size="large" style="margin-left: 3rem;" @click="back">返回</el-button>
       </div>
     </header>
     
@@ -71,17 +62,20 @@
 <script setup>
 
 import { searchMallInfoByName } from "@/api/api";
-import { onMounted,ref,onUnmounted, } from "vue";
-import { useRoute } from "vue-router";
+import { onMounted,ref,onUnmounted,reactive } from "vue";
+import { useRoute,useRouter } from "vue-router";
 import { watchEffect } from "vue";
 import { ElMessage } from "element-plus";
 const route = useRoute();
+const router = useRouter();
 const newList = ref(null);
 const name = ref(route.query.name || "");
 const day = ref('')
 const order = ref('')
 const timeIcon=ref('ArrowDown')
 const priceIcon=ref('ArrowDown')
+const topList = reactive(['数码','图书音像','宠物花卉','美容彩妆','运动健身',])
+
 const setDay = (value) => {
         day.value = value;
         console.log('day',day.value);
@@ -162,7 +156,9 @@ const routeWatcher = watchEffect(() => {
        }
       }
 
-      
+      const back = () =>{
+        router.push('/trade');
+      }
 </script>
 
 <style lang="less" scoped>
@@ -174,7 +170,7 @@ const routeWatcher = watchEffect(() => {
   }
 
   .header {
-    width:100rem;
+    width:120rem;
     height: 8rem;
     margin: auto;
     padding:2rem 10rem;
@@ -362,7 +358,7 @@ const routeWatcher = watchEffect(() => {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 100%; /* 或者设置一个具体的宽度，如200px */
+    width: 100%;
     max-height: 3em;
     margin-bottom: 2rem;
  }

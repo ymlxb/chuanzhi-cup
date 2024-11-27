@@ -207,3 +207,10 @@ export const deleteUserAddressById = (ids) => {
     params: ids
   })
 }
+// 通过图片地址获取图片
+export const getImageByUrl = (imageUrl) => {
+  return request({
+    url: `/mall/Commodity/getImageByUrl/${imageUrl}`,
+    method: 'get',
+  })
+}

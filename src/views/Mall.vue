@@ -66,7 +66,7 @@
               <div v-if="isAvatarLoading" class="custom-loading-overlay">
                 <el-icon type="loading" class="custom-loading-icon"></el-icon>
               </div>
-                <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+                <img v-if="imageBase64" :src="imageBase64" class="avatar" />
                 <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
               </el-upload>
             </el-form-item>
@@ -95,7 +95,7 @@ import {uploadMallImg} from "@/api/api";
 import { Delete, Download, Plus, ZoomIn } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
 import type { UploadFile } from "element-plus";
-import { addMallInfo, getAllTag } from "@/api/api";
+import { addMallInfo, getAllTag,getImageByUrl } from "@/api/api";
 import { useUserStore } from "@/stores/user";
 import { useRouter } from "vue-router";
 const router = useRouter();
@@ -104,6 +104,7 @@ import type { UploadProps } from 'element-plus'
 const userStore = useUserStore();
 const token = userStore.userInfo.access_token;
 const imageUrl = ref(""); //图片临时地址
+const imageBase64 = ref(""); //图片base64地址
 const formRef = ref(null);
 const isAvatarLoading = ref(true);
 const form = reactive({
@@ -229,20 +230,26 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
   isAvatarLoading.value = false
   imageUrl.value = URL.createObjectURL(uploadFile.raw!)
   imageUrl.value = response.data
+  getImageUrl()
   form.images.push(imageUrl.value)
   console.log("图片地址", imageUrl.value);
   
 }
-
+const getImageUrl = async () => {
+  await getImageByUrl(imageUrl.value).then((res) => {
+    console.log("图片地址", res.data);
+    imageBase64.value = res.data;
+  });
+};
 
 let tagDataList = reactive([]);
 // 获取标签
 const getTag = async () => {
   await getAllTag().then((res) => {
     tagDataList.value = res.data;
-    tagDataList.forEach((item) => {
-      console.log(item);
-    });
+    // tagDataList.forEach((item) => {
+    //   console.log(item);
+    // });
     console.log(res.data);
 
     // console.log(tagDataList.value);

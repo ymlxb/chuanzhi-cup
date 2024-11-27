@@ -15,7 +15,7 @@
         </el-upload>
       </el-form-item> -->
       <el-form-item label="用户名：">
-        <el-input v-model="user.username" ></el-input>
+        <el-input v-model="user.username" disabled></el-input>
       </el-form-item>
       <el-form-item label="昵称：">
         <el-input v-model="user.nickname" ></el-input>

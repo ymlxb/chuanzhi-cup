@@ -71,8 +71,9 @@
         <el-card style="width: 100%;border-radius: 1rem;">
           <div class="show-item">
             <div class="show-item-nav">
-                <div class="show-item-nav-box"
+                <div 
                 v-for="(item,index) in items" :key="index"
+                :class="['show-item-nav-box', { 'active': activeIndex === index }]"
                 @click="changeCom(index)"
               >
               <router-link ></router-link>
@@ -143,7 +144,7 @@
     import { throttle } from 'lodash';
     import request from '@/utils/request';
     import axios from 'axios';
-    import {getAllMallInfo,searchMallInfoByName,searchMallInfoByTag} from '@/api/api'
+    import {getAllMallInfo,searchMallInfoByName,searchMallInfoByTag,} from '@/api/api'
     import { ElMessage } from 'element-plus';
     const route = useRoute();
     const router = useRouter();
@@ -182,7 +183,9 @@
     ])
 
     const currentComponent = shallowRef(markRaw(DigitalComponent));
+    const activeIndex = ref(0);
     const changeCom = (index) => {
+      activeIndex.value = index;
       currentComponent.value = items[index].components;
       const tag = items[index].name;
       searchByTag(tag)
@@ -459,11 +462,11 @@
     justify-content: center;
     align-items: center;
  }
- .show-item-nav-box:first-child {
-    background-color: #98fb98;
+//  .show-item-nav-box:first-child {
+//     background-color: #98fb98;
     
- }
- .show-item-nav-box:active {
+//  }
+ .show-item-nav-box.active {
     background-color: #98fb98;
     font-weight: bold;
  }

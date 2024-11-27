@@ -71,7 +71,7 @@
     <div class="UserInfo" >
       <el-form-item label="头像：">
         <div style="text-align: center">
-          <el-avatar v-if="userData.headUrl" :src="userData.headUrl" />
+          <el-avatar v-if="userData.headImage" :src="userData.headImage" />
           <el-avatar v-else src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" />
         </div>
       </el-form-item>
@@ -161,7 +161,7 @@ const userInfo = async () => {
   console.log(res.data);
   Object.assign(userData, res.data);
   // userStore.setUserAvatar(res.data.headUrl)
-  userStore.userAvatarUrl = res.data.headUrl
+  userStore.userAvatarUrl = res.data.headImage
   console.log(userStore.userAvatarUrl);
   
   // console.log(userData);

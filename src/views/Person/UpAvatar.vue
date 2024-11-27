@@ -34,6 +34,7 @@ const router = useRouter()
 const userStore = useUserStore();
 const token = userStore.userInfo.access_token;
 let avatarUrl = userStore.userAvatarUrl
+
 console.log(avatarUrl);
 
 import type { UploadProps } from 'element-plus'
@@ -58,6 +59,7 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
   console.log(response);
   
   avatarUrl = response.data
+
   // userStore.setUserAvatar(avatarUrl.value)
   console.log("图片地址", avatarUrl);
   router.push('/person/userInfo')
@@ -65,6 +67,7 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
     location.reload();
   },5000)
 }
+
 </script>
 
 <style lang="less" scoped>

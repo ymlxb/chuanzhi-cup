@@ -90,7 +90,7 @@ const list =ref([
             path: '/about',
             name: 'about',
             label: '关于我们',
-            icon: 'house',
+            icon: 'UserFilled',
             url: '/about'
         },
         
