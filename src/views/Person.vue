@@ -2,21 +2,11 @@
   <div class="contain">
     <header class="header">
       <div class="navigation">
-        <a href="##" class="link">
-          <span class="text">手机</span>
-        </a>
-        <a href="##" class="link">
-          <span class="text">平板 | 笔记本</span>
-        </a>
-        <a href="##" class="link">
-          <span class="text">交通工具</span>
-        </a>
-        <a href="##" class="link">
-          <span class="text">家电</span>
-        </a>
-        <a href="##" class="link">
-          <span class="text">图书</span>
-        </a>
+        <div class="navigation-box" v-for="(item,index) in topList" :key="index" @mouseover="handleMouseOver">
+          <router-link :to="`/search?name=${item}`" class="link" @click="link">
+            <span class="text">{{ item }}</span>
+          </router-link>
+        </div>
         <div class="search">
           <input type="text" class="search_input"  placeholder="笔记本电脑"></input>
           <button class="search_btn" @click="search">搜索</button>
@@ -46,6 +36,8 @@
 </template>
 
 <script setup>
+import { reactive } from 'vue'
+const topList = reactive(['数码','图书音像','宠物花卉','美容彩妆','运动健身',])
 
 </script>
 
