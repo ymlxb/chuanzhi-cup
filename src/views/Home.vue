@@ -474,15 +474,16 @@
   }
 
   .section-feature {
+    width: 100%;
     background-color: #f7f7f7;
     padding: 25rem 0;
     margin-top: -15vh;
-    height: 95vh;
+    height: 100vh;
     background-image: linear-gradient(to right bottom,rgba(128, 214, 113, 0.806),rgba(40, 180, 133, 0.829)),
     url(../assets/images/backgroud.jpg);
     background-size: cover;
     background-position: center;
-    clip-path: polygon(0 15vh,100% 0,100% 75vh,0 100%);
+    clip-path: polygon(0 15vh,100% 0,100% 80vh,0 100%);
     position: relative;
 
   }
@@ -510,7 +511,7 @@
   .section-tours {
     background-color: #f7f7f7;
     padding: 25rem 0 25rem 0;
-    margin-top: -20vh;
+    margin-top: -25vh;
   }
 
   .col-1-of-3 {
@@ -598,4 +599,5 @@
     background-color: #7ed56f;
     border-radius: 3px;
   }
+  
 </style>

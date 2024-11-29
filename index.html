@@ -18,6 +18,26 @@
     height: 100%;
   }
   html {
-    font-size: 62.5%;
+    font-size: 10px;
   }
+   /* 针对小屏幕设备（如手机） */
+   @media (max-width: 600px) {
+        html {
+          font-size: 8px;
+        }
+      }
+
+      /* 针对中等屏幕设备（如平板） */
+      @media (min-width: 601px) and (max-width: 1200px) {
+        html {
+         font-size: 9px;
+        }
+      }
+
+      /* 针对大屏幕设备（如桌面显示器） */
+      @media (min-width: 1201px) {
+        html {
+           font-size: 10px;
+        }
+      }
 </style>

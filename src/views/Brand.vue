@@ -19,31 +19,33 @@
           <div class="show-box-title-second">时尚可持续</div>
           <div class="show-box-item">
             <div class="show-box-item--1">
-              <div class="show-box-brg"></div>
-              <div class="show-box-content">
-                <div class="show-box-item-img">
-                  <img
-                    src="../assets/images/icicle.png"
-                    alt=""
-                    class="show-box-item-img-one"
-                  />
-                </div>
-                <div class="show-box-item-details">
-                  <h3 class="title-second u-margin-button-2">介绍:</h3>
-                  <p class="paragraph">
-                    icicle 之禾创立于 1997 年，以 “遵循自然原则和规律”
-                    为理念。选用高品质天然原料，反对过剩设计。深入本土制造产业升级，为高端时装业柔性制造提供可能。
-                  </p>
-                  <h3 class="title-second u-margin-button-2">特色:</h3>
-                  <p class="paragraph">
-                    始终坚持使用天然材质，将产品质量与设计感完美融合。在制造环节，以高标准严控瑕疵数量，致力于为消费者打造高品质时尚之选。
-                  </p>
-                  <a
-                    href="https://www.icicle.com.cn/"
-                    target="blank"
-                    class="btn-text"
-                    >了解更多 &rarr;</a
-                  >
+              <div>
+                <div class="show-box-brg"></div>
+                <div class="show-box-content">
+                  <div class="show-box-item-img">
+                    <img
+                      src="../assets/images/icicle.png"
+                      alt=""
+                      class="show-box-item-img-one"
+                    />
+                  </div>
+                  <div class="show-box-item-details">
+                    <h3 class="title-second u-margin-button-2">介绍:</h3>
+                    <p class="paragraph">
+                      icicle 之禾创立于 1997 年，以 “遵循自然原则和规律”
+                      为理念。深入本土制造产业升级，为高端时装业柔性制造提供可能。
+                    </p>
+                    <h3 class="title-second u-margin-button-2">特色:</h3>
+                    <p class="paragraph">
+                      始终坚持使用天然材质，将产品质量与设计感完美融合。在制造环节，以高标准严控瑕疵数量，致力于为消费者打造高品质时尚之选。
+                    </p>
+                    <a
+                      href="https://www.icicle.com.cn/"
+                      target="blank"
+                      class="btn-text"
+                      >了解更多 &rarr;</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
@@ -66,8 +68,7 @@
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
-                    在追求时尚的同时，积极探索可持续发展道路，在 2023
-                    秋冬系列中采用 100%
+                    在追求时尚的同时，积极探索可持续发展道路，
                     经过认证的有机、可循环或低影响材料制作成衣系列，减少了对环境的影响。
                   </p>
                   <a href="https://www.ganni.com/en/home" target="blank" class="btn-text"
@@ -103,7 +104,7 @@
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
-                    鞋面材料常采用天然羊毛、桉树纤维等可再生资源，这些材料具有良好的透气性和舒适性，同时也减少了对传统石油基材料的依赖。
+                    鞋面材料常采用天然羊毛、桉树纤维等可再生资源，同时也减少了对传统石油基材料的依赖。
                   </p>
                   <a href="https://www.allbirds.cn/pc.html" target="blank" class="btn-text"
                     >了解更多 &rarr;</a
@@ -124,7 +125,7 @@
                 <div class="show-box-item-details">
                   <h3 class="title-second u-margin-button-2">介绍:</h3>
                   <p class="paragraph">
-                    untitlab 是中国新锐设计师鞋履品牌，从品牌创立之初便坚持使用环保材料，从第一季起，全部系列都使用环保超纤面料，践行环保理念
+                    untitlab 是中国新锐设计师鞋履品牌，从品牌创立之初便坚持使用环保材料，从第一季起，全部系列都使用环保超纤面料，践行环保理念、践行可持续理念。
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
@@ -363,7 +364,7 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
 }
 
 .header {
-  width: 100rem;
+  width: 80%;
   height: 30rem;
   margin: auto;
 }
@@ -402,15 +403,19 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
 }
 
 .show-box-item {
-  // max-width: 114rem;
+  
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 10rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
 }
-.show-box-item::after {
-  content: "";
-  display: table;
-  clear: both;
-}
+// .show-box-item::after {
+//   content: "";
+//   display: table;
+//   clear: both;
+// }
 .show-box-item:not(:last-child) {
   margin-bottom: 8rem;
 }
@@ -421,13 +426,13 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
 }
 
 .show-box-item--1 {
-  float: left;
-  width: calc((100% - 6rem) / 2);
+  // float: left;
+  // width: calc((100% - 6rem) / 2);
   position: relative;
 }
-.show-box-item--1:not(:last-child) {
-  margin-right: 6rem;
-}
+// .show-box-item--1:not(:last-child) {
+//   margin-right: 6rem;
+// }
 
 .show-box-item--1:hover {
   transform: translate(0, -3px);
@@ -472,7 +477,7 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
   padding-left: 1rem;
 }
 .paragraph:not(:last-child) {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .u-margin-button-2 {
