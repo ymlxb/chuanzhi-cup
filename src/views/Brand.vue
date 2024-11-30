@@ -397,7 +397,7 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
 
 .show-box-title-second {
   font-size: 4rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   text-align: center;
   color: #006400;
 }
@@ -464,9 +464,11 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
 .show-box-item-details {
   height: 40rem;
   background-color: skyblue;
+  
 }
 
 .title-second {
+  padding-top: .5rem;
   font-size: 2.5rem;
 }
 .paragraph {

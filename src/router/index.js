@@ -1,4 +1,8 @@
-import { createRouter, createWebHashHistory,createWebHistory } from "vue-router";
+import {
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+} from "vue-router";
 
 // 制定路由规则
 
@@ -109,7 +113,15 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes
 });
+router.beforeEach((to, from, next) => {
+  const elMain = document.querySelector(".el-main");
+  elMain && elMain.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 
+  next();
+});
 export default router;

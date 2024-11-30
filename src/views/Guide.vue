@@ -136,7 +136,7 @@
           <div class="content-box">
             <div class="content-item">
               <img
-              src="../assets/images/二手消费和租赁.jfif"
+              src="../assets/images/ershou.jpg"
               alt=""
               width="100%"
               height="50%"
@@ -494,7 +494,7 @@ a {
 .content-box {
   // width: 100%;
   height: 51rem;
-  margin-left:2.5rem ;
+  margin:0 2.5rem ;
   margin-top: 2rem;
   display: flex;
   justify-content: center;

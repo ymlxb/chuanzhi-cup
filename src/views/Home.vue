@@ -169,6 +169,7 @@
     event.preventDefault();
     document.querySelector('#to_transfer').scrollIntoView({ behavior: 'smooth' });
   };
+ 
 </script>
 
 <style lang="less" scoped>
