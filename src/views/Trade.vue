@@ -107,7 +107,7 @@
                     <!-- <div v-for="url in item.imageUrls">
                      
                     </div> -->
-                    <img :src="item.imageUrls?.[0]" alt="" class="show-item-box-image">
+                    <img v-img-laze="item.imageUrls?.[0]"  alt="" class="show-item-box-image">
                     <span class="show-item-box-introduction">{{item.description}}</span>
                     <span class="show-item-box-price">¥{{ item.price }}</span>
                   </router-link>
@@ -177,7 +177,7 @@
       {name:'汽摩生活',components:markRaw(TrafficComponent)},
       {name:'运动健身',components:markRaw(SportComponent)},
       {name:'美容彩妆',components:markRaw(BeautyMakeupComponent)},
-      {name:'模玩动漫 ',components:markRaw(ModelToysAnimationComponent)},
+      {name:'模玩动漫',components:markRaw(ModelToysAnimationComponent)},
       {name:'其他',components:markRaw(OtherCategoryComponent)},
       
     ])

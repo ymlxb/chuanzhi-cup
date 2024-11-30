@@ -4,7 +4,7 @@ import { useUserStore } from "@/stores/user";
 
 const instance = axios.create({
   baseURL: "http://10.102.73.64:8081",
-  timeout: 30 * 1000,
+  timeout: 40 * 1000,
 });
 
 instance.interceptors.request.use(

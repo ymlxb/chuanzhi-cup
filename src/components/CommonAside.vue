@@ -1,5 +1,5 @@
 <template>
-  <el-aside width="180px">
+  <el-aside width="18rem">
     <el-menu
         background-color="#36454F"
         text-color="#fff"
@@ -14,7 +14,7 @@
           @click="handleMenu(item)"
         >
           <component class="icons" :is="item.icon"></component>
-          <span>{{item.label}}</span>
+          <span style="font-size: 1.6rem;">{{item.label}}</span>
         </el-menu-item>
         <el-sub-menu 
           v-for="item in hasChildren"

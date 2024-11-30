@@ -273,6 +273,7 @@ const routeWatcher = watchEffect(() => {
   margin-left: 5rem;
   display: flex;
   justify-content: flex-start;
+  margin-bottom: 1rem;
  }
  .show-item-select-time,
  .show-item-select-price {
