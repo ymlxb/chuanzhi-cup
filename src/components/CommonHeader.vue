@@ -36,7 +36,7 @@ const router = useRouter()
 const userStore = useUserStore()
 const avatar = ref('')
 avatar.value = userStore.userAvatarUrl
-// console.log(avatar.value);
+console.log(avatar.value);
 
 import {logoutApi}  from '@/api/api'
 const exit = ()=>{

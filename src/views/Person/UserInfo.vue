@@ -158,11 +158,11 @@ onMounted(() => {
 });
 const userInfo = async () => {
   const res = await getUserInfo();
-  // console.log(res.data);
+  console.log(res.data);
   Object.assign(userData, res.data);
   // userStore.setUserAvatar(res.data.headUrl)
   userStore.userAvatarUrl = res.data.headImage
-  // console.log(userStore.userAvatarUrl);
+  console.log(userStore.userAvatarUrl);
   
   // console.log(userData);
 };
@@ -175,7 +175,7 @@ const editInfo = () =>{
       email:userData.email,
       mobile:userData.mobile,
       address:userData.address,
-      gender:userData.gender,
+      gender:userData.gender ? '女' : '男',
       nickname:userData.nickname,
     },
   });

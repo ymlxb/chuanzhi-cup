@@ -189,6 +189,23 @@ const showRegisterButton = ref(true);
     align-items: center;
     justify-content: center;
 
+
+    @media only screen and (max-width: 904px) {
+    .item-login-wrap {
+      width: 96% !important;
+    }
+    .item-login-right {
+      width: 100% !important;
+    }
+    .item-login-left {
+      width: 0;
+      height: 0;
+    }
+    .item-login-left img {
+      display: none; /* 直接隐藏图片 */
+    }
+  }
+
     .item-login-wrap {
       margin: 0 auto;
       width: 100rem;
@@ -309,7 +326,7 @@ const showRegisterButton = ref(true);
           }
       }
     }
-    .item-login-left,
+    
     .item-login-right {
       position: relative;
       min-height: 50rem;

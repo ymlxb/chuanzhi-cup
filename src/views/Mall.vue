@@ -66,7 +66,7 @@
               <div v-if="isAvatarLoading" class="custom-loading-overlay">
                 <el-icon type="loading" class="custom-loading-icon"></el-icon>
               </div>
-                <img v-if="imageBase64" :src="imageBase64" class="avatar" />
+              <img v-if="imageUrl" :src="imageUrl" class="avatar" />
                 <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
               </el-upload>
             </el-form-item>
@@ -104,7 +104,7 @@ import type { UploadProps } from 'element-plus'
 const userStore = useUserStore();
 const token = userStore.userInfo.access_token;
 const imageUrl = ref(""); //图片临时地址
-const imageBase64 = ref(""); //图片base64地址
+// const imageBase64 = ref(""); //图片base64地址
 const formRef = ref(null);
 const isAvatarLoading = ref(true);
 const form = reactive({
@@ -152,7 +152,7 @@ const rules = {
     ],
   description:[
     {required:true,message:"请输入物品名称",trigger:'blur'},
-    {min:20,max:100,message:"长度在 20 到 10X0 个字符",trigger:'blur'}
+    {min:20,max:100,message:"长度在 20 到 100 个字符",trigger:'blur'}
 ],
   mobile: [
           {required:true, validator: validateMobile, trigger: 'blur' }
@@ -230,17 +230,17 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
   isAvatarLoading.value = false
   imageUrl.value = URL.createObjectURL(uploadFile.raw!)
   imageUrl.value = response.data
-  getImageUrl()
+  // getImageUrl()
   form.images.push(imageUrl.value)
   console.log("图片地址", imageUrl.value);
   
 }
-const getImageUrl = async () => {
-  await getImageByUrl(imageUrl.value).then((res) => {
-    console.log("图片地址", res.data);
-    imageBase64.value = res.data;
-  });
-};
+// const getImageUrl = async () => {
+//   await getImageByUrl(imageUrl.value).then((res) => {
+//     console.log("图片地址", res.data);
+//     imageBase64.value = res.data;
+//   });
+// };
 
 let tagDataList = reactive([]);
 // 获取标签

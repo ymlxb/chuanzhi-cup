@@ -63,9 +63,9 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
   // userStore.setUserAvatar(avatarUrl.value)
   console.log("图片地址", avatarUrl);
   router.push('/person/userInfo')
-  setTimeout(function(){
-    location.reload();
-  },5000)
+  // setTimeout(function(){
+  //   location.reload();
+  // },5000)
 }
 
 </script>

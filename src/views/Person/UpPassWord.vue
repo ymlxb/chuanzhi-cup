@@ -7,12 +7,12 @@
     style="margin-top: 3rem; width: 600px; position: relative; padding: 2rem"
     :rules="rules"
   >
-    <el-form-item label="旧密码：" prop="password">
+    <el-form-item label="原密码：" prop="password">
       <el-input
         v-model="form.password"
         type="password"
         show-password
-        placeholder="请输入旧密码"
+        placeholder="请输入原密码"
       ></el-input>
     </el-form-item>
     <el-form-item label="新密码：" prop="newPassword">
@@ -37,7 +37,7 @@
       >
     </div>
   </el-form>
-  <div v-if="message" :class="{ error: isError, success: !isError }">
+  <div v-if="message" :class="{ error: isError, success: !isError }" class="message">
     {{ message }}
   </div>
 </template>
@@ -58,10 +58,13 @@ const form = ref({
 });
 
 const rules = ref({
-  password: [{ required: true, message: "请输入旧密码", trigger: "blur" }],
-  newPassword: [{ required: true, message: "请输入新密码", trigger: "blur" }],
+  password: [{ required: true, message: "请输入原密码", trigger: "blur" },],
+  newPassword: [{ required: true, message: "请输入新密码", trigger: "blur" },
+  {min:6,max:15,message:('长度在 6 到 15 个字符'), trigger: "blur"},
+  ],
   confirmPassword: [
     { required: true, message: "请确认新密码", trigger: "blur" },
+    {min:6,max:15,message:('长度在 6 到 15 个字符'), trigger: "blur"},
   ],
 });
 
@@ -107,5 +110,10 @@ const changePassword = async () => {
 }
 .success {
   color: green;
+}
+
+.message {
+  font-size: 1.6rem;
+  text-align: center;
 }
 </style>

@@ -15,7 +15,7 @@ export const useUserStore = defineStore("user", () => {
     
     userInfo.value = res.data;
     code.value = res.code;
-    console.log(code.value);
+    // console.log(code.value);
     console.log(userAvatarUrl.value);
     
   }
