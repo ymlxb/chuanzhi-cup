@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/chuanzhi-cup/', // 替换为您的 GitHub 仓库名称
   plugins: [vue()],
   // 这个resolve是添加的别名
   resolve: {
