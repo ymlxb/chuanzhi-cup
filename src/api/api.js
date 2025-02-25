@@ -214,3 +214,20 @@ export const getImageByUrl = (imageUrl) => {
     method: 'get',
   })
 }
+
+// 卖家查看自己的商品
+export const getListMyCommodity = () => {
+  return request({
+    url: '/mall/Commodity/listMyCommodity',
+    method: 'get',
+  })
+}
+
+// 卖家修改商品信息
+export const upCommodity = (commodity) => {
+  return request({
+    url: '/mall/Commodity/updateCommodity',
+    method: 'put',
+    data: commodity
+  })
+}

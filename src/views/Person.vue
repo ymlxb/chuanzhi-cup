@@ -23,10 +23,10 @@
         <p class="title-nav"><router-link to="/person/upAvatar">修改头像</router-link></p>
         <p class="title-nav"><router-link to="/person/upPassWord">修改密码</router-link></p>
       </div>
-      <!-- <div class="order">
+      <div class="order">
         <h2 class="title">交易管理</h2>
-        <p class="title-nav">我的订单</p>
-      </div> -->
+        <p class="title-nav"><router-link to="/person/selfPublish">我的发布</router-link></p>
+      </div>
     </el-card>
     <el-card class="right" style="width: 80%;" shadow="always">
       <router-view></router-view>

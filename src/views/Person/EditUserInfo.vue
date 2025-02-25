@@ -75,11 +75,11 @@ onMounted(()=>{
 
 const user = reactive({
   username: "",
-  image: "",
+  // image: "",
   email: "",
   mobile: "",
   address: "",
-  gender: "",
+  gender: 0,
 });
 
 const options = [

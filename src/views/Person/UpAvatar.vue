@@ -9,7 +9,7 @@
           <img v-else src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" class="avatar">
           <el-upload
             class="avatar-uploader"
-            action="http://10.102.73.64:8081/sys/user/updateImage"
+            :action="uploadUrl"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
@@ -25,19 +25,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref,computed } from 'vue'
 import { ElMessage } from 'element-plus'
 import { Plus } from '@element-plus/icons-vue'
 import { useUserStore } from "@/stores/user";
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const userStore = useUserStore();
+import {baseurl} from '../../utils/request'
 const token = userStore.userInfo.access_token;
 let avatarUrl = userStore.userAvatarUrl
 
 console.log(avatarUrl);
 
 import type { UploadProps } from 'element-plus'
+const uploadUrl = computed(() => {
+  // return `${baseurl}/mall/Commodity/insertImage`;
+  return `${baseurl}/sys/user/updateImage`
+  // return '/mall/Commodity/insertImage'
+});
 const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
       console.log('1111');
       if (rawFile.type !== 'image/jpeg'&& rawFile.type !== 'image/png' && rawFile.type !== 'image/jfif') {

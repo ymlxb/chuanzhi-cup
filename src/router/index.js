@@ -56,9 +56,14 @@ const routes = [
         redirect: "/trade",
       },
       {
+        path: "/EditMall",
+        name: "editMallInfo",
+        component: () => import("@/views/EditMallInfo.vue"),
+      },
+      {
         path: "/Mall",
-        name: "mall",
-        component: () => import("@/views/Mall.vue"),
+        name: "mallInfo",
+        component: () => import("@/views/MallInfo.vue"),
       },
       {
         path: "/Detail/:id",
@@ -104,6 +109,11 @@ const routes = [
             path: "EditUserInfo",
             name: "editUserInfo",
             component: () => import("@/views/Person/EditUserInfo.vue"),
+          },
+          {
+            path: "SelfPublish",
+            name: "selfPublish",
+            component: () => import("@/views/Person/SelfPublish.vue"),
           },
         ],
       },

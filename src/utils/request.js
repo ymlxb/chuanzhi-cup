@@ -3,9 +3,11 @@ import axios from "axios";
 import { useUserStore } from "@/stores/user";
 
 const instance = axios.create({
-  baseURL: "http://10.102.73.64:8081",
+  baseURL: "http://10.102.207.39:8081",
   timeout: 40 * 1000,
 });
+const baseurl = instance.defaults.baseURL;
+console.log(baseurl); 
 
 instance.interceptors.request.use(
   (config) => {
@@ -62,4 +64,4 @@ function getToken() {
 }
 
 export default request;
-export { getToken };
+export { getToken,baseurl };

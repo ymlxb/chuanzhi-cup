@@ -5,7 +5,7 @@
       <div class="wrap">
         <div class="head"></div>
         <div class="detail">
-          <h1 class="title">发布物品</h1>
+          <h1 class="title">修改商品信息</h1>
           <el-form
             :model="form"
             label-width="auto"
@@ -19,22 +19,7 @@
             <el-form-item label="出售价格:" prop="price">
               <el-input v-model.number="form.price" placeholder="请输入出售价格" />
             </el-form-item>
-            <el-form-item label="物品类型:" prop="tag">
-              <el-select v-model="form.tag" placeholder="请输入商品类型">
-                <!-- <el-option v-for="(tagName,index) in tagDataList" :key="index" label="tagName" :value="tagName"></el-option> -->
-                <el-option
-                  v-for="(tagName, index) in tagDataList.value"
-                  :key="index"
-                  :label="tagName"
-                  :value="tagName"
-                />
-                <!-- <el-option label="笔记本|平板" value="laptop" />
-                <el-option label="数码" value="idle" />
-                <el-option label="图书" value="book" />
-                <el-option label="交通" value="traffic" />
-                <el-option label="运动" value="sport" /> -->
-              </el-select>
-            </el-form-item>
+           
             <el-form-item label="物品描述:" prop="description">
               <el-input
                 v-model="form.description"
@@ -54,22 +39,7 @@
                 placeholder="请输入邮箱地址"
               />
             </el-form-item>
-            <el-form-item label="物品照片:" prop="images">
-              <el-upload
-                class="avatar-uploader"
-                action="http://10.102.73.64:8081/mall/Commodity/insertImage"
-                :headers="{ Authorization: token }"
-                :show-file-list="false"
-                :on-success="handleAvatarSuccess"
-                :before-upload="beforeAvatarUpload"
-              >
-              <div v-if="isAvatarLoading" class="custom-loading-overlay">
-                <el-icon type="loading" class="custom-loading-icon"></el-icon>
-              </div>
-              <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-                <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
-              </el-upload>
-            </el-form-item>
+            
            <div class="detail-footer" style="display: flex;justify-content: end;">
             <!-- <el-steps style="min-width: 20rem" :active="active" finish-status="success">
               <el-step title="Step 1" />
@@ -90,32 +60,53 @@
 
 <script setup lang="ts">
 
-import { reactive, ref,onMounted } from "vue";
+import { reactive, ref,onMounted,computed } from "vue";
 import {uploadMallImg} from "@/api/api";
 import { Delete, Download, Plus, ZoomIn } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
 import type { UploadFile } from "element-plus";
-import { addMallInfo, getAllTag,getImageByUrl } from "@/api/api";
+import { addMallInfo, upCommodity } from "@/api/api";
 import { useUserStore } from "@/stores/user";
-import { useRouter } from "vue-router";
+import { useRouter,useRoute } from "vue-router";
+import { baseurl } from "../utils/request";
 const router = useRouter();
-
+const route = useRoute();
 import type { UploadProps } from 'element-plus'
+import { log } from "echarts/types/src/util/log.js";
 const userStore = useUserStore();
 const token = userStore.userInfo.access_token;
 const imageUrl = ref(""); //图片临时地址
 // const imageBase64 = ref(""); //图片base64地址
 const formRef = ref(null);
 const isAvatarLoading = ref(true);
+const uploadUrl = computed(() => {
+  return `${baseurl}/mall/Commodity/insertImage`;
+  // return '/mall/Commodity/insertImage'
+});
 const form = reactive({
+  id: 0,
   name: "",
-  price: "",
+  price: 0,
   description: "",
-  tag: "",
   images: [],
   mobile: "",
   email: "",
 });
+
+form.name = route.query.name
+form.price = parseInt(route.query.price) 
+form.description = route.query.description
+form.mobile = route.query.mobile
+form.images = route.query.images
+form.email = route.query.email
+form.id = route.query.id
+
+
+console.log(form.price);
+
+
+
+
 let validateMobile = (rule, value, callback) => {
       const reg = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
       if (value === '') {
@@ -161,17 +152,15 @@ const rules = {
           {required:true, validator: validateEmail, trigger: 'blur' }
         ],
         // 注意：物品照片的校验规则可能需要根据实际需求进行调整
-  images: [
-          { required:true, message: '请上传物品照片', trigger: 'blur' }
-        ]
+  
 }
 
 // const active = ref(0);
 const commodityId = ref('');
-onMounted(() => {
-  getTag();
-  // uploadMallImg()
-});
+// onMounted(() => {
+//   getTag();
+//   // uploadMallImg()
+// });
 // const emit = defineEmits(['activeNameChange','publishSuccess']);
 // const emitActiveNameChange = () => {
 //   emit('activeNameChange', 'image');
@@ -181,7 +170,7 @@ onMounted(() => {
 const handleSubmit = async () => {
   formRef.value.validate(async(valid) => {
         if (valid) {
-          const res = await addMallInfo(form);
+          const res = await upCommodity(form);
           console.log(res);
           if (res.code === 0) {
             ElMessage.success("发布成功");
@@ -199,94 +188,12 @@ const handleSubmit = async () => {
           return false;
         }
       });
-    
-  
- 
-}
 
+}
 const cancel = () => {
   router.push("/trade");
 };
 
-const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
-      console.log('1111');
-      isAvatarLoading.value = true
-      if (rawFile.type !== 'image/jpeg'&& rawFile.type !== 'image/png' && rawFile.type !== 'image/jfif') {
-        ElMessage.error('图片必须是jpg,png或jfif格式')
-        return false
-      } else if (rawFile.size / 1024 / 1024 > 2) {
-        ElMessage.error('图片大小不能超过2MB')
-        return false
-      }
-      console.log('444');
-      
-  return true
-}
-const handleAvatarSuccess: UploadProps['onSuccess'] = (
-  response,
-  uploadFile
-) => {
-  console.log('333444');
-  isAvatarLoading.value = false
-  imageUrl.value = URL.createObjectURL(uploadFile.raw!)
-  imageUrl.value = response.data
-  // getImageUrl()
-  form.images.push(imageUrl.value)
-  console.log("图片地址", imageUrl.value);
-  
-}
-// const getImageUrl = async () => {
-//   await getImageByUrl(imageUrl.value).then((res) => {
-//     console.log("图片地址", res.data);
-//     imageBase64.value = res.data;
-//   });
-// };
-
-let tagDataList = reactive([]);
-// 获取标签
-const getTag = async () => {
-  await getAllTag().then((res) => {
-    tagDataList.value = res.data;
-    // tagDataList.forEach((item) => {
-    //   console.log(item);
-    // });
-    console.log(res.data);
-
-    // console.log(tagDataList.value);
-  });
-};
-// import { onMounted, reactive } from "vue";
-// import {uploadMallImg} from "@/api/api";
-// import { ref } from "vue";
-
-// // 图片上传
-
-// import type { TabsPaneContext } from 'element-plus'
-// import MallInfo from "../components/MallInfo.vue";
-// import MallImage from "../components/MallImage.vue";
-// const activeName = ref('info')
-// const state =ref(false)
-// const handleClick = (tab: TabsPaneContext, event: Event) => {
-//   console.log(tab, event)
-//   activeName.value = 'info'
-
-// }
-
-// const updateActiveName = (value: string) => {
-//   activeName.value = value;
-//   state.value = true;
-// }
-
-// const currentCommodityId = ref('');
-
-// const updateCommodityId = (id: string) => {
-//   currentCommodityId.value = id;
-//   console.log('当前商品id', id);
-//   console.log(currentCommodityId.value);
-//   console.log('当前商品id', currentCommodityId);
-  
-  
-// };
 
 </script>
 
@@ -301,7 +208,7 @@ const getTag = async () => {
 }
 
 
-/* 主内容区域样式 */
+
 main {
   width: 60%; 
   background-color: #ffffff;
@@ -332,7 +239,7 @@ main {
   text-align: center;
 }
 
-/* 上传照片样式 */
+
 .avatar-uploader .avatar {
   width: 17.8rem;
   height: 17.8rem;
@@ -369,14 +276,13 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
-  display: flex;
+  background-color: rgba(255, 255, 255, 0.7); 
   justify-content: center;
   align-items: center;
 }
 
 .custom-loading-icon {
-  font-size: 3rem; /* 或者根据需要设置其他大小 */
-  color: #333; /* 或者根据需要设置其他颜色 */
+  font-size: 3rem; 
+  color: #333; 
 }
 </style>

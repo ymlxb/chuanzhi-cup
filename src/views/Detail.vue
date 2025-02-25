@@ -11,6 +11,7 @@
             <!-- 商品标题区域 -->
             <!-- <h1 class="title">{{mallData.name}}</h1> -->
              <div style="display: flex;justify-content: flex-end;">
+                <el-button v-if="backSelect" else type="primary" size="large" class="btn-back" @click="editInfo">修改</el-button>
                 <el-button type="primary" size="large" class="btn-back" @click="back">返回</el-button>
              </div>
             <div class="product-item">
@@ -79,6 +80,7 @@
     import { onMounted } from 'vue';
     import { getMallInfoById } from '../api/api';
 
+    
     const route = useRoute();
     const router = useRouter();
 //     const images = ref([ 
@@ -86,8 +88,9 @@
 //     { url: b, alt: '商品主图2' },
 //     { url: c, alt: '商品主图3' },
 // ]);
-
+const backSelect = route.query.backSelect;
 const commodityId = route.params.id;
+console.log(backSelect);
 
 onMounted(() => {
 
@@ -107,14 +110,41 @@ const getIdMallInfo = async ()=>{
 
 
     const back = () => {
-      router.push({
-       name: 'trade',
-       query: {
-        id: commodityId
-       },
+        if(backSelect){
+            router.push({
+            name: 'selfPublish',
 
-      });
+            });
+        } else{
+          router.push({
+               name: 'trade',
+               query: {
+                id: commodityId
+               },
+
+              });
+        }
+    
     }
+
+    const editInfo = () => {
+        console.log('111');
+        
+        router.push({
+            name: 'editMallInfo',
+            query:{
+                name:mallData.value.name,
+                description:mallData.value.description,
+                images:mallData.value.imageUrls,
+                price:mallData.value.price,
+                mobile:mallData.value.mobile,
+                email:mallData.value.email,
+                id:mallData.value.id,
+
+            }
+        })
+    }
+
 
 </script>
 

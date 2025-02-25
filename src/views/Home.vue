@@ -155,8 +155,8 @@
             </div>
           </div>
         </div>
-        <div class="u-center-text u-margin-button-8">
-          <!-- <a href="#" class="btn btn--green">全部课程</a> -->
+        <div class="zuji">
+          <CarbonFootprintCalculator />
         </div>
       </section>
     </main>
@@ -165,6 +165,7 @@
 </template>
 
 <script setup>
+import CarbonFootprintCalculator from '../components/CarbonFootprintCalculator.vue';
   const transfer = (event) => {
     event.preventDefault();
     document.querySelector('#to_transfer').scrollIntoView({ behavior: 'smooth' });

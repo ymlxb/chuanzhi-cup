@@ -175,7 +175,7 @@ const editInfo = () =>{
       email:userData.email,
       mobile:userData.mobile,
       address:userData.address,
-      gender:userData.gender ? '女' : '男',
+      gender:userData.gender,
       nickname:userData.nickname,
     },
   });
