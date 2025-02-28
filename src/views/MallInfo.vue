@@ -5,7 +5,7 @@
       <div class="wrap">
         <div class="head"></div>
         <div class="detail">
-          <h1 class="title">发布物品</h1>
+          <h1 class="title">发布闲置物品</h1>
           <el-form
             :model="form"
             label-width="auto"
@@ -69,15 +69,24 @@
                 <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
               </el-upload>
             </el-form-item>
-           <div class="detail-footer" style="display: flex;justify-content: end;">
-            <!-- <el-steps style="min-width: 20rem" :active="active" finish-status="success">
-              <el-step title="Step 1" />
-              <el-step title="Step 2" />
-              <el-step title="Step 3" />
-            </el-steps> -->
-            <el-button type="primary" round @click="cancel" style="margin-left: 3rem;">取消</el-button>
-            <el-button type="primary" round @click="handleSubmit" style="margin-left: 3rem;">保存</el-button>
-           </div>
+            <div class="action-buttons">
+              <el-button 
+                type="info" 
+                round 
+                @click="cancel"
+                class="btn-cancel"
+              >
+                <i class="el-icon-close"></i> 取消发布
+              </el-button>
+              <el-button 
+                type="primary" 
+                round 
+                @click="handleSubmit"
+                class="btn-submit"
+              >
+                <i class="el-icon-check"></i> 立即发布
+              </el-button>
+            </div>
             
           </el-form>
           
@@ -295,7 +304,10 @@ const getTag = async () => {
 </script>
 
 <style lang="less" scoped>
-
+@primary-color: #409EFF;
+@secondary-color: #67C23A;
+@background-color: #f8f9fa;
+@card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 .contain {
   display: flex;
   justify-content: center;
@@ -330,17 +342,49 @@ main {
 
 .title {
   font-size: 2rem;
-  color: #333333;
+  color: #2c3e50;
   margin-bottom: 2rem;
   font-weight: bold;
+  letter-spacing: 1px;
   text-align: center;
 }
+
 
 /* 上传照片样式 */
 .avatar-uploader .avatar {
   width: 17.8rem;
   height: 17.8rem;
   display: block;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-top: 40px;
+
+  .btn-cancel {
+    padding: 12px 28px;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #f8f9fa;
+      transform: translateY(-2px);
+    }
+  }
+
+  .btn-submit {
+    padding: 12px 28px;
+    background: linear-gradient(135deg, @primary-color 0%, darken(@primary-color, 10%) 100%);
+    border: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(@primary-color, 0.3);
+    }
+  }
 }
 
 

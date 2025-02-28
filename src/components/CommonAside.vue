@@ -75,13 +75,13 @@ const list = ref([
     icon: "money",
     url: "/trade",
   },
-  // {
-  //     path: '/Community',
-  //     name: 'Community',
-  //     label: '社区论坛',
-  //     icon: 'user',
-  //     url: '/community'
-  // },
+  {
+      path: '/Community',
+      name: 'Community',
+      label: '社区论坛',
+      icon: 'user',
+      url: '/community'
+  },
   {
     path: "/about",
     name: "about",

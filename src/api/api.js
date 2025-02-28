@@ -231,3 +231,112 @@ export const upCommodity = (commodity) => {
     data: commodity
   })
 }
+
+/// 获取帖子列表
+export const getPosts = (title) => {
+  return request({
+    url: `/forum/posting/listAllPosting?title=${title}`,
+    method: 'get'
+  })
+}
+
+// 新增帖子
+export const addPost = (post) => {
+  return request({
+    url: '/forum/posting',
+    method: 'post',
+    data: post
+  })
+}
+
+
+
+// 获取帖子详情
+export const getPostDetail = (postingId) => {
+  return request({
+    url: `/forum/posting/${postingId}`,
+    method: 'get'
+  })
+}
+
+// 删除帖子
+export const deletePost = (postingId) => {
+  return request({
+    url: `/forum/posting/${postingId}`,
+    method: 'delete'
+  })
+}
+
+// 查询帖子所有回复
+export const getPostReply = (postingId) => {
+  return request({
+    url: `/forum/reply/listPosting/${postingId}`,
+    method: 'get'
+  })
+}
+
+// 查询回复的所有回复
+export const getReplyReply = (replyId) => {
+  return request({
+    url: `/forum/reply/listReplying/${replyId}`,
+    method: 'get'
+  })
+}
+
+// 回复帖子
+export const addReply = (reply) => {
+  return request({
+    url: '/forum/reply',
+    method: 'post',
+    data: reply
+  })
+}
+
+// 根据id删除回复
+export const deleteReply = (replyId) => {
+  return request({
+    url: `/forum/reply/${replyId}`,
+    method: 'delete'
+  })
+}
+
+
+// 查询帖子所有评论
+export const getPostComment = (postingId) => {
+  return request({
+    url: `/forum/comment/listPosting/${postingId}`,
+    method: 'get'
+  })
+}
+
+// 查询回复的所有评论
+export const getReplyComment = (replyId) => {
+  return request({
+    url: `/forum/comment/listReplying/${replyId}`,
+    method: 'get'
+  })
+}
+
+// 添加回复
+export const addComment = (comment) => {
+  return request({
+    url: '/forum/reply',
+    method: 'post',
+    data: comment
+  })
+}
+// 根据id删除回复
+export const deleteComment = (replyId) => {
+  return request({
+    url: `/forum/reply/${replyId}`,
+    method: 'delete'
+  })
+}
+
+// 获取话题分类
+export const getTopics = () => {
+  return request({
+    url: '/forum/posting/listAllTag',
+    method: 'get'
+  })
+}

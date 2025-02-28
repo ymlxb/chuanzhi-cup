@@ -117,6 +117,11 @@ const routes = [
           },
         ],
       },
+      {
+        path: "/Post/:id",
+        name: "post",
+        component: () => import("@/views/Post.vue"),
+      },
     ],
   },
 ];
