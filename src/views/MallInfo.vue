@@ -61,12 +61,26 @@
                 :headers="{ Authorization: token }"
                 :on-success="handleAvatarSuccess"
                 :before-upload="beforeAvatarUpload"
+                list-type="picture-card"
+                :limit="5"
+                :on-exceed="handleExceed"
+                :on-remove="handleRemove"
+                multiple
+                
               >
               <div v-if="isAvatarLoading" class="custom-loading-overlay">
                 <el-icon type="loading" class="custom-loading-icon"></el-icon>
               </div>
-              <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-                <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+                <img v-if="imageList" :src="imageList" class="avatar" />
+                <el-icon class="avatar-uploader-icon"><Plus /></el-icon>
+                <template #file="{ file }">
+                  <div class="upload-file">
+                    <img class="upload-image" :src="file.url" />
+                    <div class="upload-actions">
+                      <el-icon @click="handleRemove(file)"><Delete /></el-icon>
+                    </div>
+                  </div>
+                </template>
               </el-upload>
             </el-form-item>
             <div class="action-buttons">
@@ -112,8 +126,9 @@ const router = useRouter();
 import type { UploadProps } from 'element-plus'
 const userStore = useUserStore();
 const token = userStore.userInfo.access_token;
-const imageUrl = ref(""); //图片临时地址
-// const imageBase64 = ref(""); //图片base64地址
+// const imageUrl = ref("");
+const imageList = ref([]);
+// const imageBase64 = ref("");
 const formRef = ref(null);
 const isAvatarLoading = ref(true);
 const uploadUrl = computed(() => {
@@ -222,7 +237,7 @@ const cancel = () => {
 };
 
 const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
-      console.log('1111');
+      // console.log('1111');
       isAvatarLoading.value = true
       if (rawFile.type !== 'image/jpeg'&& rawFile.type !== 'image/png' && rawFile.type !== 'image/jfif') {
         ElMessage.error('图片必须是jpg,png或jfif格式')
@@ -231,7 +246,7 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
         ElMessage.error('图片大小不能超过2MB')
         return false
       }
-      console.log('444');
+      // console.log('444');
       
   return true
 }
@@ -239,14 +254,19 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
   response,
   uploadFile
 ) => {
-  console.log('333444');
+  // console.log('333444');
   isAvatarLoading.value = false
-  imageUrl.value = URL.createObjectURL(uploadFile.raw!)
-  imageUrl.value = response.data
-  // getImageUrl()
-  form.images.push(imageUrl.value)
-  console.log("图片地址", imageUrl.value);
+  // imageUrl.value = URL.createObjectURL(uploadFile.raw!)
+  // console.log(response.data);
   
+  imageList.value.push(response.data);
+  console.log(imageList.value);
+
+  // imageUrl.value = response.data
+  // getImageUrl()
+  form.images = imageList.value;
+  // console.log("图片地址", imageUrl.value);
+  ElMessage.success('图片上传成功');
 }
 // const getImageUrl = async () => {
 //   await getImageByUrl(imageUrl.value).then((res) => {
@@ -254,6 +274,22 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
 //     imageBase64.value = res.data;
 //   });
 // };
+
+// 处理超出限制
+const handleExceed: UploadProps['onExceed'] = (files) => {
+  ElMessage.warning(
+    `当前限制选择 5 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + imageList.value.length} 个文件`
+  )
+}
+
+// 处理删除图片
+const handleRemove: UploadProps['onRemove'] = (file) => {
+  const index = imageList.value.indexOf(file.url);
+  if (index !== -1) {
+    imageList.value.splice(index, 1);
+    form.images = imageList.value;
+  }
+}
 
 let tagDataList = reactive([]);
 // 获取标签
@@ -351,10 +387,11 @@ main {
 
 
 /* 上传照片样式 */
-.avatar-uploader .avatar {
+.avatar-uploader .img {
   width: 17.8rem;
   height: 17.8rem;
   display: block;
+  object-fit: cover
 }
 
 .action-buttons {
@@ -417,14 +454,14 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+  background-color: rgba(255, 255, 255, 0.7); 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .custom-loading-icon {
-  font-size: 3rem; /* 或者根据需要设置其他大小 */
-  color: #333; /* 或者根据需要设置其他颜色 */
+  font-size: 3rem; 
+  color: #333; 
 }
 </style>

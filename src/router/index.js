@@ -111,9 +111,14 @@ const routes = [
             component: () => import("@/views/Person/EditUserInfo.vue"),
           },
           {
-            path: "SelfPublish",
-            name: "selfPublish",
-            component: () => import("@/views/Person/SelfPublish.vue"),
+            path: "GoodsPublish",
+            name: "goodsPublish",
+            component: () => import("@/views/Person/GoodsPublish.vue"),
+          },
+          {
+            path: "PostPublish",
+            name: "postPublish",
+            component: () => import("@/views/Person/PostPublish.vue"),
           },
         ],
       },
@@ -122,6 +127,22 @@ const routes = [
         name: "post",
         component: () => import("@/views/Post.vue"),
       },
+      {
+        path: "/CarbonFootprint",
+        name: "CarbonFootprint",
+        component: () => import("@/views/CarbonFootprint.vue"),
+      },
+      {
+        path:'/im',
+        name:'im',
+        component: () => import('@/views/Im.vue'),
+      },
+      {
+        path: '/ai',
+        name: 'ai',
+        component: () => import('@/views/AI.vue'),
+        
+      }
     ],
   },
 ];

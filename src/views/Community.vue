@@ -44,16 +44,16 @@
         <div v-for="post in filteredPosts" :key="post.id" class="post-item" 
         @mouseenter="showDelete = post.id"
         @mouseleave="showDelete = null"
+        @click="navigateToPost(post.id)"
         >
           <transition name="el-fade-in">
             <el-button 
-              v-show="showDelete === post.id"
+              v-show="showDelete === post.id && canDelete(post)"
               class="delete-btn"
-              type="danger" 
-              icon="el-icon-delete" 
-              circle
               @click.stop="handleDelete(post.id)"
-            ></el-button>
+            >
+              <svg viewBox="0 0 448 512" class="svgIcon"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path></svg>
+            </el-button>
           </transition>
           <div class="post-avatar">
             <el-avatar :src="post.headImage" :size="50" />
@@ -63,21 +63,17 @@
               <el-tag type="success" size="small" class="category-tag">
                 {{ post.type.name }}
               </el-tag>
-              <router-link :to="`/post/${post.id}`">{{
-                post.title
-              }}</router-link>
+              <span class="title-text">{{ post.title }}</span>
             </h3>
             <div class="post-meta">
               <span class="author">{{ post.nickname }}</span>
               <el-divider direction="vertical" />
               <span class="time">{{ post.createDate }}</span>
               <el-divider direction="vertical" />
+              
               <span class="stat">
-                <el-icon><View /></el-icon> {{ post.views }}
-              </span>
-              <el-divider direction="vertical" />
-              <span class="stat">
-                <el-icon><ChatLineRound /></el-icon> {{ post.comments }}
+                <el-icon><ChatLineRound /></el-icon> {{ post.totalLevelNumber
+ }}
               </span>
             </div>
             <p class="post-excerpt">{{ post.excerpt }}</p>
@@ -117,13 +113,36 @@
           </el-select>
         </el-form-item>
         <el-form-item label="内容" required>
-          <el-input
+          <MdEditor
             v-model="newPost.text"
-            type="textarea"
-            :rows="5"
+            @onChange="handleEditorChange"
+            previewOnly={false}
+            height="400px"
+            :toolbars="[
+              'bold',
+              'underline',
+              'italic',
+              'strikeThrough',
+              '-',
+              'title',
+              'sub',
+              'sup',
+              'quote',
+              'unorderedList',
+              'orderedList',
+              '-',
+              'codeRow',
+              'code',
+              'link',
+              'image',
+              'table',
+              '-',
+              'preview',
+              'fullscreen'
+            ]"
             placeholder="请输入详细内容（支持Markdown语法）"
           />
-        </el-form-item>
+      </el-form-item>
       </el-form>
       <template #footer>
         <el-button @click="showDialog = false">取消</el-button>
@@ -136,6 +155,9 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { ElMessageBox, ElMessage } from 'element-plus'
+import { MdEditor } from 'md-editor-v3';
+import { useRouter } from 'vue-router'
+import 'md-editor-v3/lib/style.css';
 import {
   Menu,
   RefreshRight,
@@ -148,12 +170,30 @@ import {
   getTopics,
   addPost,
   getPosts,
-  getPostDetail,
+  getUserInfo,
   deletePost,
 } from "@/api/api";
+const router = useRouter()
 
-onMounted(() => {
-  getPostsData();
+const currentNickname = ref('')
+const navigateToPost = (postId) => {
+  router.push(`/post/${postId}`)
+}
+const canDelete = (post) => {
+  console.log(currentNickname.value, post.nickname);
+  
+  return currentNickname.value == post.nickname
+}
+onMounted(async () => {
+  try {
+    const userInfo = await getUserInfo()
+    if (userInfo.code === 0) {
+      currentNickname.value = userInfo.data.nickname
+    }
+  } catch (error) {
+    console.error('获取用户信息失败:', error)
+  }
+  getPostsData()
 });
 
 const categories = ref([
@@ -188,7 +228,14 @@ const newPost = ref({
   title: "",
   category: "",
   text: "",
+  htmlContent: ""
 });
+
+// 添加 Markdown 编辑器的变更处理
+const handleEditorChange = (content, html) => {
+  newPost.value.text = content;
+  newPost.value.htmlContent = html;
+};
 
 const filteredPosts = computed(() => {
   return activeCategory.value === 1
@@ -222,10 +269,12 @@ const handleNewPost = () => {
 
 const handleSubmitPost = async () => {
   await addPost(newPost.value).then((res) => {
-    console.log(res);
+    // console.log(res);
   });
-  console.log("提交新帖子:", newPost.value);
+  // console.log("提交新帖子:", newPost.value);
   showDialog.value = false;
+  ElMessage.success("帖子发布成功！");
+  getPostsData()
 };
 
 // const formatTime = (createDate) => {
@@ -248,6 +297,8 @@ const handleDelete = async (postId) => {
     })
     
     const res = await deletePost(postId)
+    console.log(res);
+    
     if (res.code === 0) {
       ElMessage.success('删除成功')
       getPostsData()
@@ -342,6 +393,7 @@ const handleDelete = async (postId) => {
   padding: 20px;
   border-bottom: 1px solid #eee;
   transition: all 0.2s ease;
+  cursor: pointer;
 
   &:hover {
     background: @background-light;
@@ -356,8 +408,13 @@ const handleDelete = async (postId) => {
     flex-grow: 1;
 
     .post-title {
+      
       margin: 0 0 10px;
       font-size: 1.2rem;
+      .title-text {
+        color: #333;
+        transition: color 0.3s ease;
+      }
 
       a {
         color: #333;
@@ -413,15 +470,93 @@ const handleDelete = async (postId) => {
   transform: translateX(5px);
 }
 
+// .delete-btn {
+//   position: absolute;
+//   right: 20px;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+// }
+
+// .delete-btn:hover {
+//   transform: translateY(-50%) scale(1.1);
+// }
 .delete-btn {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: .3s;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  .svgIcon {
+    width: 12px;
+    transition-duration: .3s;
+  }
+
+  .svgIcon path {
+    fill: white;
+  }
+
+  .delete-btn:hover {
+    width: 140px;
+    border-radius: 50px;
+    transition-duration: .3s;
+    background-color: rgb(255, 69, 69);
+    align-items: center;
+  }
+
+  .delete-btn:hover .svgIcon {
+    width: 50px;
+    transition-duration: .3s;
+    transform: translateY(60%);
+  }
+
+  .delete-btn::before {
+    position: absolute;
+    top: -20px;
+    content: "Delete";
+    color: white;
+    transition-duration: .3s;
+    font-size: 2px;
+  }
+
+  .delete-btn:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    transform: translateY(30px);
+    transition-duration: .3s;
+  }
+
+  :deep(.md-editor) {
+  border-radius: 4px;
+  border: 1px solid #dcdfe6;
+  
+  .md-editor-toolbar {
+    border-bottom: 1px solid #dcdfe6;
+  }
+  
+  .md-editor-content {
+    min-height: 200px;
+  }
 }
 
-.delete-btn:hover {
-  transform: translateY(-50%) scale(1.1);
+:deep(.el-dialog) {
+  .el-dialog__body {
+    padding: 20px;
+  }
 }
 </style>

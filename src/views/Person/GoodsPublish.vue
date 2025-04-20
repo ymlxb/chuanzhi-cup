@@ -1,13 +1,13 @@
 <template>
   <section class="show">
-    <h3 class="show-box-title">我的发布</h3>
+    <h3 class="show-box-title">商品发布</h3>
     <el-divider content-position="left"></el-divider>
           <div class="show-item">
             
             <div class="show-item-contain">
              
               <component :is="currentComponent" >
-                <div class="show-item-box" v-for="item in newList" :key="item.id"  >
+                <div v-if="newList" class="show-item-box" v-for="item in newList" :key="item.id"  >
                   <router-link :to="`/Detail/${item.id}?backSelect=true`">
                     <!-- <div v-for="url in item.imageUrls">
                      
@@ -17,6 +17,7 @@
                     <span class="show-item-box-price">¥{{ item.price }}</span>
                   </router-link>
                 </div>
+                <el-empty v-if="!newList" style="margin: auto;"  :image-size="200" />
               </component>
             </div>
           </div>
@@ -61,8 +62,13 @@
 
     const getNewList = async () =>{
       const res = await getListMyCommodity();
-      console.log(res.data.list);
-      newList.value = res.data.list;
+      // console.log(res.data.list);
+      if(!res.data){
+         newList.value = []
+      } else {
+         newList.value = res.data.list;
+      }
+      
       // newList.value.forEach(item =>{
       //   console.log('1111',item.imageUrls[0]);
         

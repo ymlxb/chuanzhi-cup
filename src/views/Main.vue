@@ -1,5 +1,5 @@
 <script setup>
-import CommonAside from '@/components/CommonAside.vue';
+// import CommonAside from '@/components/CommonAside.vue';
 import CommonHeader from '@/components/CommonHeader.vue';
 </script>
 

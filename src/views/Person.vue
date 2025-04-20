@@ -15,7 +15,7 @@
     </header>
    
     <section class="main">
-      <el-card class="left" style="width: 10%;margin-right: 2rem;" shadow="always">
+      <el-card class="left" style="width: 12%;margin-right: 2rem;" shadow="always">
       <div class="account" style="margin-bottom: 2rem;">
         <h2 class="title">我的账户</h2>
         <p class="title-nav"><router-link to="/person/userInfo">个人中心</router-link></p>
@@ -25,7 +25,8 @@
       </div>
       <div class="order">
         <h2 class="title">交易管理</h2>
-        <p class="title-nav"><router-link to="/person/selfPublish">我的发布</router-link></p>
+        <p class="title-nav"><router-link to="/person/goodsPublish">商品发布</router-link></p>
+        <p class="title-nav"><router-link to="/person/postPublish">帖子发布</router-link></p>
       </div>
     </el-card>
     <el-card class="right" style="width: 80%;" shadow="always">

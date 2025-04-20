@@ -26,7 +26,79 @@
             <p class="paragraph">开启您的可持续生活之旅，与我们一起发现那些致力于环保、社会责任和可持续发展的品牌。可持续品牌的理念犹如灯塔指引方向，然而，将这一理念落地为具体可操作的行动才是实现品牌可持续发展的关键所在，接下来我们就来看看……</p>
             <h3 class="heading-third u-margin-button-2">加入我们，共创绿色未来</h3>
             <p class="paragraph">在这里，您不仅能找到心仪的可持续产品，还能结识一群志同道合的伙伴，共同为地球的绿色未来贡献力量。在对可持续品牌的一般性概念和特征有了全面的认识之后，让我们深入剖析一些成功的可持续品牌案例，以更好地理解这些概念在现实中的具体呈现。</p>
-            <a href="/Brand" class="btn-text">了解更多 &rarr;</a>
+            <a href="/Brand"><button class="readmore-btn">
+              <span class="book-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="rgb(86, 69, 117)"
+                  viewBox="0 0 126 75"
+                  class="book"
+                >
+                  <rect
+                    stroke-width="3"
+                    stroke="#fff"
+                    rx="7.5"
+                    height="70"
+                    width="121"
+                    y="2.5"
+                    x="2.5"
+                  ></rect>
+                  <line stroke-width="3" stroke="#fff" y2="75" x2="63.5" x1="63.5"></line>
+                  <path
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    stroke="#fff"
+                    d="M25 20H50"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    stroke="#fff"
+                    d="M101 20H76"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    stroke="#fff"
+                    d="M16 30L50 30"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    stroke="#fff"
+                    d="M110 30L76 30"
+                  ></path>
+                </svg>
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 65 75"
+                  class="book-page"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    stroke="#fff"
+                    d="M40 20H15"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    stroke="#fff"
+                    d="M49 30L15 30"
+                  ></path>
+                  <path
+                    stroke-width="3"
+                    stroke="#fff"
+                    d="M2.5 2.5H55C59.1421 2.5 62.5 5.85786 62.5 10V65C62.5 69.1421 59.1421 72.5 55 72.5H2.5V2.5Z"
+                  ></path>
+                </svg>
+              </span>
+              <span class="text"> 了解更多 </span>
+            </button></a>
+            
+
           </div>
           <div class="col-1-of-2">
             <div class="photo-composition">
@@ -155,9 +227,7 @@
             </div>
           </div>
         </div>
-        <div class="zuji">
-          <CarbonFootprintCalculator />
-        </div>
+        
       </section>
     </main>
   </div>
@@ -165,7 +235,7 @@
 </template>
 
 <script setup>
-import CarbonFootprintCalculator from '../components/CarbonFootprintCalculator.vue';
+
   const transfer = (event) => {
     event.preventDefault();
     document.querySelector('#to_transfer').scrollIntoView({ behavior: 'smooth' });
@@ -601,5 +671,61 @@ import CarbonFootprintCalculator from '../components/CarbonFootprintCalculator.v
     background-color: #7ed56f;
     border-radius: 3px;
   }
-  
+  //按钮
+  .readmore-btn {
+  width: fit-contentd;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #7ed56f;
+  border: none;
+  border-radius: 10px;
+  padding: 0px 15px;
+  gap: 0px;
+  transition: all 0.4s;
+}
+.book-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  width: 45px;
+  height: 100%;
+}
+.book-wrapper .book-page {
+  width: 50%;
+  height: auto;
+  position: absolute;
+}
+.readmore-btn:hover .book-page {
+  animation: paging 0.4s linear infinite;
+  transform-origin: left;
+}
+.readmore-btn:hover {
+  background-color: rgb(159, 74, 255);
+}
+@keyframes paging {
+  0% {
+    transform: rotateY(0deg) skewY(0deg);
+  }
+  50% {
+    transform: rotateY(90deg) skewY(-20deg);
+  }
+  100% {
+    transform: rotateY(180deg) skewY(0deg);
+  }
+}
+.text {
+  width: 10rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+}
+
 </style>

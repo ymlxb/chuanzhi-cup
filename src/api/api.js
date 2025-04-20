@@ -1,6 +1,7 @@
 /*
  *  整个项目api的统一管理
  */
+import { pa } from "element-plus/es/locales.mjs";
 import request from "../utils/request";
 
 // 登录
@@ -232,6 +233,14 @@ export const upCommodity = (commodity) => {
   })
 }
 
+// 卖家删除商品
+export const deleteCommodity = (id) => {
+  return request({
+    url: `/mall/Commodity/updateCommodityDelFlag/${id}`,
+    method: 'put'
+  })
+}
+
 /// 获取帖子列表
 export const getPosts = (title) => {
   return request({
@@ -249,6 +258,14 @@ export const addPost = (post) => {
   })
 }
 
+//查询帖子
+export const getPost = (params) => {
+  return request({
+    url: '/forum/posting/listMyPosting',
+    method: 'get',
+    params: params
+  })
+}
 
 
 // 获取帖子详情
@@ -338,5 +355,23 @@ export const getTopics = () => {
   return request({
     url: '/forum/posting/listAllTag',
     method: 'get'
+  })
+}
+
+//聊天
+export const getChatList = (userName) => {
+  return request({
+    url: `/chat/chatInfo/getAllRecordByUserName/${userName}`,
+    method: 'get',
+
+  })
+}
+
+//AI聊天
+export const getAIChat = (message) => {
+  return request({
+    url: `/ai/chat/generate?message=${message}`,
+    method: 'get',
+   
   })
 }

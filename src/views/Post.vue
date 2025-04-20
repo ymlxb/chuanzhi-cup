@@ -28,10 +28,10 @@
 
       <!-- 帖子内容 -->
       <article class="post-content">
-        <!-- <div class="content-html" v-html="sanitizedContent"></div> -->
+        <div class="content-html">{{ postData.text }}</div>
 
         <!-- 互动统计 -->
-        <div class="action-stats">
+        <!-- <div class="action-stats">
           <span class="stat-item">
             <el-icon><View /></el-icon> {{ postData.views }} 浏览
           </span>
@@ -42,7 +42,7 @@
           <span class="stat-item">
             <el-icon><Star /></el-icon> {{ postData.likes }} 点赞
           </span>
-        </div>
+        </div> -->
       </article>
 
       <!-- 评论列表 -->
@@ -50,31 +50,80 @@
         <h3 class="section-title">全部评论（{{ comments.length }}）</h3>
 
         <div v-for="comment in comments" :key="comment.id" class="comment-item">
-          <el-avatar :src="comment.headUrl" :size="36" />
+          <div class="comment-left">
+            <el-avatar :src="comment.headUrl" :size="40" />
+            <div class="comment-user-info">
+              <div class="user-meta">
+                <span class="username">{{ comment.nickname }}</span>
+                <el-tag size="small" effect="plain" class="user-role">环保达人</el-tag>
+              </div>
+              <div class="user-stats">
+                <!-- <span class="stat-item">
+                  <el-icon><ChatLineRound /></el-icon> 
+                  {{ comment.commentCount || 0 }}
+                </span>
+                <span class="stat-item">
+                  <el-icon><Star /></el-icon> 
+                  {{ comment.likeCount || 0 }}
+                </span> -->
+                <span class="floor">帖子楼层数:{{ comment.levelNumber -1 }}</span>
+              </div>
+            </div>
+          </div>
+          
           <div class="comment-content">
             <div class="comment-header">
-              <span class="username">{{ comment.nickname }}</span>
-              <span class="comment-time">{{ comment.createDate }}</span>
+              <div class="comment-meta">
+                <span class="comment-time">
+                  <el-icon><Clock /></el-icon> 
+                  {{ comment.createDate }}
+                </span>
+                <span class="comment-ip" v-if="comment.ip">
+                  <el-icon><Location /></el-icon> 
+                  来自 {{ comment.ip }}
+                </span>
+              </div>
+              <div class="comment-actions">
+                <el-button
+                  text
+                  type="danger"
+                  size="small"
+                  v-if="comment.author"
+                  @click="deleteCom(comment.id)"
+                >
+                  <el-icon><Delete /></el-icon> 删除
+                </el-button>
+              </div>
             </div>
+            
             <div class="comment-text">{{ comment.text }}</div>
-            <div class="comment-actions">
-              <el-button text type="primary" size="small" @click="reply()">
-                <!-- <el-icon><ChatDotRound /></el-icon> 回复 -->
-              </el-button>
-              <el-button
-                text
-                type="danger"
-                size="small"
-                v-if="comment.author"
-                @click="deleteCom(comment.id)"
-
-              >
-                <el-icon><Delete /></el-icon> 删除
-              </el-button>
+            
+            <div class="comment-footer">
+              <div class="comment-tags" v-if="comment.tags && comment.tags.length">
+                <el-tag 
+                  v-for="tag in comment.tags" 
+                  :key="tag"
+                  size="small"
+                  effect="plain"
+                  class="tag-item"
+                >
+                  {{ tag }}
+                </el-tag>
+              </div>
+              
+              <div class="comment-images" v-if="comment.images && comment.images.length">
+                <el-image
+                  v-for="(img, index) in comment.images"
+                  :key="index"
+                  :src="img"
+                  :preview-src-list="comment.images"
+                  fit="cover"
+                  class="comment-image"
+                />
+              </div>
             </div>
           </div>
         </div>
-
         <!-- 分页 -->
         <!-- <el-pagination
           background
@@ -93,7 +142,7 @@
           v-model="replyData.text"
           type="textarea"
           :rows="4"
-          placeholder="请输入评论内容（支持Markdown语法）"
+          placeholder="请输入评论内容"
           maxlength="500"
           show-word-limit
         />
@@ -105,6 +154,40 @@
       </section>
     </div>
   </div>
+
+   <!-- 回复对话框 -->
+   <!-- <el-dialog
+    v-model="dialogVisible"
+    title="回复评论"
+    width="500px"
+    :close-on-click-modal="false"
+  >
+    <div class="reply-dialog-content">
+      <div class="original-comment" v-if="currentComment">
+        <div class="comment-info">
+          <el-avatar :src="currentComment.headUrl" :size="30" />
+          <span class="username">{{ currentComment.nickname }}</span>
+        </div>
+        <div class="comment-text">{{ currentComment.text }}</div>
+      </div>
+      <el-input
+        v-model="replyContent"
+        type="textarea"
+        :rows="4"
+        placeholder="请输入回复内容"
+        maxlength="500"
+        show-word-limit
+      />
+    </div>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="submitReply">
+          提交回复
+        </el-button>
+      </span>
+    </template>
+  </el-dialog> -->
 </template>
 
 <script setup>
@@ -133,10 +216,13 @@ import {
   Promotion,
 } from "@element-plus/icons-vue";
 import axios from "axios";
+import { filter } from "lodash";
 
 const route = useRoute();
 const postId = route.params.id;
-
+const dialogVisible = ref(false); 
+const currentComment = ref(null); 
+const replyContent = ref('');
 const postData = ref({
   id: postId,
   title: "如何在家实现零废弃生活？",
@@ -176,6 +262,7 @@ const loading = ref(true);
 const totalComments = ref(15);
 // const grade = ref();
 const secondReply = ref(false);
+const commentInput = ref(null);
 const replyData = ref({
   text: "",
   grade: 0,
@@ -183,18 +270,21 @@ const replyData = ref({
 });
 // 内容消毒
 // const sanitizedContent = computed(() => {
-//   return DOMPurify.sanitize(postData.value.content);
+//   return DOMPurify.sanitize(postData.value.text);
 // });
 
 // const formatTime = (timeStr) => {
 //   return new Date(timeStr).toLocaleString();
 // };
 // 回复评论的回复
-const reply = async () => {
+const reply = async (comment) => {
+  currentComment.value = comment;
+  dialogVisible.value = true;
+  replyContent.value = '';
   secondReply.value = true;
   replyData.value.grade = 3;
-  const res = await addComment(replyData.value);
-  console.log(res);
+  // const res = await addComment(replyData.value);
+  // console.log(res);
 
 //   if (res.code === 0) {
 //     comments.value[index].children.unshift({
@@ -215,15 +305,14 @@ const submitComment = () => {
     return;
   }
 
-  // if(secondReply){
-  //   replyData.value.grade = 3;
-  //   const res = await getReplyComment(replyId);
-  //   console.log(res);
-  // }
-  replyData.value.grade = 2;
-  addCommentData();
-  replyData.value.text = "";
-  ElMessage.success("评论发表成功");
+  
+    replyData.value.grade = 2;
+    addCommentData();
+    replyData.value.text = "";
+    ElMessage.success("评论发表成功");
+    getPostDetailData();
+
+  
 };
 
 // const handlePageChange = (page) => {
@@ -246,7 +335,9 @@ const getPostCommentData = async () => {
   console.log(res);
 
   if (res.code === 0) {
-    comments.value = res.data;
+    comments.value = res.data.filter((item) => {
+      return item.grade === 2;
+    });
     
   }
 };
@@ -286,6 +377,38 @@ const deleteCom = async (replyId) => {
   }
 };
 
+// const submitReply = async () => {
+//   if (!replyContent.value.trim()) {
+//     ElMessage.warning("回复内容不能为空");
+//     return;
+//   }
+
+//   if (!currentComment.value) {
+//     ElMessage.error("回复对象不存在");
+//     return;
+//   }
+
+//   try {
+//     const replyData = {
+//       text: replyContent.value,
+//       grade: 3,
+//       postingId: postId,
+//       replyId: currentComment.value.id
+//     };
+
+//     const res = await addComment(replyData);
+    
+//     if (res.code === 0) {
+//       ElMessage.success("回复成功");
+//       dialogVisible.value = false;
+//       // 刷新评论列表
+//       await getPostCommentData();
+//     }
+//   } catch (error) {
+//     console.error('回复失败:', error);
+//     ElMessage.error("回复失败，请重试");
+//   }
+// };
 
 onMounted(() => {
   getPostDetailData();
@@ -406,53 +529,153 @@ onMounted(() => {
 
 .comment-section {
   margin-top: 40px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
 
   .section-title {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     color: @text-color;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid @border-color;
   }
 
   .comment-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #f0f2f5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .comment-left {
     display: flex;
-    gap: 15px;
-    padding: 15px 0;
-    border-bottom: 1px solid @border-color;
-
-    .comment-content {
-      flex: 1;
-
-      .comment-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    
+    .comment-user-info {
+      text-align: center;
+      
+      .user-meta {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 10px;
-        margin-bottom: 8px;
-
+        gap: 6px;
+        
         .username {
           font-weight: 500;
           color: @text-color;
         }
-
-        .comment-time {
-          color: #666;
-          font-size: 0.9em;
+        
+        .user-role {
+          font-size: 0.8rem;
         }
       }
-
-      .comment-text {
-        color: #444;
-        line-height: 1.6;
-      }
-
-      .comment-actions {
-        margin-top: 10px;
+      
+      .user-stats {
+        margin-top: 8px;
+        display: flex;
+        gap: 8px;
+        font-size: 0.9rem;
+        color: #666;
+        
+        .stat-item {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
       }
     }
   }
 
-  :deep(.el-pagination) {
-    margin-top: 20px;
-    justify-content: center;
+  .comment-content {
+    flex: 1;
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+
+      .comment-meta {
+        display: flex;
+        gap: 15px;
+        color: #8c8c8c;
+        font-size: 0.9rem;
+
+        .comment-time, .comment-ip {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+      }
+    }
+
+    .comment-text {
+      font-size: 1.4rem;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 15px;
+      word-break: break-word;
+    }
+
+    .comment-footer {
+      margin-top: 15px;
+
+      .comment-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+
+        .tag-item {
+          font-size: 0.9rem;
+        }
+      }
+
+      .comment-images {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 8px;
+        margin-top: 12px;
+
+        .comment-image {
+          width: 100px;
+          height: 100px;
+          border-radius: 8px;
+          object-fit: cover;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+}
+}
+
+:deep(.el-button--text.el-button--danger) {
+  padding: 6px 12px;
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba(245, 108, 108, 0.1);
+  }
+
+  .el-icon {
+    margin-right: 4px;
   }
 }
 
@@ -469,5 +692,42 @@ onMounted(() => {
     margin-top: 15px;
     text-align: right;
   }
+}
+
+.reply-dialog-content {
+  .original-comment {
+    background: #f5f7fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+
+    .comment-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+
+      .username {
+        font-weight: 500;
+        color: @text-color;
+      }
+    }
+
+    .comment-text {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  }
+}
+
+:deep(.el-dialog__body) {
+  padding: 20px;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 </style>

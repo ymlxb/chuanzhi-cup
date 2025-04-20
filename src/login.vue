@@ -7,9 +7,11 @@
       </div>
 
       <div class="item-login-right">
-        <div class="hanging-circle" v-show="showRegisterButton">
+        <div class="hanging-circle">
           <div class="wire"></div>
-          <div class="circle" @click="change">注册</div>
+          <div class="circle" @click="change">
+            {{ state.isLogin ? '注册' : '登录' }}
+          </div>
         </div>
         <div class="item-login-right-main">
           <div class="item-login-right-main-title" v-if="state.isLogin">登录</div>
@@ -168,7 +170,9 @@ const showRegisterButton = ref(true);
   };
     const change = () => {
       state.isLogin = !state.isLogin;
-      showRegisterButton.value = false; 
+      if (formRef.value) {
+        formRef.value.resetFields();
+      }
     };
    
   
@@ -179,10 +183,8 @@ const showRegisterButton = ref(true);
   .item-login {
     width: 100vw;
     height: 100vh;
-    background: #eff1fe;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center;
+    background: url('./assets/images/loginBackground.png') no-repeat center center fixed;
+    background-size: cover;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -238,25 +240,25 @@ const showRegisterButton = ref(true);
           right: 6rem;
         }
 
-        .hanging-circle .wire {
+        .wire {
           position: absolute;
           top: 0;
           right: .5rem;
           transform: translateX(-50%);
-          width: .4rem; 
-          height: 8rem; 
-          background-color: #666
+          width: .4rem;
+          height: 8rem;
+          background-color: #666;
         }
 
-        .hanging-circle .circle {
+        .circle {
           position: absolute;
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-          width: 5rem; /* 圆的宽度 */
-          height: 5rem; /* 圆的高度，保持和宽度一致以形成正圆 */
-          border-radius: 50%; /* 设置为50%以形成圆形 */
-          background-color: #fff; /* 圆的颜色，可以根据需要调整 */
+          width: 5rem; 
+          height: 5rem; 
+          border-radius: 50%;
+          background-color: #fff;
           border: 2px solid #f5f5dc;
           color: #333;
           font-size: 1.6rem;

@@ -1,10 +1,12 @@
 <template>
   <el-aside width="18rem">
     <el-menu
-      background-color="#36454F"
+      mode="horizontal"
+      background-color="#333"
       text-color="#fff"
       :collapse="false"
       :default-active="router.currentRoute.value.path"
+      class="nav-menu"
     >
       <h3 v-show="!isCollapse">持续生活</h3>
       <h3 v-show="isCollapse">后台</h3>
@@ -76,11 +78,11 @@ const list = ref([
     url: "/trade",
   },
   {
-      path: '/Community',
-      name: 'Community',
-      label: '社区论坛',
-      icon: 'user',
-      url: '/community'
+    path: "/Community",
+    name: "Community",
+    label: "社区论坛",
+    icon: "user",
+    url: "/community",
   },
   {
     path: "/about",
@@ -88,6 +90,14 @@ const list = ref([
     label: "关于我们",
     icon: "UserFilled",
     url: "/about",
+  },
+  
+  {
+    path: "/Im",
+    name: "im",
+    label: "聊天室",
+    icon: "UserFilled",
+    url: "/im",
   },
 
   // {
@@ -127,8 +137,6 @@ const handleMenu = (item) => {
     path: item.url,
   });
 };
-
-
 </script>
 
 <style lang="less" scoped>

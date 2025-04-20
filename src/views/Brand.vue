@@ -4,7 +4,7 @@
       <div class="slogan">探索可持续品牌，开启绿色生活新旅程</div>
       <el-carousel class="carousel-container" :interval="4000" type="card">
         <el-carousel-item v-for="item in headerImage" :key="item">
-          <img :src="item.url" width="100%" class="head-img" />
+          <img :src="item.url" class="head-img" />
         </el-carousel-item>
       </el-carousel>
     </header>
@@ -71,7 +71,10 @@
                     在追求时尚的同时，积极探索可持续发展道路，
                     经过认证的有机、可循环或低影响材料制作成衣系列，减少了对环境的影响。
                   </p>
-                  <a href="https://www.ganni.com/en/home" target="blank" class="btn-text"
+                  <a
+                    href="https://www.ganni.com/en/home"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -106,7 +109,10 @@
                   <p class="paragraph">
                     鞋面材料常采用天然羊毛、桉树纤维等可再生资源，同时也减少了对传统石油基材料的依赖。
                   </p>
-                  <a href="https://www.allbirds.cn/pc.html" target="blank" class="btn-text"
+                  <a
+                    href="https://www.allbirds.cn/pc.html"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -125,13 +131,19 @@
                 <div class="show-box-item-details">
                   <h3 class="title-second u-margin-button-2">介绍:</h3>
                   <p class="paragraph">
-                    untitlab 是中国新锐设计师鞋履品牌，从品牌创立之初便坚持使用环保材料，从第一季起，全部系列都使用环保超纤面料，践行环保理念、践行可持续理念。
+                    untitlab
+                    是中国新锐设计师鞋履品牌，从品牌创立之初便坚持使用环保材料，从第一季起，全部系列都使用环保超纤面料，践行环保理念、践行可持续理念。
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
-                    从品牌创立伊始就始终坚持使用环保材料，并且加入 “1% for the Planet” 全球组织，积极履行环保社会责任，为地球可持续发展贡献力量。
+                    从品牌创立伊始就始终坚持使用环保材料，并且加入 “1% for the
+                    Planet”
+                    全球组织，积极履行环保社会责任，为地球可持续发展贡献力量。
                   </p>
-                  <a href="https://untitlab.com/zh" target="blank"  class="btn-text"
+                  <a
+                    href="https://untitlab.com/zh"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -167,7 +179,10 @@
                   <p class="paragraph">
                     推出大量使用回收塑料、再生木材等环保材料的家居产品。例如，用回收塑料瓶制成的地毯，不仅减少了塑料废弃物的污染，还为家居产品提供了新的材料来源。
                   </p>
-                  <a href="https://www.ikea.cn/cn/zh/cat/jia-ju-fu001/" target="blank" class="btn-text"
+                  <a
+                    href="https://www.ikea.cn/cn/zh/cat/jia-ju-fu001/"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -186,13 +201,18 @@
                 <div class="show-box-item-details">
                   <h3 class="title-second u-margin-button-2">介绍:</h3>
                   <p class="paragraph">
-                    HOLA 是一家致力于提供家居用品和家居装饰的品牌，起源于中国，近年来在全球市场上逐渐扩展。
+                    HOLA
+                    是一家致力于提供家居用品和家居装饰的品牌，起源于中国，近年来在全球市场上逐渐扩展。
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
-                    HOLA 积极倡导使用可再生、可回收的原料，并且采取节能环保的生产工艺，以此减少对环境的影响，全力打造更环保的家居产品。
+                    HOLA
+                    积极倡导使用可再生、可回收的原料，并且采取节能环保的生产工艺，以此减少对环境的影响，全力打造更环保的家居产品。
                   </p>
-                  <a href="https://www.hola.com.tw/" target="blank" class="btn-text"
+                  <a
+                    href="https://www.hola.com.tw/"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -228,7 +248,10 @@
                   <p class="paragraph">
                     简约包装，精心选取天然、纯净的成分，包装材料也精挑细选，它们不仅契合简约美学追求，更与品牌天然、质朴理念相呼应。
                   </p>
-                  <a href="https://www.aesop.com.cn/" target="blank" class="btn-text"
+                  <a
+                    href="https://www.aesop.com.cn/"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -252,9 +275,13 @@
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
-                    Drunk Elephant 强调用 “干净” 成分，这是品牌理念核心，其在包装上也努力减少垃圾产生。
+                    Drunk Elephant 强调用 “干净”
+                    成分，这是品牌理念核心，其在包装上也努力减少垃圾产生。
                   </p>
-                  <a href="https://www.drunkelephant.com/" target="blank" class="btn-text"
+                  <a
+                    href="https://www.drunkelephant.com/"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -283,13 +310,17 @@
                 <div class="show-box-item-details">
                   <h3 class="title-second u-margin-button-2">介绍:</h3>
                   <p class="paragraph">
-                    Ben & Jerry’s 是全球知名冰淇淋品牌，口味多样、理念独特，积极践行社会责任和环保，受消费者喜爱。
+                    Ben & Jerry’s
+                    是全球知名冰淇淋品牌，口味多样、理念独特，积极践行社会责任和环保，受消费者喜爱。
                   </p>
                   <h3 class="title-second u-margin-button-2">特色:</h3>
                   <p class="paragraph">
                     在原料采购环节秉持公平贸易的理念，这是其品牌的一大特色。品牌不仅仅满足于使用现有的可回收材料，还不断探索新的包装形式以提高可回收性。
                   </p>
-                  <a href="https://www.benjerry.com/" target="blank" class="btn-text"
+                  <a
+                    href="https://www.benjerry.com/"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -314,7 +345,10 @@
                   <p class="paragraph">
                     向全球的咖啡农推广可持续的种植方法，从源头上保障了产品的可持续性，星巴克还在整体运营环节进行了节能优化，在店内广泛采用节能设备。
                   </p>
-                  <a href="https://www.starbucks.com.cn/" target="blank" class="btn-text"
+                  <a
+                    href="https://www.starbucks.com.cn/"
+                    target="blank"
+                    class="btn-text"
                     >了解更多 &rarr;</a
                   >
                 </div>
@@ -341,11 +375,35 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
   box-sizing: inherit;
 }
 .contain {
-  padding: 3rem;
+  margin: auto;
   background-color: #f7f7f7;
   font-family: "Lato", sans-serif;
   box-sizing: border-box;
   font-size: 1.6rem;
+  @media screen and (min-width: 1920px) {
+    width: 80%;
+    padding: 3rem;
+  }
+
+  @media screen and (max-width: 1919px) {
+    width: 85%;
+    padding: 2.5rem;
+  }
+
+  @media screen and (max-width: 1680px) {
+    width: 88%;
+    padding: 2rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 93%;
+    padding: 1.5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    // padding: 1rem;
+  }
 }
 .el-carousel__item h3 {
   color: #475669;
@@ -365,12 +423,36 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
 
 .header {
   width: 80%;
-  height: 30rem;
+  @media screen and (min-width: 1920px) {
+    height: 30rem;
+  }
+
+  @media screen and (max-width: 1919px) {
+    height: 28rem;
+  }
+
+  @media screen and (max-width: 1680px) {
+    height: 25rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    height: 22rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 20rem;
+  }
   margin: auto;
 }
-// .carousel-container {
-//   position: relative;
-// }
+.carousel-container {
+  width: 100%;
+  height: 100%;
+  // margin: auto;
+  // position: relative;
+  // overflow: hidden;
+  // border-radius: 1rem;
+  // box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+}
 .slogan {
   font-size: 3rem;
   color: green;
@@ -386,6 +468,7 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
   height: 100%;
 }
 .show {
+  margin-top: 10rem;
   background-color: #f7f7f7;
   padding: 5rem 0;
 }
@@ -403,7 +486,6 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
 }
 
 .show-box-item {
-  
   width: 100%;
   margin: 0 auto;
   margin-bottom: 10rem;
@@ -421,8 +503,30 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
 }
 .show-box-item-img-one {
   float: left;
-  width: 50%;
-  height: 40rem;
+  @media screen and (min-width: 1920px) {
+    height: 40rem;
+    width: 50%;
+  }
+
+  @media screen and (max-width: 1919px) {
+    height: 35rem;
+    width: 50%;
+  }
+
+  @media screen and (max-width: 1680px) {
+    height: 30rem;
+    width: 48%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    height: 25rem;
+    width: 45%;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 20rem;
+    width: 42%;
+  }
 }
 
 .show-box-item--1 {
@@ -462,28 +566,120 @@ const headerImage = [{ url: brand1 }, { url: brand2 }, { url: brand3 }];
 }
 
 .show-box-item-details {
-  height: 40rem;
-  background-color: skyblue;
   
+  background-color: skyblue;
+  @media screen and (min-width: 1920px) {
+    height: 40rem;
+  }
+
+  @media screen and (max-width: 1919px) {
+    height: 35rem;
+  }
+
+  @media screen and (max-width: 1680px) {
+    height: 30rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    height: 25rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 20rem;
+  }
 }
 
 .title-second {
-  padding-top: .5rem;
-  font-size: 2.5rem;
+  padding-top: 0.5rem;
+  @media screen and (min-width: 1920px) {
+    font-size: 2.5rem;
+  }
+
+  @media screen and (max-width: 1919px) {
+    font-size: 2.3rem;
+  }
+
+  @media screen and (max-width: 1680px) {
+    font-size: 2.1rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 1.9rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.6rem;
+  }
 }
 .paragraph {
-  font-size: 1.6rem;
+  @media screen and (min-width: 1920px) {
+    font-size: 1.6rem;
+  }
+
+  @media screen and (max-width: 1919px) {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (max-width: 1680px) {
+    font-size: 1.4rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 1.3rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.2rem;
+  }
   letter-spacing: 0.1rem;
   line-height: 1.4;
   overflow: hidden;
   padding-left: 1rem;
 }
 .paragraph:not(:last-child) {
-  margin-bottom: 2rem;
+  // margin-bottom: 2rem;
+  @media screen and (min-width: 1920px) {
+    margin-bottom: 2rem;
+  }
+
+  @media screen and (max-width: 1919px) {
+    margin-bottom: 1.6rem;
+  }
+
+  @media screen and (max-width: 1680px) {
+    margin-bottom: 1.2rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    margin-bottom: 0.8rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 0.4rem;
+  }
+
 }
 
 .u-margin-button-2 {
-  margin-bottom: 2rem;
+  @media screen and (min-width: 1920px) {
+    margin-bottom: 2rem;
+  }
+
+  @media screen and (max-width: 1919px) {
+    margin-bottom: 1.8rem;
+  }
+
+  @media screen and (max-width: 1680px) {
+    margin-bottom: 1.6rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    margin-bottom: 1.4rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 1.2rem;
+  }
 }
 
 .btn-text:link,

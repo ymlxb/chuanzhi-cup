@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { loginApi } from "@/api/api";
+import { loginApi} from "@/api/api";
 
 
 export const useUserStore = defineStore("user", () => {
@@ -8,6 +8,7 @@ export const useUserStore = defineStore("user", () => {
   const userInfo = ref({})
   const userAvatarUrl = ref("")
  const code = ref('')
+ const username = ref('')
   // 定义获取接口数据的action函数
   const getUserInfo = async (login) =>{
     const res = await loginApi(login);
@@ -19,6 +20,9 @@ export const useUserStore = defineStore("user", () => {
     console.log(userAvatarUrl.value);
     
   }
+  
+
+  
   // const setUserAvatar = async (userAvatar) =>{
   //   userAvatarUrl.value = userAvatar;
   //   console.log(userAvatar.value);

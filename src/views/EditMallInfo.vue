@@ -20,6 +20,17 @@
               <el-input v-model.number="form.price" placeholder="请输入出售价格" />
             </el-form-item>
            
+            <el-form-item label="物品类型:" prop="tag">
+              <el-select v-model="form.tag" placeholder="请输入商品类型">
+                <el-option
+                  v-for="(tagName, index) in tagDataList.value"
+                  :key="index"
+                  :label="tagName"
+                  :value="tagName"
+                />
+              </el-select>
+            </el-form-item>
+
             <el-form-item label="物品描述:" prop="description">
               <el-input
                 v-model="form.description"
@@ -65,14 +76,13 @@ import {uploadMallImg} from "@/api/api";
 import { Delete, Download, Plus, ZoomIn } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
 import type { UploadFile } from "element-plus";
-import { addMallInfo, upCommodity } from "@/api/api";
+import { getAllTag, upCommodity } from "@/api/api";
 import { useUserStore } from "@/stores/user";
 import { useRouter,useRoute } from "vue-router";
 import { baseurl } from "../utils/request";
 const router = useRouter();
 const route = useRoute();
 import type { UploadProps } from 'element-plus'
-import { log } from "echarts/types/src/util/log.js";
 const userStore = useUserStore();
 const token = userStore.userInfo.access_token;
 const imageUrl = ref(""); //图片临时地址
@@ -83,6 +93,23 @@ const uploadUrl = computed(() => {
   return `${baseurl}/mall/Commodity/insertImage`;
   // return '/mall/Commodity/insertImage'
 });
+
+onMounted(() => {
+  getTag();
+});
+
+let tagDataList = reactive([]);
+// 获取标签
+const getTag = async () => {
+  await getAllTag().then((res) => {
+    tagDataList.value = res.data;
+    
+    console.log(res.data);
+  });
+};
+
+
+
 const form = reactive({
   id: 0,
   name: "",
@@ -91,6 +118,7 @@ const form = reactive({
   images: [],
   mobile: "",
   email: "",
+  tag: "",
 });
 
 form.name = route.query.name
@@ -100,6 +128,7 @@ form.mobile = route.query.mobile
 form.images = route.query.images
 form.email = route.query.email
 form.id = route.query.id
+form.tag = route.query.tagName
 
 
 console.log(form.price);

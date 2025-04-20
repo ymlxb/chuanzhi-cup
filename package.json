@@ -11,11 +11,15 @@
   "dependencies": {
     "-": "^0.0.1",
     "@element-plus/icons-vue": "^2.3.1",
+    "animate.css": "^4.1.1",
     "d": "^1.0.2",
+    "dompurify": "^3.2.5",
     "echarts": "^5.6.0",
     "element-plus": "^2.7.7",
     "less": "^4.2.0",
     "lodash": "^4.17.21",
+    "marked": "^15.0.8",
+    "md-editor-v3": "^5.5.0",
     "pinia-plugin-persistedstate": "^4.1.1",
     "vue": "^3.4.31",
     "vue-router": "^4.4.0"

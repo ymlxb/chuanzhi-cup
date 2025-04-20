@@ -21,17 +21,22 @@
               <span class="toolbar-content">发闲置</span>
             </a>
           </div>
+          
+
         </div>
       </div>
     </header>
     <div class="messageBox" :style="{display:showMessageBox ? 'block' : 'none'}" @mouseleave="showMessageBox = false">
       <div class="messageBox-box">
-        <div class="messageBox-box-item" v-for="(item,index) in MessageNewList" :key="index">
-          <img :src=item.imageUrls?.[0] alt="" style="width: 150px;height: 150px;">
-          <p style="text-align: center;">{{ item.name }}</p>
-          <p style="text-align: center;">¥{{ item.price }}</p>
+        <div class="messageBox-box-item" 
+            v-for="(item,index) in MessageNewList" 
+            :key="index"
+            @click="goToDetail(item.id)"
+        >
+          <img :src="item.imageUrls?.[0]" alt="" class="messageBox-box-item-image">
+          <p class="messageBox-box-item-name">{{ item.name }}</p>
+          <p class="messageBox-box-item-price">¥{{ item.price }}</p>
         </div>
-        
       </div>
     </div>
     
@@ -138,7 +143,7 @@
     import SportComponent from '../components/SportComponent.vue';
     import home1 from '../assets/images/home1.png';
     import home2 from '../assets/images/home2.png';
-    import home3 from '../assets/images/home3.jpg';
+    import home3 from '../assets/images/home3.png';
     import { reactive, shallowRef,ref, markRaw, onMounted } from 'vue';
     import { useRoute,useRouter } from 'vue-router';
     import { throttle } from 'lodash';
@@ -211,6 +216,10 @@
       console.log(commodityId);
       
     })
+
+    const goToDetail = (id) => {
+      router.push(`/Detail/${id}`);
+    }
 
     // 阻止默认跳转
     const link = (event) =>{
@@ -335,19 +344,40 @@
     align-items: center;
   }
 
-  .navigation-box:hover .text {
-    color: #98fb98;
-  }
+  // .navigation-box:hover .text {
+  //   color: #98fb98;
+  // }
   .link {
     display: block;
     // height: 100%;
   }
 
   .text {
-    color:#333;
-    cursor: pointer;
-    font-size: 1.8rem;
+  color: #333;
+  cursor: pointer;
+  font-size: 1.8rem;
+  position: relative;
+  transition: color 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #98fb98;
+    transition: width 0.3s ease;
   }
+
+  &:hover {
+    color: #98fb98;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
 
   .search_input {
     padding: .8rem;
@@ -432,6 +462,7 @@
 //  }
 .toolbar {
   margin-left: 2rem;
+  display: flex;
 }
 
  .toolbar-item--icon {
@@ -527,7 +558,7 @@
  .messageBox {
     position: absolute;
     width: 100vw;
-    height: 22rem;
+    height: 25rem;
     background-color: #fff;
     z-index: 1;
     display: none;
@@ -541,6 +572,44 @@
     margin:0 15rem;
     // background-color: pink;
     margin-top: 2rem;
+
+    .messageBox-box-item {
+      cursor: pointer;
+      padding: 1rem;
+      border-radius: 1rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      &-image {
+        width: 15rem;
+        height: 15rem;
+        border-radius: 0.8rem;
+        object-fit: cover;
+      }
+
+      &-name {
+        text-align: center;
+        width: 15rem;
+        margin: 0.8rem 0;
+        font-size: 1.4rem;
+        color: #333;
+        // 文本溢出省略
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &-price {
+        text-align: center;
+        color: #98fb98;
+        font-size: 1.8rem;
+        font-weight: bold;
+      }
+    }
  }
 
 </style>
